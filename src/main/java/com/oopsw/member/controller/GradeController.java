@@ -1,4 +1,3 @@
-
 package com.oopsw.member.controller;
 
 import java.util.Calendar;
@@ -24,9 +23,9 @@ public class GradeController {
 	private GradeService gradeService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(GradeController.class);
+
 	
-	//
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ò°¡¸ï¿½ï¿½ ï¿½ï¿½È¸
+	//°­ÀÇÆò°¡¸ñ·Ï Á¶È¸
 	@RequestMapping(value = "/evaluationList", method = RequestMethod.POST)
 	public String evaluationList(HttpServletRequest request){
 		HttpSession session = request.getSession();
@@ -44,7 +43,7 @@ public class GradeController {
 		default:
 			semester = "error";
 		}
-		// ï¿½Ð¹ï¿½, ï¿½Ì¹ï¿½ï¿½âµµ, ï¿½Ì¹ï¿½ï¿½Ð±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½.
+		// ÇÐ¹ø, ÀÌ¹ø³âµµ, ÀÌ¹øÇÐ±â º¸³»ÁÖ±â.
 		Collection<GradeDTO> evaluationList = 
 				gradeService.getEvalList((String)session.getAttribute("studentId"), Calendar.getInstance().get(Calendar.YEAR), semester);
 		request.setAttribute("evaluationList", evaluationList);
@@ -52,27 +51,27 @@ public class GradeController {
 		return "evaluationList";
 	}
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 
+	//°­ÀÇÆò°¡ »ó¼¼ 
 	@RequestMapping(value = "/evaluationDetail", method = RequestMethod.POST)
 	public String evaluationDetail(HttpServletRequest request){ 
-		// ï¿½ï¿½ï¿½Ç¿ï¿½ registerNo setï¿½ï¿½ï¿½Ö±ï¿½.
+		// ¼¼¼Ç¿¡ registerNo setÇØÁÖ±â.
 		
 		
 		return "evaluationDetail";
 	}
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
+	//°­ÀÇÆò°¡ Á¦ÃâÇÏ±â
 	@RequestMapping(value = "/evaluationDetailAction", method = RequestMethod.POST)
 	public String evaluationDetailAction(HttpServletRequest request){ 
 		
-		// ï¿½ï¿½ï¿½Ç¿ï¿½ registerNo getï¿½ï¿½ï¿½Ö±ï¿½.
+		// ¼¼¼Ç¿¡ registerNo getÇØÁÖ±â.
 		boolean result = gradeService.setEval((int)request.getAttribute("registerNo"), 1,2,3,4,5);
 		if(!result)
 			return "evaluationDetail";		
 		return "evaluationList";
 	}
 	
-	//ï¿½Ð±âº° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
+	//ÇÐ±âº° ¼ºÀû Á¶È¸
 	@RequestMapping(value = "/gradeSemester", method = RequestMethod.POST)
 	public String gradeSemester(HttpServletRequest request){ 
 		
@@ -84,7 +83,7 @@ public class GradeController {
 		return "gradeSemester";
 	}
 	
-	//ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
+	//ÀüÃ¼ ¼ºÀû Á¶È¸
 	@RequestMapping(value = "/gradeTotal", method = RequestMethod.POST)
 	public String gradeTotal(HttpServletRequest request){ 
 		
