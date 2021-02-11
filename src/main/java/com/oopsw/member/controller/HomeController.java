@@ -42,18 +42,17 @@ public class HomeController {
 		String loginOK = memberService.login(request.getParameter("id"), request.getParameter("pw"));
 		if(loginOK !=null){
 			HttpSession session=request.getSession(true);			
-			session.setAttribute("studentId", loginOK);
-			//model.addAttribute("loginOK", loginOK); 		
+			session.setAttribute("studentId", loginOK);	
 			return "studentInfo";
 		}
 		return "redirect:/login";
 	}
 	
 	//로그아웃
-	@RequestMapping(value = "/logoutAction", method = RequestMethod.POST)
-	public String logoutAction() {
+	@RequestMapping(value = "/logoutAction", method = RequestMethod.GET)
+	public String logoutAction(HttpSession session) {
 		
-		
+		session.invalidate();
 		return "login";
 	}
 	
