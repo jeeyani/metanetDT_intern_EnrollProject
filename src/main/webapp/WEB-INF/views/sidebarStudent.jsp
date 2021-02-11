@@ -10,12 +10,12 @@
 			<li class="nav-item">
 				<div class="bg-light p-3 rounded">
 					<p>반갑습니다 ${studentList.name}님</p>
-					<button type="button" class="btn btn-outline-danger btn-sm">Logout</button>
+					<a type="button" class="btn btn-outline-danger btn-sm" href="<%=application.getContextPath()%>/logoutAction" style="text-decoration: none">Logout</a>
 				</div>
 			</li>
 			<p></p>
 			<p></p>
-			<li class="nav-item"><a class="nav-link" href="#"
+			<li class="nav-item"><a class="nav-link" href="<%=application.getContextPath()%>/studentInfo"
 				style="height: 50px; color: black;"> <svg
 						xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 						fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">

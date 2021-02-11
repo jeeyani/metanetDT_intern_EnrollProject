@@ -71,11 +71,11 @@ public class HomeController {
 	//학생정보페이지
 	@RequestMapping(value = "/studentInfo", method = RequestMethod.GET)
 	public String studentInfo(HttpSession session, Model model) {
-		/*String studentId = (String)session.getAttribute("studentId");
+		String studentId = (String)session.getAttribute("studentId");
 		
-		Collection<StudentDTO> studentList = memberService.getStudentInfo(studentId);
+		StudentDTO studentList = memberService.getStudentInfo(studentId);
 		model.addAttribute("studentList", studentList);
-		*/
+		
 		return "studentInfo";
 	}
  

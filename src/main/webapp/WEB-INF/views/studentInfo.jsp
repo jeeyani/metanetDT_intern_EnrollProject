@@ -53,7 +53,7 @@
 	<div class="container-fluid">
 		<div class="row">
 
-			<jsp:include page="/WEB-INF/views/sidebar.jsp"></jsp:include>
+			<jsp:include page="/WEB-INF/views/sidebarStudent.jsp"></jsp:include>
 			<!-- 사이드바 -->
 
 			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
