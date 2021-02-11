@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.oopsw.member.dao.GradeDAO"> 
+	<select id="getSemGradeList" resultType="com.oopsw.member.dto.GradeDTO"> 
+		SELECT res.subj_group,res.subject_no, res.subj_name,res.grade,res.subj_score
+		FROM students s,
+			(SELECT student_id,subj_group, s.subject_no,subj_name,subj_score, r.grade,reg_year, reg_semester
+			 FROM registers r, subjects s, departmentes dep
+			 WHERE r.subject_no =  s.subject_no AND dep.department_no = s.department_no) res
+		WHERE s.student_id = res.student_id AND res.reg_year = #{regYear} AND res.reg_semester = #{regSemester} AND s.student_id= #{studentId}
+	</select>
+</mapper>

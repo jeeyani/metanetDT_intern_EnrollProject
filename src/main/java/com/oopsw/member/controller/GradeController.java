@@ -75,12 +75,32 @@ public class GradeController {
 	}
 	
 	//학기별 성적 조회
-	@RequestMapping(value = "/gradeSemester", method = RequestMethod.POST)
+	@RequestMapping(value = "/gradeSemester")
 	public String gradeSemester(HttpServletRequest request, Model model){ 
 		
 		HttpSession session = request.getSession();
-		Collection<GradeDTO> result = gradeService.getSemGradeList(
+
+		/*Collection<GradeDTO> result = gradeService.getSemGradeList(
 				(String)session.getAttribute("studentId"), Integer.parseInt(request.getParameter("regYear")), request.getParameter("regSemester"));
+		*/
+		
+		int month = Calendar.getInstance().get(Calendar.MONTH)+1;
+		String semester = "";
+		switch(month){
+		case 1:case 2:
+			semester = "f";
+		case 7: case 8:
+			semester = "s";
+		case 3:case 4:case 5:case 6:
+			semester = "1";
+		case 9:case 10:case 11:case 12:
+			semester = "2";
+		default:
+			semester = "error";
+		}
+		
+		Collection<GradeDTO> result = gradeService.getSemGradeList(
+				(String)session.getAttribute("studentId"), Calendar.getInstance().get(Calendar.YEAR), semester);
 		
 		model.addAttribute("semesterGradeList", result);
 		return "gradeSemester";
