@@ -29,23 +29,14 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+	//로그인페이지
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);		
-		//Date date = new Date();
-		//DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);		
-		//String formattedDate = dateFormat.format(date);
-		String formattedDate = memberService.selectDate();		
-		model.addAttribute("serverTime", formattedDate );		
-		return "home";
-	}
-	@RequestMapping(value = "/loginUI", method = RequestMethod.GET)
-	public String loginUI(){
+	public String login() {
+		logger.info("메인페이지 실행");
 		return "login";
 	}
+	
+	//로그인 처리
 	@RequestMapping(value = "/loginAction", method = RequestMethod.POST)
 	public String loginAction(HttpServletRequest request,Model model){
 		String loginOK = memberService.login(request.getParameter("id"), request.getParameter("pw"));
@@ -53,15 +44,27 @@ public class HomeController {
 			HttpSession session=request.getSession(true);			
 			session.setAttribute("loginOK", loginOK);
 			//model.addAttribute("loginOK", loginOK); 		
-			return "memberOK";
+			return "studentInfo";
 		}
-		return "redirect:/loginUI";
+		return "redirect:/login";
 	}
-	@RequestMapping(value = "/getMembers", method = RequestMethod.GET)
-	public String getMembers(HttpServletRequest request){
-		Collection<String> list=memberService.getMembers();
-		request.setAttribute("list", list);
-		return "getMembers";
+	
+	//로그아웃
+	@RequestMapping(value = "/logoutAction", method = RequestMethod.POST)
+	public String logoutAction() {
+		
+		
+		return "login";
 	}
+	
+	
+	//학생정보페이지
+	@RequestMapping(value = "/studentInfo", method = RequestMethod.POST)
+	public String studentInfo() {
+		
+		
+		return "studentInfo";
+	}
+
 	
 }

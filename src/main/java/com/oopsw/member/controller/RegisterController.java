@@ -25,14 +25,14 @@ import com.oopsw.member.service.RegisterService;
 @Controller
 public class RegisterController {
 	
-	@Autowired
-	private RegisterService registerService;
+	/*@Autowired
+	private RegisterService registerService;*/
 	
 	private static final Logger logger = LoggerFactory.getLogger(RegisterController.class);
 	
 	
 	//강의계획서목록조회 페이지
-	@RequestMapping(value = "/lecturePlan", method = RequestMethod.GET)
+	@RequestMapping(value = "/lecturePlan", method = RequestMethod.POST)
 	public String lecturePlan() {
 		
 		
@@ -41,14 +41,14 @@ public class RegisterController {
 	}
 	
 	//강의계획서상세내용조회 페이지
-	@RequestMapping(value = "/lecturePlanDetail", method = RequestMethod.GET)
+	@RequestMapping(value = "/lecturePlanDetail", method = RequestMethod.POST)
 	public String lecturePlanDetail() {
 		
 		return "lecturePlanDetail";
 	}
 	
 	//수강신청페이지
-	@RequestMapping(value = "/enrolment", method = RequestMethod.GET)
+	@RequestMapping(value = "/enrolment", method = RequestMethod.POST)
 	public String enrolment() {
 		
 		//학생정보 가져오기
