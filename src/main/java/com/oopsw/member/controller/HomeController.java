@@ -65,6 +65,6 @@ public class HomeController {
 		
 		return "studentInfo";
 	}
-
+ 
 	
 }
