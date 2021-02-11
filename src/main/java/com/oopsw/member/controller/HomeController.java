@@ -3,6 +3,7 @@ package com.oopsw.member.controller;
 import java.text.DateFormat;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.oopsw.member.service.MemberService;
+import com.oopsw.member.dto.StudentDTO;
 
 /**
  * Handles requests for the application home page.
@@ -38,13 +40,22 @@ public class HomeController {
 	
 	//로그인 처리
 	@RequestMapping(value = "/loginAction", method = RequestMethod.POST)
-	public String loginAction(HttpServletRequest request,Model model){
+	public String loginAction(HttpServletRequest request,Model model,HttpSession session){
+			
 		String loginOK = memberService.login(request.getParameter("id"), request.getParameter("pw"));
+		
+		logger.info(loginOK);
+			
 		if(loginOK !=null){
-			HttpSession session=request.getSession(true);			
-			session.setAttribute("studentId", loginOK);	
+			
+			session.setAttribute("studentId", loginOK);
+			String studentId =(String)session.getAttribute("studentId");
+			StudentDTO studentList= memberService.getStudentInfo(studentId);
+			model.addAttribute("studentList", studentList);
+
 			return "studentInfo";
 		}
+		
 		return "redirect:/login";
 	}
 	
@@ -58,10 +69,13 @@ public class HomeController {
 	
 	
 	//학생정보페이지
-	@RequestMapping(value = "/studentInfo", method = RequestMethod.POST)
-	public String studentInfo() {
+	@RequestMapping(value = "/studentInfo", method = RequestMethod.GET)
+	public String studentInfo(HttpSession session, Model model) {
+		/*String studentId = (String)session.getAttribute("studentId");
 		
-		
+		Collection<StudentDTO> studentList = memberService.getStudentInfo(studentId);
+		model.addAttribute("studentList", studentList);
+		*/
 		return "studentInfo";
 	}
  

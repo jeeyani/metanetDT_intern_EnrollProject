@@ -78,25 +78,25 @@
 							</tr>
 							<tr>
 								<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">성명</th>
-								<td>강창기</td>
+								<td>${studentList.name}</td>
 								<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">학적상태</th>
-								<td>재학</td>
+								<td>${studentList.state}</td>
 							</tr>
 							<tr>
 								<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">학번</th>
-								<td>2015112131</td>
+								<td>${studentList.studentId}</td>
 								<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">학과</th>
-								<td>컴퓨터공학과</td>
+								<td>${studentList.deptName}</td>
 							</tr>
 							<tr>
 								<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">전화번호</th>
-								<td>010-1234-5678</td>
+								<td>${studentList.phone}</td>
 								<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">이메일</th>
-								<td>cgkang@metanet.co.kr</td>
+								<td>${studentList.email}@metanet.co.kr</td>
 							</tr>
 							<tr>
 								<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">주소</th>
-								<td colspan="3">서울시 구로구</td>
+								<td colspan="3">${studentList.address}</td>
 							</tr>
 						</tbody>
 					</table>

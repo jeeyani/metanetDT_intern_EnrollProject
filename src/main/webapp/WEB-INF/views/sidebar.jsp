@@ -9,7 +9,7 @@
 
 			<li class="nav-item">
 				<div class="bg-light p-3 rounded">
-					<p>반갑습니다 강창기님</p>
+					<p>반갑습니다 ${studentList.name}님</p>
 					<button type="button" class="btn btn-outline-danger btn-sm">Logout</button>
 				</div>
 			</li>
