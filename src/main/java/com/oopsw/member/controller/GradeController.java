@@ -24,7 +24,7 @@ public class GradeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(GradeController.class);
 	
-	
+	//
 	//강의평가목록 조회
 	@RequestMapping(value = "/evaluationList", method = RequestMethod.POST)
 	public String evaluationList(HttpServletRequest request){
