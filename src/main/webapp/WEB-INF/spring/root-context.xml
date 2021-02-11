@@ -26,7 +26,7 @@
 	</bean>
 	<!-- 지정된 베이스 패키지에서 DAO(Mapper) 를 검색하여 등록 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.oopsw.member" />
+		<property name="basePackage" value="com.oopsw.member.dao" />
 	</bean>
 	<!-- 트랜잭션 매니저 bean 을 등록 -->
 	<bean id="transactionManager"
