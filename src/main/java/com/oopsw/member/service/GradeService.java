@@ -20,10 +20,10 @@ public class GradeService {
 	}
 	
 	
-	/*public void setEvalList(int registerNo) {
+	public boolean setEval(int registerNo, int evalHow, int evalPlanning, int evalGoal, int evalConsider, int evalTest) {
 		// TODO Auto-generated method stub
-		return gradeDAO.setEval(registerNo);
-	}*/
+		return gradeDAO.setEval(registerNo, evalHow, evalPlanning, evalGoal, evalConsider, evalTest);
+	}
 
 		
 	
