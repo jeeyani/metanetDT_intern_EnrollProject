@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.oopsw.member.dto.gradeDTO;
+import com.oopsw.member.dto.GradeDTO;
 import com.oopsw.member.service.GradeService;
 
 @Controller
@@ -25,7 +25,7 @@ public class GradeController {
 	@RequestMapping(value = "/evaluationList", method = RequestMethod.POST)
 	public String evaluationList(HttpServletRequest request){
 		// 학번, 이번년도, 이번학기 보내주기.
-		Collection<gradeDTO> loginData = gradeService.getEvalList(request.getParameter("id"), 2020, new String("1"));
+		Collection<GradeDTO> loginData = gradeService.getEvalList(request.getParameter("id"), 2020, new String("1"));
 		
 		return "evaluationList";
 	}

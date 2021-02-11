@@ -1,21 +1,21 @@
 package com.oopsw.member.dto;
 
-public class gradeDTO {	
-	private int sujectNo;
+public class GradeDTO {	
+	//과목
 	private String subjGroup;
 	private String subjName;
 	private int subjScore;
-	private String deptName;
 	private String subjProfessor;
+	//수강
 	private int grade;
-	private String name;
 	
-	public int getSujectNo() {
-		return sujectNo;
-	}
-	public void setSujectNo(int sujectNo) {
-		this.sujectNo = sujectNo;
-	}
+	//학적
+	private String name;
+	//학과
+	private String deptName;
+	
+	
+	
 	public String getSubjGroup() {
 		return subjGroup;
 	}
@@ -33,12 +33,6 @@ public class gradeDTO {
 	}
 	public void setSubjScore(int subjScore) {
 		this.subjScore = subjScore;
-	}
-	public String getDeptName() {
-		return deptName;
-	}
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
 	}
 	public String getSubjProfessor() {
 		return subjProfessor;
@@ -58,7 +52,12 @@ public class gradeDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+	public String getDeptName() {
+		return deptName;
+	}
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
 	
 	
 }
