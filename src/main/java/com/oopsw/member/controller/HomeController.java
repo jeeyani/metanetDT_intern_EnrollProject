@@ -1,4 +1,4 @@
-package com.oopsw.member;
+package com.oopsw.member.controller;
 
 import java.text.DateFormat;
 import java.util.Collection;
@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.oopsw.member.service.MemberService;
 
 /**
  * Handles requests for the application home page.

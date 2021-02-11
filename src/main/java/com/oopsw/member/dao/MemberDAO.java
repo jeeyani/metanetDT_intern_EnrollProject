@@ -1,4 +1,4 @@
-package com.oopsw.member;
+package com.oopsw.member.dao;
 
 import java.util.Collection;
 
