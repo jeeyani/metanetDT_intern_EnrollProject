@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -27,7 +28,7 @@ public class GradeController {
 	
 	//강의평가목록 조회
 	@RequestMapping(value = "/evaluationList", method = RequestMethod.POST)
-	public String evaluationList(HttpServletRequest request){
+	public String evaluationList(HttpServletRequest request, Model model){
 		HttpSession session = request.getSession();
 		int month = Calendar.getInstance().get(Calendar.MONTH)+1;
 		String semester = "";
@@ -46,7 +47,7 @@ public class GradeController {
 		// 학번, 이번년도, 이번학기 보내주기.
 		Collection<GradeDTO> evaluationList = 
 				gradeService.getEvalList((String)session.getAttribute("studentId"), Calendar.getInstance().get(Calendar.YEAR), semester);
-		request.setAttribute("evaluationList", evaluationList);
+		model.addAttribute("evaluationList", evaluationList);
 		
 		return "evaluationList";
 	}
@@ -65,7 +66,7 @@ public class GradeController {
 	public String evaluationDetailAction(HttpServletRequest request){ 
 		
 		// 세션에 registerNo get해주기.
-		boolean result = gradeService.setEval((int)request.getAttribute("registerNo"), 1,2,3,4,5);
+		boolean result = gradeService.setEval(Integer.parseInt(request.getParameter("registerNo")), 1,2,3,4,5);
 		if(!result)
 			return "evaluationDetail";		
 		return "evaluationList";
@@ -73,13 +74,13 @@ public class GradeController {
 	
 	//학기별 성적 조회
 	@RequestMapping(value = "/gradeSemester", method = RequestMethod.POST)
-	public String gradeSemester(HttpServletRequest request){ 
+	public String gradeSemester(HttpServletRequest request, Model model){ 
 		
 		HttpSession session = request.getSession();
 		Collection<GradeDTO> result = gradeService.getSemGradeList(
-				(String)session.getAttribute("studentId"), (int)request.getAttribute("regYear"), (String)request.getAttribute("regSemester"));
+				(String)session.getAttribute("studentId"), Integer.parseInt(request.getParameter("regYear")), request.getParameter("regSemester"));
 		
-		request.setAttribute("semesterGradeList", result);
+		model.addAttribute("semesterGradeList", result);
 		return "gradeSemester";
 	}
 	
