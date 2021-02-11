@@ -20,6 +20,8 @@ import com.oopsw.member.service.GradeService;
 @Controller
 public class GradeController {
 
+	//
+	//
 	@Autowired
 	private GradeService gradeService;
 	
