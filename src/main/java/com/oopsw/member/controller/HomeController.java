@@ -29,27 +29,27 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	//·Î±×ÀÎÆäÀÌÁö
+	//ë¡œê·¸ì¸í˜ì´ì§€
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String login() {
-		logger.info("¸ŞÀÎÆäÀÌÁö ½ÇÇà");
+
 		return "login";
 	}
 	
-	//·Î±×ÀÎ Ã³¸®
+	//ë¡œê·¸ì¸ ì²˜ë¦¬
 	@RequestMapping(value = "/loginAction", method = RequestMethod.POST)
 	public String loginAction(HttpServletRequest request,Model model){
 		String loginOK = memberService.login(request.getParameter("id"), request.getParameter("pw"));
 		if(loginOK !=null){
 			HttpSession session=request.getSession(true);			
-			session.setAttribute("loginOK", loginOK);
+			session.setAttribute("studentId", loginOK);
 			//model.addAttribute("loginOK", loginOK); 		
 			return "studentInfo";
 		}
 		return "redirect:/login";
 	}
 	
-	//·Î±×¾Æ¿ô
+	//ë¡œê·¸ì•„ì›ƒ
 	@RequestMapping(value = "/logoutAction", method = RequestMethod.POST)
 	public String logoutAction() {
 		
@@ -58,7 +58,7 @@ public class HomeController {
 	}
 	
 	
-	//ÇĞ»ıÁ¤º¸ÆäÀÌÁö
+	//í•™ìƒì •ë³´í˜ì´ì§€
 	@RequestMapping(value = "/studentInfo", method = RequestMethod.POST)
 	public String studentInfo() {
 		

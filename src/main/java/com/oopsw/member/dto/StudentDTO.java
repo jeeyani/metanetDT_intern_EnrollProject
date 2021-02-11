@@ -2,7 +2,7 @@ package com.oopsw.member.dto;
 
 public class StudentDTO {
 	
-	//ÇĞ»ıÁ¤º¸
+	//í•™ìƒì •ë³´
 	private String studentId;
 	private String pw;
 	private String name;
@@ -12,7 +12,7 @@ public class StudentDTO {
 	private String address;
 	private String state;
 
-	//ÇĞ°ú¸í
+	//í•™ê³¼ì •ë³´
 	private int deptmentNo;
 	private String deptName;
 	

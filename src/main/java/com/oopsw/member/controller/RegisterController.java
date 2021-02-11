@@ -31,7 +31,7 @@ public class RegisterController {
 	private static final Logger logger = LoggerFactory.getLogger(RegisterController.class);
 	
 	
-	//°­ÀÇ°èÈ¹¼­¸ñ·ÏÁ¶È¸ ÆäÀÌÁö
+	//ê°•ì˜ê³„íšì„œí˜ì´ì§€
 	@RequestMapping(value = "/lecturePlan", method = RequestMethod.POST)
 	public String lecturePlan() {
 		
@@ -40,35 +40,45 @@ public class RegisterController {
 		return "lecturePlanList";
 	}
 	
-	//°­ÀÇ°èÈ¹¼­»ó¼¼³»¿ëÁ¶È¸ ÆäÀÌÁö
+	//ê°•ì˜ê³„íšì„œí˜ì´ì§€ì¡°íšŒë²„íŠ¼ í´ë¦­
+	@RequestMapping(value = "/lecturePlanList", method = RequestMethod.POST)
+	public String lecturePlanList() {
+		
+		
+		
+		return "lecturePlanList";
+	}
+		
+	
+	//ê°•ì˜ê³„íšì„œ ìƒì„¸í˜ì´ì§€
 	@RequestMapping(value = "/lecturePlanDetail", method = RequestMethod.POST)
 	public String lecturePlanDetail() {
 		
 		return "lecturePlanDetail";
 	}
 	
-	//¼ö°­½ÅÃ»ÆäÀÌÁö
+	//ìˆ˜ê°•ì‹ ì²­í˜ì´ì§€
 	@RequestMapping(value = "/enrolment", method = RequestMethod.POST)
 	public String enrolment() {
 		
-		//ÇĞ»ıÁ¤º¸ °¡Á®¿À±â
+		//í•™ìƒì •ë³´ ê°€ì ¸ì˜¤ê¸°
 		
-		//¼ö°­½ÅÃ» °¡´É ¸ñ·Ï °¡Á®¿À±â
-		
-		//¼ö°­½ÅÃ»ÇÑ ¸ñ·Ï °¡Á®¿À±â
+		//ìˆ˜ê°•ì‹ ì²­ ê°€ëŠ¥ ëª©ë¡ ê°€ì ¸ì˜¤ê¸°
+				
+		//ìˆ˜ê°•ì‹ ì²­í•œ ëª©ë¡ ê°€ì ¸ì˜¤ê¸°
 		
 		
 		return "enrollment";
 	}
 	
-	//¼ö°­½ÅÃ»ÇÏ±â
+	//ìˆ˜ê°•ì‹ ì²­í•˜ê¸°
 	@RequestMapping(value = "/enrolmentAdd", method = RequestMethod.POST)
 	public String enrolmentAdd() {
 
 		return "redirect:enrollment";
 	}
 	
-	//¼ö°­½ÅÃ»Ãë¼ÒÇÏ±â
+	//ìˆ˜ê°•ì‹ ì²­ì·¨ì†Œí•˜ê¸°
 	@RequestMapping(value = "/enrolmentDelete", method = RequestMethod.POST)
 	public String enrolmentDelete() {
 				

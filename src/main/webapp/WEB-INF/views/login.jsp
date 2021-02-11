@@ -42,7 +42,7 @@ body {
 }
 </style>
 
-<title>Insert title here</title>
+<title>메타넷 수강신청</title>
 </head>
 <body class="text-center">
 
