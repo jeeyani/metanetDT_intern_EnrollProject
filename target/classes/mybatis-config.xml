@@ -9,4 +9,8 @@
 		<typeAlias alias="empVO" type="com.oopsw.member.MemberVO" />
 	</typeAliases>
  -->
+ 
+ 	<typeAliases>
+		<typeAlias alias="student" type="com.oopsw.member.dto.StudentDTO" />
+	</typeAliases>
 </configuration>
