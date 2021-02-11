@@ -64,8 +64,8 @@ public class GradeController {
 	@RequestMapping(value = "/evaluationDetailAction", method = RequestMethod.POST)
 	public String evaluationDetailAction(HttpServletRequest request){ 
 		
-		// 세션에 registerNo set해주기.
-		boolean result = gradeService.setEval(40000, 1,2,3,4,5);
+		// 세션에 registerNo get해주기.
+		boolean result = gradeService.setEval((int)request.getAttribute("registerNo"), 1,2,3,4,5);
 		if(!result)
 			return "evaluationDetail";		
 		return "evaluationList";
@@ -74,16 +74,18 @@ public class GradeController {
 	//학기별 성적 조회
 	@RequestMapping(value = "/gradeSemester", method = RequestMethod.POST)
 	public String gradeSemester(HttpServletRequest request){ 
-		// 세션에 registerNo set해주기.
 		
+		HttpSession session = request.getSession();
+		Collection<GradeDTO> result = gradeService.getSemGradeList(
+				(String)session.getAttribute("studentId"), (int)request.getAttribute("regYear"), (String)request.getAttribute("regSemester"));
 		
+		request.setAttribute("semesterGradeList", result);
 		return "gradeSemester";
 	}
 	
 	//전체 성적 조회
 	@RequestMapping(value = "/gradeTotal", method = RequestMethod.POST)
 	public String gradeTotal(HttpServletRequest request){ 
-		// 세션에 registerNo set해주기.
 		
 		
 		return "gradeTotal";

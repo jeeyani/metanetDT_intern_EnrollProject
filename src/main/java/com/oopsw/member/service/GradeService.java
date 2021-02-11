@@ -25,6 +25,12 @@ public class GradeService {
 		return gradeDAO.setEval(registerNo, evalHow, evalPlanning, evalGoal, evalConsider, evalTest);
 	}
 
+
+	public Collection<GradeDTO> getSemGradeList(String studentId, int regYear, String regSemester) {
+		// TODO Auto-generated method stub
+		return gradeDAO.getSemGradeList(studentId, regYear, regSemester);
+	}
+
 		
 	
 }
