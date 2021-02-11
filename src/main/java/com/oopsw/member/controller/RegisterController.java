@@ -32,7 +32,7 @@ public class RegisterController {
 	
 	
 	//강의계획서페이지
-	@RequestMapping(value = "/lecturePlan", method = RequestMethod.POST)
+	@RequestMapping(value = "/lecturePlan", method = RequestMethod.GET)
 	public String lecturePlan() {
 		
 		
@@ -58,7 +58,7 @@ public class RegisterController {
 	}
 	
 	//수강신청페이지
-	@RequestMapping(value = "/enrolment", method = RequestMethod.POST)
+	@RequestMapping(value = "/enrollment", method = RequestMethod.GET)
 	public String enrolment() {
 		
 		//학생정보 가져오기
@@ -83,6 +83,13 @@ public class RegisterController {
 	public String enrolmentDelete() {
 				
 		return "redirect:enrollment";
+	}
+	
+	//시간표조회페이지가져오기
+	@RequestMapping(value = "/timetable", method = RequestMethod.GET)
+	public String timetable() {
+				
+		return "timetable";
 	}
 	
 	
