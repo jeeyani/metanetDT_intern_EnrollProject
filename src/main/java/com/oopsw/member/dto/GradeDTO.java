@@ -7,7 +7,7 @@ public class GradeDTO {
 	private int subjScore;
 	private String subjProfessor;
 	//수강
-	private int grade;
+	private double grade;
 	
 	//학적
 	private String name;
@@ -40,10 +40,10 @@ public class GradeDTO {
 	public void setSubjProfessor(String subjProfessor) {
 		this.subjProfessor = subjProfessor;
 	}
-	public int getGrade() {
+	public double getGrade() {
 		return grade;
 	}
-	public void setGrade(int grade) {
+	public void setGrade(double grade) {
 		this.grade = grade;
 	}
 	public String getName() {

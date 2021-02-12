@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 
@@ -65,47 +68,52 @@
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         
-        <div class="p-4 p-md-5 mb-4 rounded">
-          <p class="text-center fs-3 fw-bold">학기별 성적 조회</p>          
         
-          <div class="row g-3 align-items-center">
-            <div class="col-auto">
-              <label for="deptname" class="col-form-label" style="font-weight:bold">년도</label>
-            </div>
-            <div class="col-auto">
-              <select id="yearGroup" class="form-select">
-                <option selected>선택</option>
-                <option value="2021">2021</option>
-                <option value="2020">2020</option>
-                <option value="2019">2019</option>
-                <option value="2018">2018</option>
-                <option value="2017">2017</option>
-              </select>
-            </div>
-            <div class="col-auto">
-              <label for="deptname" class="col-form-label" style="font-weight:bold">학기</label>
-            </div>
-            <div class="col-auto">
-              <select id="semesterGroup" class="form-select">
-                <option selected>선택</option>
-                <option value="1">1학기</option>
-                <option value="s">여름학기</option>
-                <option value="2">2학기</option>
-                <option value="f">겨울학기</option>
-              </select>
-            </div>
-            <div class="col-auto">
-              <button type="button" class="btn btn-outline-dark">조회</button>
-            </div>
-
-          </div>
+        <form method="post" action="gradeSemesterAction">
+	        <div class="p-4 p-md-5 mb-4 rounded">
+	          <p class="text-center fs-3 fw-bold">학기별 성적 조회</p>          
+	        
+	          <div class="row g-3 align-items-center">
+	            <div class="col-auto">
+	              <label for="deptname" class="col-form-label" style="font-weight:bold">년도</label>
+	            </div>
+	            <div class="col-auto">
+	              <select name="regYear" class="form-select">
+	                <option selected>선택</option>
+	                <option value="2021">2021</option>
+	                <option value="2020">2020</option>
+	                <option value="2019">2019</option>
+	                <option value="2018">2018</option>
+	                <option value="2017">2017</option>
+	              </select>
+	            </div>
+	            <div class="col-auto">
+	              <label for="deptname" class="col-form-label" style="font-weight:bold">학기</label>
+	            </div>
+	            <div class="col-auto">
+	              <select name="regSemester" class="form-select">
+	                <option selected>선택</option>
+	                <option value="1">1학기</option>
+	                <option value="s">여름학기</option>
+	                <option value="2">2학기</option>
+	                <option value="f">겨울학기</option>
+	              </select>
+	            </div>
+	            <div class="col-auto">
+	              <button type="submit" class="btn btn-outline-dark">조회</button>
+	            </div>
+	
+	          </div>
+          </form>
+          
+          
+          
           <p>
             <div style="overflow-y:auto; height:500px">
               <table class="table table-striped table-hover" style="border-collapse: collapse; text-align: center; vertical-align:middle">
                 <thead>
                   <tr style="color: white;">
                     <th style="position:sticky; background-color: lightslategrey; top:0px">이수구분</th>
-                    <th style="position:sticky; background-color: lightslategrey; top:0px">학수번호</th>
                     <th style="position:sticky; background-color: lightslategrey; top:0px">과목명</th>
                     <th style="position:sticky; background-color: lightslategrey; top:0px">등급</th>
                     <th style="position:sticky; background-color: lightslategrey; top:0px">시수</th>
@@ -113,58 +121,28 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>전공심화</td>
-                    <td>00110</td>
-                    <td>Spring 프레임워크</td>
-                    <td>A+</td>
-                    <td>3</td>
-                    <td>4.5</td>
-                  </tr>
-                  <tr>
-                    <td>전공핵심</td>
-                    <td>00130</td>
-                    <td>객체지향</td>
-                    <td>A0</td>
-                    <td>2</td>
-                    <td>4.0</td>
-                  </tr>
-                  <tr>
-                    <td>전공필수</td>
-                    <td>00211</td>
-                    <td>C++ 프로그래밍</td>
-                    <td>A+</td>
-                    <td>3</td>
-                    <td>4.5</td>
-                  </tr>
-                  <tr>
-                    <td>전공심화</td>
-                    <td>00510</td>
-                    <td>컴파일러</td>
-                    <td>A0</td>
-                    <td>3</td>
-                    <td>4.0</td>
-                  </tr>
-                  <tr>
-                    <td>전공심화</td>
-                    <td>00210</td>
-                    <td>디자인패턴</td>
-                    <td>B+</td>
-                    <td>2</td>
-                    <td>3.5</td>
-                  </tr>
-                  <tr>
-                    <td>전공핵심</td>
-                    <td>00230</td>
-                    <td>데이터베이스</td>
-                    <td>A0</td>
-                    <td>2</td>
-                    <td>4.0</td>
-                  </tr>
+                	<c:set var="subjScore_sum" value="0"/>
+                	<c:set var="grade_sum" value="0"/>
+                	<c:set var="subjScore_length" value="${fn:length(semesterGradeList)}"/>
+                	
+                	<c:forEach var="gradeDTO" items="${semesterGradeList}">
+                		<tr>
+		                    <td>${gradeDTO.subjGroup}</td>
+		                    <td>${gradeDTO.subjName}</td>
+		                    <td>A+</td>
+		                    <td>${gradeDTO.subjScore}</td>
+		                    <td>${gradeDTO.grade}</td>
+                  		</tr>
+                  		<c:set var="subjScore_sum" value="${subjScore_sum + gradeDTO.subjScore}"/>
+                  		<c:set var="grade_sum" value="${grade_sum + gradeDTO.grade}"/>
+                	</c:forEach>
                 </tbody>
               </table>
+              
               <div style="float:right">
-                <label class="fw-bold" style="margin:0px 10px">취득학점</label>15학점<label class="fw-bold"  style="margin:0px 10px 0px 20px">평균학점</label>4.16
+                <label class="fw-bold" style="margin:0px 10px">취득학점</label><c:out value="${subjScore_sum}"/>학점
+                <!-- NaN 체크 !  -->
+                <label class="fw-bold"  style="margin:0px 10px 0px 20px">평균학점</label><c:out value="${grade_sum / subjScore_length}"/>
               </div>
             </div>
           </p>
@@ -175,7 +153,7 @@
 
     </div>
   </div>
-    <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
 </body>
 
 </html>

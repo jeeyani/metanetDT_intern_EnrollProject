@@ -107,9 +107,11 @@ public class GradeController {
 	public String gradeSemesterAction(HttpServletRequest request, Model model){ 
 		
 		HttpSession session = request.getSession();
-
+		String regYear = request.getParameter("regYear");
+		String regSemester = request.getParameter("regSemester");
+		
 		Collection<GradeDTO> result = gradeService.getSemGradeList(
-				(String)session.getAttribute("studentId"), Integer.parseInt(request.getParameter("regYear")), request.getParameter("regSemester"));
+				(String)session.getAttribute("studentId"), Integer.parseInt(regYear), regSemester);		
 		
 		model.addAttribute("semesterGradeList", result);
 		return "gradeSemester";
