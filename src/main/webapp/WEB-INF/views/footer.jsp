@@ -5,7 +5,7 @@
 
 	<div class="container-fluid">
 		<div>MetanetDT 인턴십 1기 프로젝트</div>
-		<div>@ 2021 Chang-gi Kang | Ji-Yeon Park</div>
+		<div>@ 2021 Chang-gi Kang | Ji-yeon Park</div>
 		<i class="fab fa-java fa-2x"></i> <i class="fab  fa-html5 fa-2x"></i>
 		<i class="fab fa-github-alt fa-2x"></i>
 	</div>

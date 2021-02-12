@@ -2,7 +2,7 @@ package com.oopsw.member.dto;
 
 public class RegisterDTO {
 
-	//°ú¸ñÁ¤º¸
+	//êµê³¼ëª©ì •ë³´
 	private int subjectNo;
 	private String subjGroup;
 	private String subjName;
@@ -14,11 +14,11 @@ public class RegisterDTO {
 	private int lectEnd;
 	private String lectRoom;
 	
-	//ÇĞ°ú¸í
+	//í•™ê³¼ì •ë³´
 	private int deptmentNo;
 	private String deptName;
 	
-	//¼ö°­Á¤º¸
+	//ìˆ˜ê°•ì •ë³´
 	private int studentId;
 	private int registerNo;
 	private int regYear;

@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.oopsw.member.dto.StudentDTO;
 import com.oopsw.member.service.MemberService;
 import com.oopsw.member.service.RegisterService;
 
@@ -25,16 +26,24 @@ import com.oopsw.member.service.RegisterService;
 @Controller
 public class RegisterController {
 	
-	/*@Autowired
-	private RegisterService registerService;*/
+	@Autowired
+	/*private RegisterService registerService;*/
+	private MemberService memberService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(RegisterController.class);
 	
 	
 	//강의계획서페이지
 	@RequestMapping(value = "/lecturePlan", method = RequestMethod.GET)
-	public String lecturePlan() {
+	public String lecturePlan(HttpSession session, Model model) {
 		
+		//이름가져오기
+		String studentId =(String)session.getAttribute("studentId");
+		StudentDTO studentList= memberService.getStudentInfo(studentId);
+		model.addAttribute("studentList", studentList);
+		
+		//초기 보여지는 페이지는 조회되는 데이터가 없음
+		model.addAttribute("lecturePlanList", null);
 		
 		
 		return "lecturePlanList";
