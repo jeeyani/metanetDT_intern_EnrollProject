@@ -18,6 +18,18 @@ public class GradeDTO {
 	
 	
 	
+	public int getRegYear() {
+		return regYear;
+	}
+	public void setRegYear(int regYear) {
+		this.regYear = regYear;
+	}
+	public String getRegSemester() {
+		return regSemester;
+	}
+	public void setRegSemester(String regSemester) {
+		this.regSemester = regSemester;
+	}
 	public String getSubjGroup() {
 		return subjGroup;
 	}

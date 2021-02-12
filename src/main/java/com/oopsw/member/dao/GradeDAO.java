@@ -1,11 +1,11 @@
 package com.oopsw.member.dao;
 
 import java.util.Collection;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
 import com.oopsw.member.dto.GradeDTO;
+import com.oopsw.member.dto.RegisterDTO;
 
 public interface GradeDAO {
 	public Collection<GradeDTO> getEvalList(@Param("studentId")String id, @Param("regYear")int regYear, @Param("regSemester")String regSemester);
@@ -17,6 +17,6 @@ public interface GradeDAO {
 
 	public Collection<GradeDTO> getAllGradeList(@Param("studentId")String studentId);
 	
-	//public Collection<Map> getYearSemesterList(@Param("studentId")String studentId);
+	public Collection<RegisterDTO> getYearSemesterList(@Param("studentId")String studentId);
 
 }

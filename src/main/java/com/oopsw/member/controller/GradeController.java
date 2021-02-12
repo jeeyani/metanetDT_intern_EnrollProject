@@ -2,7 +2,6 @@ package com.oopsw.member.controller;
 
 import java.util.Calendar;
 import java.util.Collection;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.oopsw.member.dto.GradeDTO;
+import com.oopsw.member.dto.RegisterDTO;
 import com.oopsw.member.dto.StudentDTO;
 import com.oopsw.member.service.GradeService;
 import com.oopsw.member.service.MemberService;
@@ -132,14 +132,12 @@ public class GradeController {
 		
 		StudentDTO student = memberService.getStudentInfo((String)session.getAttribute("studentId"));
 		Collection<GradeDTO> result = gradeService.gradeTotal((String)session.getAttribute("studentId"));
-		//Collection<Map> yearSemesterList = gradeService.getYearSemesterList((String)session.getAttribute("studentId"));
+		Collection<RegisterDTO> yearSemesterList = gradeService.getYearSemesterList((String)session.getAttribute("studentId"));
 				
 		model.addAttribute("studentInfo", student);
 		model.addAttribute("allGradeList", result);
-		//model.addAttribute("yearSemesterList", yearSemesterList);
+		model.addAttribute("yearSemesterList", yearSemesterList);
 		
-		System.out.println(student.getEmail());
-
 		return "gradeTotal";
 	}
 	

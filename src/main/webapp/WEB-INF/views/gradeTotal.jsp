@@ -69,41 +69,49 @@
                 </thead>
                 
                 <tbody>
-                	<%-- <c:forEach var="Map" items="${yearSemesterList}"> --%>
+                	<c:forEach var="registerDTO" items="${yearSemesterList}">
 	               		<tr>
 		                    <td colspan="6"  style="background-color: white;">
-		                        <p class="text-center fs-5 fw-bold">년도 1학기</p> 
+		                        <p class="text-center fs-5 fw-bold">${registerDTO.regYear}년도 ${registerDTO.regSemester}학기</p> 
 		                    </td>
 	                   	</tr>
+	                   	<c:set var="scoreSum" value="0"/>
+	                	<c:set var="gradeSum" value="0"/>
+	                	<c:set var="scoreLen" value="0"/>
+	                	
 	                	<c:forEach var="gradeDTO" items="${allGradeList}">
-	                		<tr>
-							    <td>${gradeDTO.subjGroup}</td>
-							    <td>${gradeDTO.subjName}</td>
-							    <td>
-									<c:choose>
-										<c:when test="${gradeDTO.grade==4.5}">A+</c:when>
-										<c:when test="${gradeDTO.grade==4.0}">A0</c:when>
-										<c:when test="${gradeDTO.grade==3.5}">B+</c:when>
-										<c:when test="${gradeDTO.grade==3.0}">B0</c:when>
-										<c:when test="${gradeDTO.grade==2.5}">C+</c:when>
-										<c:when test="${gradeDTO.grade==2.0}">C0</c:when>
-										<c:when test="${gradeDTO.grade==1.5}">D+</c:when>
-										<c:when test="${gradeDTO.grade==1.0}">D0</c:when>
-										<c:otherwise>F</c:otherwise> 
-									</c:choose>
-								</td>
-								<td>${gradeDTO.subjScore}</td>
-								<td>${gradeDTO.grade}</td>
-				             </tr>
+	                		<c:if test="${gradeDTO.regYear eq registerDTO.regYear and gradeDTO.regSemester eq registerDTO.regSemester}">
+		                		<c:set var="scoreSum" value="${scoreSum + gradeDTO.subjScore}"/>
+	                  			<c:set var="gradeSum" value="${gradeSum + gradeDTO.grade}"/>
+	                  			<c:set var="scoreLen" value="${scoreLen + 1}"/>
+		                		<tr>
+								    <td>${gradeDTO.subjGroup}</td>
+								    <td>${gradeDTO.subjName}</td>
+								    <td>
+										<c:choose>
+											<c:when test="${gradeDTO.grade==4.5}">A+</c:when>
+											<c:when test="${gradeDTO.grade==4.0}">A0</c:when>
+											<c:when test="${gradeDTO.grade==3.5}">B+</c:when>
+											<c:when test="${gradeDTO.grade==3.0}">B0</c:when>
+											<c:when test="${gradeDTO.grade==2.5}">C+</c:when>
+											<c:when test="${gradeDTO.grade==2.0}">C0</c:when>
+											<c:when test="${gradeDTO.grade==1.5}">D+</c:when>
+											<c:when test="${gradeDTO.grade==1.0}">D0</c:when>
+											<c:otherwise>F</c:otherwise> 
+										</c:choose>
+									</td>
+									<td>${gradeDTO.subjScore}</td>
+									<td>${gradeDTO.grade}</td>
+					             </tr>
+	                		</c:if>
 	                	</c:forEach>
 	                	<tr>
 		 	                <td colspan="6">
-		                    	<label class="fw-bold" style="margin:0px 10px">취득학점</label>15학점<label class="fw-bold"  style="margin:0px 10px 0px 20px">평균학점</label>4.16
+		                    	<label class="fw-bold" style="margin:0px 10px">취득학점</label>${scoreSum}학점
+		                    	<label class="fw-bold"  style="margin:0px 10px 0px 20px">평균학점</label>${gradeSum/scoreLen}
 						  	</td>
 						</tr>      
-					
-					
-					<%-- </c:forEach> --%>
+					</c:forEach>
                 </tbody>
               </table>
             </div>

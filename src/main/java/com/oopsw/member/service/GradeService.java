@@ -1,13 +1,13 @@
 package com.oopsw.member.service;
 
 import java.util.Collection;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.oopsw.member.dao.GradeDAO;
 import com.oopsw.member.dto.GradeDTO;
+import com.oopsw.member.dto.RegisterDTO;
 
 @Service
 public class GradeService {
@@ -37,9 +37,9 @@ public class GradeService {
 		return gradeDAO.getAllGradeList(studentId);
 	}
 	
-	/*public Collection<Map> getYearSemesterList(String studentId) {
+	public Collection<RegisterDTO> getYearSemesterList(String studentId) {
 		return gradeDAO.getYearSemesterList(studentId);
-	}*/
+	}
 		
 	
 }
