@@ -53,7 +53,7 @@ public class RegisterController {
 	}
 	
 	//강의계획서페이지조회버튼 클릭
-	@RequestMapping(value = "/lecturePlanList", method = RequestMethod.POST)
+	@RequestMapping(value = "/lecturePlanList", method = RequestMethod.GET)
 	public String lecturePlanList(HttpServletRequest request,Model model) {
 		
 		logger.info("subjectName"+request.getParameter("subjectName"));
@@ -64,10 +64,12 @@ public class RegisterController {
 			String subjectName = request.getParameter("subjectName");
 			Collection<SubjectDTO> subjectList = registerService.getNameList(subjectName);
 			model.addAttribute("subjectList", subjectList);
+			
+			return "lecturePlanList";
 		}
 		
 		
-		return "redirect:/lecturePlanList";
+		return "lecturePlanList";
 	}
 		
 	

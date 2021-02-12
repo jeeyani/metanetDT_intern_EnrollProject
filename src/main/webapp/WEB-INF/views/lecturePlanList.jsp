@@ -40,7 +40,7 @@
 				<p class="fs-5 fw-bold">구분</p>
 				<p class="lead">
 					<div>
-					<form action="lecturePlanList" method="post">
+					<form action="lecturePlanList" method="get">
 						<input type="radio" name="subjectName" value="subjectName" checked="checked">과목명 
 						<input type="radio" name="professorName" value="professorName">교수명 
 						<input type="radio" name="subjectId" value="subjectId">학수번호 
