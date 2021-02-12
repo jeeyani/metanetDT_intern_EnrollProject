@@ -40,10 +40,12 @@
 				<p class="fs-5 fw-bold">구분</p>
 				<p class="lead">
 					<div>
-						<input type="radio" name="subjectName" value="subjectName">과목명 
-						<input type="radio" name="subjectName" value="subjectName">교수명 
+					<form action="lecturePlanList" method="post">
+						<input type="radio" name="subjectName" value="subjectName" checked="checked">과목명 
+						<input type="radio" name="professorName" value="professorName">교수명 
 						<input type="radio" name="subjectId" value="subjectId">학수번호 
-						<input type="text" name="search"> <button type="button" class="btn btn-outline-dark btn-sm">검색</button>
+						<input type="text" name="search"> <button type="submit" class="btn btn-outline-dark btn-sm">검색</button>
+					</form>
 					</div>
 					<br>
 

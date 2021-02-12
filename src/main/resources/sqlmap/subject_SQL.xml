@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.oopsw.member.dao.RegisterDAO"> 
+	
+	<select id="getNameList" resultType="com.oopsw.member.dto.StudentDTO"> 
+		 SELECT s.subject_no,subj_name,subj_score,dep.dept_name,subj_professor
+		 FROM subjects s, departmentes dep
+		 WHERE dep.department_no = s.department_no AND s.subj_name LIKE '%'||#{subjectName}||'%'
+	</select>
+
+</mapper>

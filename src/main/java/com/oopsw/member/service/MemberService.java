@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.oopsw.member.dao.MemberDAO;
+import com.oopsw.member.dao.RegisterDAO;
 import com.oopsw.member.dto.StudentDTO;
 
 @Service
@@ -26,5 +27,7 @@ public class MemberService {
 		// TODO Auto-generated method stub
 		return memberDAO.getStudentInfo(studentId);
 	}
+
+	
 	
 }

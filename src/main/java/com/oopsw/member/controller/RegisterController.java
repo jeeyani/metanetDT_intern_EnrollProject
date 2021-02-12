@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.oopsw.member.dto.StudentDTO;
+import com.oopsw.member.dto.SubjectDTO;
 import com.oopsw.member.service.MemberService;
 import com.oopsw.member.service.RegisterService;
 
@@ -27,7 +28,9 @@ import com.oopsw.member.service.RegisterService;
 public class RegisterController {
 	
 	@Autowired
-	/*private RegisterService registerService;*/
+	private RegisterService registerService;
+	
+	@Autowired
 	private MemberService memberService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(RegisterController.class);
@@ -51,11 +54,20 @@ public class RegisterController {
 	
 	//강의계획서페이지조회버튼 클릭
 	@RequestMapping(value = "/lecturePlanList", method = RequestMethod.POST)
-	public String lecturePlanList() {
+	public String lecturePlanList(HttpServletRequest request,Model model) {
+		
+		logger.info("subjectName"+request.getParameter("subjectName"));
+		logger.info("professorName"+request.getParameter("professorName"));
+		logger.info("subjectId"+request.getParameter("subjectId"));
+		
+		if(request.getParameter("subjectName") != null){
+			String subjectName = request.getParameter("subjectName");
+			Collection<SubjectDTO> subjectList = registerService.getNameList(subjectName);
+			model.addAttribute("subjectList", subjectList);
+		}
 		
 		
-		
-		return "lecturePlanList";
+		return "redirect:/lecturePlanList";
 	}
 		
 	
