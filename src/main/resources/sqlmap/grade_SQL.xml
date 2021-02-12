@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="com.oopsw.member.dao.GradeDAO"> 
+
+	<select id="getEvalList" resultType="com.oopsw.member.dto.GradeDTO"> 
+		 SELECT s.subj_group AS subjGroup, s.subj_name AS subjName, s.subj_score AS subjScore, 
+		 d.dept_name AS deptName, s.subj_professor AS subjProfessor,  r.eval_how AS evalHow, r.register_no as registerNo
+		 FROM subjects s, departmentes d, registers r
+		 WHERE s.subject_no = r.subject_no AND d.department_no = s.department_no
+		 AND r.student_id=#{studentId} AND r.reg_year=#{regYear} AND r.reg_semester=#{regSemester}
+	</select>
+
 	<select id="getSemGradeList" resultType="com.oopsw.member.dto.GradeDTO"> 
 		SELECT res.subj_group as subjGroup,res.subject_no as subjectNo, res.subj_name as subjName,res.grade,res.subj_score as subjScore
 		FROM students s,

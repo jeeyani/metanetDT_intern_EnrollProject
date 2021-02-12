@@ -7,10 +7,11 @@ public class GradeDTO {
 	private int subjScore;
 	private String subjProfessor;
 	//수강
+	private int registerNo;
 	private double grade;
 	private int regYear;
 	private String regSemester;
-	
+	private int evalHow;
 	//학적
 	private String name;
 	//학과
@@ -18,6 +19,18 @@ public class GradeDTO {
 	
 	
 	
+	public int getRegisterNo() {
+		return registerNo;
+	}
+	public void setRegisterNo(int registerNo) {
+		this.registerNo = registerNo;
+	}
+	public int getEvalHow() {
+		return evalHow;
+	}
+	public void setEvalHow(int evalHow) {
+		this.evalHow = evalHow;
+	}
 	public int getRegYear() {
 		return regYear;
 	}

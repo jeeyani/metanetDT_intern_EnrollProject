@@ -33,9 +33,11 @@ public class GradeController {
 
 	
 	//강의평가목록 조회
-	@RequestMapping(value = "/evaluationList", method = RequestMethod.POST)
+	@RequestMapping(value = "/evaluationList")
 	public String evaluationList(HttpServletRequest request, Model model){
+		
 		HttpSession session = request.getSession();
+		
 		int month = Calendar.getInstance().get(Calendar.MONTH)+1;
 		String semester = "";
 		switch(month){
@@ -50,10 +52,16 @@ public class GradeController {
 		default:
 			semester = "error";
 		}
+		
 		// 학번, 이번년도, 이번학기 보내주기.
+		/*Collection<GradeDTO> evaluationList = 
+				gradeService.getEvalList((String)session.getAttribute("studentId"), Calendar.getInstance().get(Calendar.YEAR), semester);*/
 		Collection<GradeDTO> evaluationList = 
-				gradeService.getEvalList((String)session.getAttribute("studentId"), Calendar.getInstance().get(Calendar.YEAR), semester);
+				gradeService.getEvalList((String)session.getAttribute("studentId"), 2020, "1");
+		StudentDTO studentInfo = memberService.getStudentInfo((String)session.getAttribute("studentId"));
+		
 		model.addAttribute("evaluationList", evaluationList);
+		model.addAttribute("studentInfo", studentInfo);
 		
 		return "evaluationList";
 	}
@@ -62,7 +70,7 @@ public class GradeController {
 	@RequestMapping(value = "/evaluationDetail", method = RequestMethod.POST)
 	public String evaluationDetail(HttpServletRequest request){ 
 		// 세션에 registerNo set해주기.
-		
+		System.out.println(request.getParameter("registerNo"));
 		
 		return "evaluationDetail";
 	}

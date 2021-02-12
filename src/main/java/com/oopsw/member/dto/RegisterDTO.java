@@ -23,6 +23,11 @@ public class RegisterDTO {
 	private int registerNo;
 	private int regYear;
 	private String regSemester;
+	/*private int evalHow;
+	private int evalPlanning;
+	private int evalGoal;
+	private int evalConsider;
+	private int evalTest;*/
 	
 	public int getSubjectNo() {
 		return subjectNo;
