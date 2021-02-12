@@ -1,6 +1,7 @@
 package com.oopsw.member.service;
 
 import java.util.Collection;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +36,10 @@ public class GradeService {
 		// TODO Auto-generated method stub
 		return gradeDAO.getAllGradeList(studentId);
 	}
+	
+	/*public Collection<Map> getYearSemesterList(String studentId) {
+		return gradeDAO.getYearSemesterList(studentId);
+	}*/
 		
 	
 }

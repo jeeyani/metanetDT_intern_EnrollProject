@@ -2,6 +2,7 @@ package com.oopsw.member.controller;
 
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -124,19 +125,21 @@ public class GradeController {
 	}
 		
 	//전체 성적 조회
-	@RequestMapping(value = "/gradeTotal", method = RequestMethod.POST)
+	@RequestMapping(value = "/gradeTotal")
 	public String gradeTotal(HttpServletRequest request, Model model){ 
 
 		HttpSession session = request.getSession();
 		
 		StudentDTO student = memberService.getStudentInfo((String)session.getAttribute("studentId"));
 		Collection<GradeDTO> result = gradeService.gradeTotal((String)session.getAttribute("studentId"));
-		
+		//Collection<Map> yearSemesterList = gradeService.getYearSemesterList((String)session.getAttribute("studentId"));
+				
 		model.addAttribute("studentInfo", student);
 		model.addAttribute("allGradeList", result);
+		//model.addAttribute("yearSemesterList", yearSemesterList);
 		
 		System.out.println(student.getEmail());
-		
+
 		return "gradeTotal";
 	}
 	
