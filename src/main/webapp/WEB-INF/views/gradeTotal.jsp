@@ -3,7 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="en">
 
@@ -57,7 +57,7 @@
                         <th style="background-color: #cecece;">총취득학점</td>
                         <td>${subjScore_sum}</td>
                         <th style="background-color: #cecece;">총평균학점</td>
-                        <td colspan="3">${grade_sum / subjScore_length}</td>
+                        <td colspan="3"><fmt:formatNumber value="${grade_sum / subjScore_length}" pattern="#.##"/></td>
                     </tr>
                     <tr style="color: white;">
                         <th style="position:sticky; background-color: lightslategrey; top:0px">이수구분</th>
@@ -108,7 +108,7 @@
 	                	<tr>
 		 	                <td colspan="6">
 		                    	<label class="fw-bold" style="margin:0px 10px">취득학점</label>${scoreSum}학점
-		                    	<label class="fw-bold"  style="margin:0px 10px 0px 20px">평균학점</label>${gradeSum/scoreLen}
+		                    	<label class="fw-bold"  style="margin:0px 10px 0px 20px">평균학점</label><fmt:formatNumber value="${gradeSum/scoreLen}" pattern="#.##"/>
 						  	</td>
 						</tr>      
 					</c:forEach>

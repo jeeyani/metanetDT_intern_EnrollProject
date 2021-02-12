@@ -119,7 +119,7 @@
               <div style="float:right">
                 <label class="fw-bold" style="margin:0px 10px">취득학점</label><c:out value="${subjScore_sum}"/>학점
                 <!-- NaN 체크 !  -->
-                <label class="fw-bold"  style="margin:0px 10px 0px 20px">평균학점</label><c:out value="${grade_sum / subjScore_length}"/>
+                <label class="fw-bold"  style="margin:0px 10px 0px 20px">평균학점</label><fmt:formatNumber value="${grade_sum / subjScore_length}" pattern="#.##"/>
               </div>
             </div>
           </p>
