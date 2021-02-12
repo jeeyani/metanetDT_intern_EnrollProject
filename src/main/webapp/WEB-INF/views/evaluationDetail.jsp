@@ -44,10 +44,10 @@
 								<th>교수명</th>
 							</tr>
 							<tr>
-								<td>2019학년도</td>
-								<td>1학기</td>
-								<td>객체지향</td>
-								<td>사과몽</td>
+								<td>${registerInfo.regYear}학년도</td>
+								<td>${registerInfo.regSemester }학기</td>
+								<td>${registerInfo.subjName }</td>
+								<td>${registerInfo.subjProfessor }</td>
 							</tr>
 						</table>
 					</p>

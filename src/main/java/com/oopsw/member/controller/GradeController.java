@@ -32,7 +32,7 @@ public class GradeController {
 	private static final Logger logger = LoggerFactory.getLogger(GradeController.class);
 
 	
-	//°­ÀÇÆò°¡¸ñ·Ï Á¶È¸
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ò°¡¸ï¿½ï¿½ ï¿½ï¿½È¸
 	@RequestMapping(value = "/evaluationList")
 	public String evaluationList(HttpServletRequest request, Model model){
 		
@@ -53,7 +53,7 @@ public class GradeController {
 			semester = "error";
 		}
 		
-		// ÇÐ¹ø, ÀÌ¹ø³âµµ, ÀÌ¹øÇÐ±â º¸³»ÁÖ±â.
+		
 		/*Collection<GradeDTO> evaluationList = 
 				gradeService.getEvalList((String)session.getAttribute("studentId"), Calendar.getInstance().get(Calendar.YEAR), semester);*/
 		Collection<GradeDTO> evaluationList = 
@@ -66,27 +66,25 @@ public class GradeController {
 		return "evaluationList";
 	}
 	
-	//°­ÀÇÆò°¡ »ó¼¼ 
 	@RequestMapping(value = "/evaluationDetail", method = RequestMethod.POST)
-	public String evaluationDetail(HttpServletRequest request){ 
-		// ¼¼¼Ç¿¡ registerNo setÇØÁÖ±â.
-		System.out.println(request.getParameter("registerNo"));
+	public String evaluationDetail(HttpServletRequest request, Model model){
+		System.out.println(request.getAttribute("registerNo"));
+		GradeDTO registerInfo = gradeService.getRegisterInfo(Integer.parseInt((String)request.getAttribute("registerNo")));
+		model.addAttribute("subjectInfo", registerInfo);
 		
 		return "evaluationDetail";
 	}
 	
-	//°­ÀÇÆò°¡ Á¦ÃâÇÏ±â
 	@RequestMapping(value = "/evaluationDetailAction", method = RequestMethod.POST)
 	public String evaluationDetailAction(HttpServletRequest request){ 
 		
-		// ¼¼¼Ç¿¡ registerNo getÇØÁÖ±â.
 		boolean result = gradeService.setEval(Integer.parseInt(request.getParameter("registerNo")), 1,2,3,4,5);
 		if(!result)
 			return "evaluationDetail";		
 		return "evaluationList";
 	}
 	
-	//ÇÐ±âº° ¼ºÀû UI
+	//ï¿½Ð±âº° ï¿½ï¿½ï¿½ï¿½ UI
 	@RequestMapping(value = "/gradeSemester")
 	public String gradeSemester(HttpServletRequest request, Model model){ 
 		
@@ -115,7 +113,7 @@ public class GradeController {
 	}
 	
 	
-	//ÇÐ±âº° ¼ºÀû Å¬¸¯(Á¶È¸)
+	//ï¿½Ð±âº° ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½(ï¿½ï¿½È¸)
 	@RequestMapping(value = "/gradeSemesterAction", method = RequestMethod.POST)
 	public String gradeSemesterAction(HttpServletRequest request, Model model){ 
 		
@@ -132,7 +130,7 @@ public class GradeController {
 		return "gradeSemester";
 	}
 		
-	//ÀüÃ¼ ¼ºÀû Á¶È¸
+	//ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	@RequestMapping(value = "/gradeTotal")
 	public String gradeTotal(HttpServletRequest request, Model model){ 
 

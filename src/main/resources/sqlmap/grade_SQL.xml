@@ -36,4 +36,10 @@
 		ORDER BY regYear, regSemester
 	</select>
 	
+	<select id="getRegisterInfo" resultType="com.oopsw.member.dto.GradeDTO">
+		SELECT reg_year as regYear, reg_semester as regSemester, subj_name as subjName, subj_professor as subjProfessor 
+		FROM subjects s, registers r
+		WHERE s.subject_no = r.subject_no
+		AND register_no=#{registerNo}
+	</select>
 </mapper>

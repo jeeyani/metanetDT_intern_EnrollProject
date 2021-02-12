@@ -19,4 +19,6 @@ public interface GradeDAO {
 	
 	public Collection<RegisterDTO> getYearSemesterList(@Param("studentId")String studentId);
 
+	public GradeDTO getRegisterInfo(@Param("registerNo")int registerNo);
+
 }

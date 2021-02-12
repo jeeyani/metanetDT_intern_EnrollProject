@@ -40,6 +40,12 @@ public class GradeService {
 	public Collection<RegisterDTO> getYearSemesterList(String studentId) {
 		return gradeDAO.getYearSemesterList(studentId);
 	}
+
+
+	public GradeDTO getRegisterInfo(int registerNo) {
+		
+		return gradeDAO.getRegisterInfo(registerNo);
+	}
 		
 	
 }
