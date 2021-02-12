@@ -8,6 +8,8 @@ public class GradeDTO {
 	private String subjProfessor;
 	//수강
 	private double grade;
+	private int regYear;
+	private String regSemester;
 	
 	//학적
 	private String name;

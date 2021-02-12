@@ -14,4 +14,6 @@ public interface GradeDAO {
 
 	public Collection<GradeDTO> getSemGradeList(@Param("studentId")String studentId, @Param("regYear")int regYear, @Param("regSemester")String regSemester);
 
+	public Collection<GradeDTO> getAllGradeList(@Param("studentId")String studentId);
+
 }

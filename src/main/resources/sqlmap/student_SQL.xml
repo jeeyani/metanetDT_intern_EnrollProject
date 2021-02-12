@@ -7,7 +7,7 @@
 	</select>	
 	
 	<select id="getStudentInfo" resultType="com.oopsw.member.dto.StudentDTO"> 
-		SELECT student_id as studentId, name, phone, email, address, state, s.department_no, dep.dept_name as deptName
+		SELECT student_id as studentId, name, phone, email, address, state, s.department_no as departmentNo, dep.dept_name as deptName
  		FROM students s, DEPARTMENTES dep 
  		WHERE s.department_no= dep.department_no AND student_id =#{studentId}
 	</select>

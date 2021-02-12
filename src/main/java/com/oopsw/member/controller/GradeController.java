@@ -15,15 +15,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.oopsw.member.dto.GradeDTO;
+import com.oopsw.member.dto.StudentDTO;
 import com.oopsw.member.service.GradeService;
+import com.oopsw.member.service.MemberService;
 
 @Controller
 public class GradeController {
 
-	//
-	//
 	@Autowired
 	private GradeService gradeService;
+	@Autowired
+	private MemberService memberService;
+	
 	
 	private static final Logger logger = LoggerFactory.getLogger(GradeController.class);
 
@@ -102,6 +105,7 @@ public class GradeController {
 		return "gradeSemester";
 	}
 	
+	
 	//학기별 성적 클릭(조회)
 	@RequestMapping(value = "/gradeSemesterAction", method = RequestMethod.POST)
 	public String gradeSemesterAction(HttpServletRequest request, Model model){ 
@@ -114,14 +118,26 @@ public class GradeController {
 				(String)session.getAttribute("studentId"), Integer.parseInt(regYear), regSemester);		
 		
 		model.addAttribute("semesterGradeList", result);
+		model.addAttribute("regYear", regYear);
+		model.addAttribute("regSemester", regSemester);
 		return "gradeSemester";
 	}
 		
 	//전체 성적 조회
 	@RequestMapping(value = "/gradeTotal", method = RequestMethod.POST)
-	public String gradeTotal(HttpServletRequest request){ 
+	public String gradeTotal(HttpServletRequest request, Model model){ 
+
+		HttpSession session = request.getSession();
 		
+		StudentDTO student = memberService.getStudentInfo((String)session.getAttribute("studentId"));
+		Collection<GradeDTO> result = gradeService.gradeTotal((String)session.getAttribute("studentId"));
+		
+		model.addAttribute("studentInfo", student);
+		model.addAttribute("allGradeList", result);
+		
+		System.out.println(student.getEmail());
 		
 		return "gradeTotal";
 	}
+	
 }

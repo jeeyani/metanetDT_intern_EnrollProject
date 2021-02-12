@@ -12,13 +12,9 @@ public interface MemberDAO {
 	
 	public String login(@Param("studentId")String id, @Param("pw")String pw);
 	
-//	public String login(String id, String pw) {
-//		if(id.equals("admin") && pw.equals("123"))
-//			return "������";
-//		return null;
-//	}
+	
 	public Collection<String> getMembers();
 
-	public StudentDTO getStudentInfo(String studentId);
+	public StudentDTO getStudentInfo(@Param("studentId")String studentId);
 
 }

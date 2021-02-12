@@ -31,6 +31,10 @@ public class GradeService {
 		return gradeDAO.getSemGradeList(studentId, regYear, regSemester);
 	}
 
+	public Collection<GradeDTO> gradeTotal(String studentId) {
+		// TODO Auto-generated method stub
+		return gradeDAO.getAllGradeList(studentId);
+	}
 		
 	
 }

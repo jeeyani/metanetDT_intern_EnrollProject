@@ -27,44 +27,7 @@
   <div class="container-fluid">
     <div class="row">
 
-      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" style="border-right: 0.5px solid black">
-        <div class="position-sticky pt-3">
-          <ul class="nav flex-column">
-
-            <li class="nav-item">
-              <div class="bg-light p-3 rounded">
-                <p>반갑습니다 강창기님</p>
-                <button type="button" class="btn btn-outline-danger btn-sm">Logout</button>
-              </div>
-            </li>
-            <p></p><p></p>
-            <li class="nav-item">
-              <a class="nav-link" href="#" style="height:50px; color:black;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-square" viewBox="0 0 16 16">
-				  <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-				  <path d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.235.235 0 0 1 .02-.022z"/>
-				</svg> 강의평가
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" style="height:50px; color:black;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
-                  <path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
-                  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
-				        </svg>학기별 성적조회
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" style="height:50px; color:black;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
-                  <path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
-                  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
-				        </svg> 전체학기 성적조회
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <jsp:include page="/WEB-INF/views/sidebarGrade.jsp"></jsp:include>
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         
@@ -78,13 +41,16 @@
 	              <label for="deptname" class="col-form-label" style="font-weight:bold">년도</label>
 	            </div>
 	            <div class="col-auto">
+	            
+	            <!-- foreach로 데이터싹 가져와야함...
+	            <option <c:if test="${regYear eq 2021}">selected</c:if> value="2021">2021</option>
+	            -->
 	              <select name="regYear" class="form-select">
-	                <option selected>선택</option>
-	                <option value="2021">2021</option>
-	                <option value="2020">2020</option>
-	                <option value="2019">2019</option>
-	                <option value="2018">2018</option>
-	                <option value="2017">2017</option>
+	                <option <c:if test="${regYear eq 2021}">selected</c:if> value="2021">2021</option>
+	                <option <c:if test="${regYear eq 2020}">selected</c:if> value="2020">2020</option>
+	                <option <c:if test="${regYear eq 2019}">selected</c:if> value="2019">2019</option>
+	                <option <c:if test="${regYear eq 2018}">selected</c:if> value="2018">2018</option>
+	                <option <c:if test="${regYear eq 2017}">selected</c:if> value="2017">2017</option>
 	              </select>
 	            </div>
 	            <div class="col-auto">
@@ -92,11 +58,10 @@
 	            </div>
 	            <div class="col-auto">
 	              <select name="regSemester" class="form-select">
-	                <option selected>선택</option>
-	                <option value="1">1학기</option>
-	                <option value="s">여름학기</option>
-	                <option value="2">2학기</option>
-	                <option value="f">겨울학기</option>
+	                <option <c:if test="${regSemester eq '1'}">selected</c:if> value="1">1학기</option>
+	                <option <c:if test="${regSemester eq 's'}">selected</c:if> value="s">여름학기</option>
+	                <option <c:if test="${regSemester eq '2'}">selected</c:if> value="2">2학기</option>
+	                <option <c:if test="${regSemester eq 'f'}">selected</c:if> value="f">겨울학기</option>
 	              </select>
 	            </div>
 	            <div class="col-auto">
@@ -129,7 +94,19 @@
                 		<tr>
 		                    <td>${gradeDTO.subjGroup}</td>
 		                    <td>${gradeDTO.subjName}</td>
-		                    <td>A+</td>
+		                    <td>
+			                    <c:choose>
+									<c:when test="${gradeDTO.grade==4.5}">A+</c:when>
+									<c:when test="${gradeDTO.grade==4.0}">A0</c:when>
+									<c:when test="${gradeDTO.grade==3.5}">B+</c:when>
+									<c:when test="${gradeDTO.grade==3.0}">B0</c:when>
+									<c:when test="${gradeDTO.grade==2.5}">C+</c:when>
+									<c:when test="${gradeDTO.grade==2.0}">C0</c:when>
+									<c:when test="${gradeDTO.grade==1.5}">D+</c:when>
+									<c:when test="${gradeDTO.grade==1.0}">D0</c:when>
+									<c:otherwise>F</c:otherwise> 
+								</c:choose>
+		                    </td>
 		                    <td>${gradeDTO.subjScore}</td>
 		                    <td>${gradeDTO.grade}</td>
                   		</tr>

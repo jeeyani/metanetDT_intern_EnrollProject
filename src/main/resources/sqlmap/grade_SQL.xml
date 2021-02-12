@@ -9,4 +9,13 @@
 			 WHERE r.subject_no =  s.subject_no AND dep.department_no = s.department_no) res
 		WHERE s.student_id = res.student_id AND res.reg_year = #{regYear} AND res.reg_semester = #{regSemester} AND s.student_id= #{studentId}
 	</select>
+	
+	<select id="getAllGradeList" resultType="com.oopsw.member.dto.GradeDTO"> 
+		SELECT reg_year as regYear, reg_semester as regSemester, res.subj_group as subjGroup, res.subject_no as subjectNo, res.subj_name as subjName, res.grade as grade, res.subj_score as subjScore
+		FROM students s,
+		(SELECT student_id,subj_group, s.subject_no,subj_name,subj_score, r.grade,reg_year, reg_semester
+		FROM registers r, subjects s, departmentes dep
+		WHERE r.subject_no = s.subject_no AND dep.department_no = s.department_no) res
+		WHERE s.student_id = res.student_id AND s.student_id= #{studentId}
+	</select>
 </mapper>
