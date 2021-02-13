@@ -46,7 +46,7 @@
                 <th>소속학과</th>
               </tr>
               <tr>
-                <td><c:out value="${today}"/>학년도 "학기표시고민"학기</td>
+                <td><c:out value="${today}"/>학년도 ${semester}학기</td>
                 <td>${studentList.studentId}</td>
                 <td>${studentList.name}</td>
                 <td>${studentList.deptName}</td>

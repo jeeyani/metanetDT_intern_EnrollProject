@@ -41,6 +41,11 @@ public class GradeController {
 		
 		HttpSession session = request.getSession();
 		
+		//이름가져오기
+		String studentId =(String)session.getAttribute("studentId");
+		StudentDTO studentList= memberService.getStudentInfo(studentId);
+		model.addAttribute("studentList", studentList);
+		
 		int month = Calendar.getInstance().get(Calendar.MONTH)+1;
 		String semester = "";
 		switch(month){
@@ -72,6 +77,7 @@ public class GradeController {
 	@RequestMapping(value = "/evaluationDetail", method = RequestMethod.POST)
 	public String evaluationDetail(HttpServletRequest request, Model model){
 		
+		
 		GradeDTO registerInfo = gradeService.getRegisterInfo(Integer.parseInt((String)request.getParameter("registerNo")));
 		
 		model.addAttribute("registerInfo", registerInfo);
@@ -100,9 +106,16 @@ public class GradeController {
 	}
 
 	@RequestMapping(value = "/gradeSemester")
-	public String gradeSemester(HttpServletRequest request, Model model){ 
+	public String gradeSemester(HttpServletRequest request, Model model, HttpSession session){ 
 		
-		HttpSession session = request.getSession();
+		
+		//이름가져오기
+		String studentId =(String)session.getAttribute("studentId");
+		StudentDTO studentList= memberService.getStudentInfo(studentId);
+		model.addAttribute("studentList", studentList);
+
+		
+		session = request.getSession();
 		
 		int month = Calendar.getInstance().get(Calendar.MONTH)+1;
 		String semester = "";
@@ -129,7 +142,7 @@ public class GradeController {
 	
 	@RequestMapping(value = "/gradeSemesterAction", method = RequestMethod.POST)
 	public String gradeSemesterAction(HttpServletRequest request, Model model){ 
-		
+
 		HttpSession session = request.getSession();
 		String regYear = request.getParameter("regYear");
 		String regSemester = request.getParameter("regSemester");
@@ -147,6 +160,11 @@ public class GradeController {
 	public String gradeTotal(HttpServletRequest request, Model model){ 
 
 		HttpSession session = request.getSession();
+		
+		//이름가져오기
+		String studentId =(String)session.getAttribute("studentId");
+		StudentDTO studentList= memberService.getStudentInfo(studentId);
+		model.addAttribute("studentList", studentList);
 		
 		StudentDTO student = memberService.getStudentInfo((String)session.getAttribute("studentId"));
 		Collection<GradeDTO> result = gradeService.gradeTotal((String)session.getAttribute("studentId"));
