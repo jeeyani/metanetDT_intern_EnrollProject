@@ -15,16 +15,16 @@ public class RegisterService {
 	@Autowired
 	private RegisterDAO registerDAO;
 	
-	public Collection<SubjectDTO> getNameList(String subjectName) {
+	public Collection<SubjectDTO> getSelectPlanList(SubjectDTO search) {
 		
-		return registerDAO.getNameList(subjectName);
+		return registerDAO.getSelectPlanList(search);
 	}
 
 	public SubjectDTO getPlanDetail(int subjectNo) {
 		
 		return registerDAO.getPlanDetail(subjectNo);
 	}
-
+	
 	public Collection<RegisterDTO> getSubjectList(RegisterDTO register) {
 		
 		return registerDAO.getSubjectList(register);

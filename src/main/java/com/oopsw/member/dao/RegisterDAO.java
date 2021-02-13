@@ -10,8 +10,8 @@ import com.oopsw.member.dto.SubjectDTO;
 
 @Repository
 public interface RegisterDAO {
-
-	public Collection<SubjectDTO> getNameList(@Param("subjectName")String subjectName);
+	
+	public Collection<SubjectDTO> getSelectPlanList(@Param("search")SubjectDTO search);
 
 	public SubjectDTO getPlanDetail(@Param("subjectNo")int subjectNo);
 
