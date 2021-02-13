@@ -1,6 +1,8 @@
 package com.oopsw.member.controller;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Locale;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.oopsw.member.dto.RegisterDTO;
 import com.oopsw.member.dto.StudentDTO;
 import com.oopsw.member.dto.SubjectDTO;
 import com.oopsw.member.service.MemberService;
@@ -84,7 +87,7 @@ public class RegisterController {
 	
 	//수강신청페이지
 	@RequestMapping(value = "/enrollment", method = RequestMethod.GET)
-	public String enrolment(HttpSession session, Model model) {
+	public String enrolment(HttpSession session, Model model,RegisterDTO register) {
 		
 		//학생정보 가져오기
 		String studentId = (String)session.getAttribute("studentId");
@@ -95,7 +98,34 @@ public class RegisterController {
 		
 		//수강신청 가능 목록 가져오기
 		
-				
+		//올해가 몇학기 인지 계산
+		Calendar cal = Calendar.getInstance();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("MM");
+		String month = sdf.format(cal.getTime());
+		if(month.equals("01")||month.equals("02")){
+			register.setRegSemester("1");
+		} else if(month.equals("05")||month.equals("06")){
+			register.setRegSemester("s");
+		}else if(month.equals("07")||month.equals("08")){
+			register.setRegSemester("2");
+		}else if(month.equals("11")||month.equals("12")){
+			register.setRegSemester("f");
+		}else{
+			register.setRegSemester("");
+		}
+		
+		//작년 평가점수를 가져오기 위한 작년년도 구하기
+		int year = cal.get(Calendar.YEAR);
+		register.setRegYear(year-1);
+		
+		logger.info("작년: "+register.getRegYear());
+		logger.info("학기: "+register.getRegSemester());
+		
+		Collection<RegisterDTO> registerList = registerService.getSubjectList(register);
+		model.addAttribute("registerList",registerList);
+		
+		
 		//수강신청한 목록 가져오기
 		
 		

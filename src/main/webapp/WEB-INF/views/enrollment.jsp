@@ -99,7 +99,7 @@
                     <th style="position:sticky; background-color: lightslategrey; top:0px">학수번호</th>
                     <th style="position:sticky; background-color: lightslategrey; top:0px">이수구분</th>
                     <th style="position:sticky; background-color: lightslategrey; top:0px">과목명</th>
-                    <th style="position:sticky; background-color: lightslategrey; top:0px">시수</th>
+                    <th style="position:sticky; background-color: lightslategrey; top:0px">학점</th>
                     <th style="position:sticky; background-color: lightslategrey; top:0px">개설학과</th>
                     <th style="position:sticky; background-color: lightslategrey; top:0px">담당교수</th>
                     <th style="position:sticky; background-color: lightslategrey; top:0px">시간표</th>
@@ -108,7 +108,21 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                	<c:forEach var="list" items="${registerList}">
+                		<tr>
+		                    <td><button type="button" class="btn btn-outline-success btn-sm">신청</button></td>
+		                    <td>${list.subjectNo}</td>
+		                    <td>${list.subjGroup}</td>
+		                    <td>${list.subjName}</td>
+		                    <td>${list.subjScore}</td>
+		                    <td>${list.deptName}</td>
+		                    <td>${list.subjProfessor}</td>
+		                    <td>${list.lectDate} ${list.lectStart}~${list.lectEnd}</td>
+		                    <td>${list.lectRoom}</td>
+		                    <td style="color:blue; font-weight:bold">${list.lectureScore}</td>
+		                  </tr>
+                	</c:forEach>
+                  <!-- <tr>
                     <td><button type="button" class="btn btn-outline-success btn-sm">신청</button></td>
                     <td>00110</td>
                     <td>전공심화</td>
@@ -204,7 +218,7 @@
                     <td>수 1~4</td>
                     <td>201호</td>
                     <td style="color:darkgoldenrod; font-weight:bold">3.5</td>
-                  </tr>
+                  </tr> -->
                 </tbody>
                 
               </table>

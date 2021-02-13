@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.oopsw.member.dao.RegisterDAO;
+import com.oopsw.member.dto.RegisterDTO;
 import com.oopsw.member.dto.SubjectDTO;
 
 @Service
@@ -22,6 +23,11 @@ public class RegisterService {
 	public SubjectDTO getPlanDetail(int subjectNo) {
 		
 		return registerDAO.getPlanDetail(subjectNo);
+	}
+
+	public Collection<RegisterDTO> getSubjectList(RegisterDTO register) {
+		
+		return registerDAO.getSubjectList(register);
 	}
 
 }

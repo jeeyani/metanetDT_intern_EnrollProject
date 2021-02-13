@@ -12,6 +12,23 @@
 		 FROM subjects s, departmentes dep
 		 WHERE dep.department_no = s.department_no AND s.subject_no =#{subjectNo}
 	</select>
+	
+	<select id="getSubjectList" resultType="com.oopsw.member.dto.RegisterDTO"> 
+		 SELECT subject_no as subjectNo, subj_group as subjGroup, subj_name as subjName, subj_score as subjScore, lect_room as lectRoom
+		    , subj_professor as subjProfessor, lect_date as lectDate, lect_start as lectStart, lect_end as lectEnd, d.dept_name as deptName
+		    , ( SELECT ( SUM(eval_how)/COUNT(*) + SUM(eval_planning)/COUNT(*) 
+		               + SUM(eval_goal)/COUNT(*) + SUM(eval_consider)/COUNT(*) 
+		               + SUM(eval_test)/COUNT(*) ) / 5
+		        FROM registers r, subjects s1
+		        WHERE r.subject_no = s1.subject_no
+		          AND s1.subject_no = s.subject_no
+		          AND s1.subj_professor = s.subj_professor
+		          AND r.reg_year=#{register.regYear}
+		          AND r.reg_semester=#{register.regSemester}
+		      )  as lectureScore
+		FROM subjects s, departmentes d
+		WHERE s.department_no = d.department_no AND subj_semester=#{register.regSemester}
+	</select>
 
 	<sql id="search">
 		<if test="searchType != null">

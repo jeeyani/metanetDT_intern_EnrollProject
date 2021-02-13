@@ -13,7 +13,9 @@ public class RegisterDTO {
 	private int lectStart;
 	private int lectEnd;
 	private String lectRoom;
+	private double lectureScore;
 	
+
 	//학과정보
 	private int deptmentNo;
 	private String deptName;
@@ -119,6 +121,12 @@ public class RegisterDTO {
 	}
 	public void setRegSemester(String regSemester) {
 		this.regSemester = regSemester;
+	}
+	public double getLectureScore() {
+		return lectureScore;
+	}
+	public void setLectureScore(double lectureScore) {
+		this.lectureScore = lectureScore;
 	}
 	
 	
