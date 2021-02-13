@@ -146,12 +146,6 @@ public class RegisterController {
 		return "redirect:enrollment";
 	}
 	
-	//시간표조회페이지가져오기
-	@RequestMapping(value = "/timetable", method = RequestMethod.GET)
-	public String timetable() {
-				
-		return "timetable";
-	}
 	
 	
 	
