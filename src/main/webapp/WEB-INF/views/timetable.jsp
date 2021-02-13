@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!doctype html>
 <html lang="en">
 
@@ -42,77 +44,26 @@
                   <th style="position:sticky; background-color: lightslategrey; top:0px">강의실</th>
                 </tr>
               </thead>
-
+			  <c:set var="subjScore_sum" value="0"/>
               <tbody>
-                <tr>
-                  <td>전공심화</td>
-                  <td>Spring 프레임워크</td>
-                  <td>3</td>
-                  <td>소프트웨어공학과</td>
-                  <td>다람쥐</td>
-                  <td>목 6~7</td>
-                  <td>PL실</td>
-                </tr>
-                <tr>
-                  <td>전공핵심</td>
-                  <td>객체지향</td>
-                  <td>2</td>
-                  <td>컴퓨터공학과</td>
-                  <td>사과몽</td>
-                  <td>화 2~4</td>
-                  <td>멀티미디어실습실</td>
-                </tr>
-                <tr>
-                  <td>전공필수</td>
-                  <td>C++ 프로그래밍</td>
-                  <td>3</td>
-                  <td>컴퓨터공학과</td>
-                  <td>딸기몽</td>
-                  <td>월 7~8</td>
-                  <td>PC실</td>
-                </tr>
-                <tr>
-                  <td>전공심화</td>
-                  <td>컴파일러</td>
-                  <td>3</td>
-                  <td>컴퓨터공학과</td>
-                  <td>송진국</td>
-                  <td>수 1~4</td>
-                  <td>201호</td>
-                </tr>
-                <tr>
-                  <td>전공필수</td>
-                  <td>자바 프로그래밍</td>
-                  <td>3</td>
-                  <td>소프트웨어공학과</td>
-                  <td>강호동</td>
-                  <td>목 1~4</td>
-                  <td>203호</td>
-                </tr>
-                <tr>
-                  <td>전공필수</td>
-                  <td>자료구조</td>
-                  <td>3</td>
-                  <td>컴퓨터공학과</td>
-                  <td>김봉기</td>
-                  <td>화 6~7</td>
-                  <td>PL실</td>
-                </tr>
-                <tr>
-                  <td>전공필수</td>
-                  <td>데이터베이스</td>
-                  <td>3</td>
-                  <td>컴퓨터공학과</td>
-                  <td>강창구</td>
-                  <td>금 1~2</td>
-                  <td>201호</td>
-                </tr>
+              	<c:forEach var="subjectDTO" items="${semesterGradeList}">
+              		<tr>
+	                  <td>${subjectDTO.subjGroup}</td>
+	                  <td>${subjectDTO.subjName}</td>
+	                  <td>${subjectDTO.subjScore }</td>
+	                  <td>${subjectDTO.deptName }</td>
+	                  <td>${subjectDTO.subjProfessor }</td>
+	                  <td>${subjectDTO.lectDate } ${subjectDTO.lectStart }~${subjectDTO.lectEnd }</td>
+	                  <td>${subjectDTO.lectRoom }</td>
+	                  <c:set var="subjScore_sum" value="${subjScore_sum + subjectDTO.subjScore}"/>
+	                </tr>
+              	</c:forEach>
               </tbody>
             </table>
           </div>
 
           <div class="text-end fs-5 fw-bold">
-            총 수강신청학점: 7과목  20학점
+				 총 수강신청학점: ${fn:length(semesterGradeList)}과목  ${subjScore_sum}학점
           </div>
 
             <div class="row">

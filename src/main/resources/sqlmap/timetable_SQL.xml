@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.oopsw.member.dao.TimetableDAO"> 
+	
+	<select id="getTimeTable" resultType="com.oopsw.member.dto.SubjectDTO"> 
+		 SELECT s.subj_group, s.subj_name, s.subj_score, d.dept_name, s.subj_professor, lect_date, lect_start, lect_end, lect_room 
+		 FROM registers r, departmentes d, subjects s 
+		 WHERE r.subject_no = s.subject_no 
+		 AND s.department_no = d.department_no 
+		 AND student_id=#{studentId}
+		 AND r.reg_year=#{regYear} AND r.reg_semester=#{regSemester}
+	</select>
+	
+</mapper>
