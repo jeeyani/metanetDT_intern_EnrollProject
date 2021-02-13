@@ -99,24 +99,33 @@ public class RegisterController {
 		//2.수강신청 가능 목록 가져오기
 		
 		//올해가 몇학기 인지 계산
-		Calendar cal = Calendar.getInstance();
+		int month = Calendar.getInstance().get(Calendar.MONTH)+1;
+
+		logger.info(""+month);
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("MM");
-		String month = sdf.format(cal.getTime());
-		if(month.equals("01")||month.equals("02")){
+		switch(month){
+		case 1:case 2:
 			register.setRegSemester("1");
-		} else if(month.equals("05")||month.equals("06")){
-			register.setRegSemester("s");
-		}else if(month.equals("07")||month.equals("08")){
+			break;
+		case 7: case 8:
 			register.setRegSemester("2");
-		}else if(month.equals("11")||month.equals("12")){
+			break;
+		case 3:case 4:case 5:case 6:
+			register.setRegSemester("s");
+			break;
+		case 9:case 10:case 11:case 12:
 			register.setRegSemester("f");
-		}else{
-			register.setRegSemester("");
+			break;
+		default:
+			register.setRegSemester("error");
+			break;
 		}
 		
+		
+		model.addAttribute("semester", register.getRegSemester());
+		
 		//작년 평가점수를 가져오기 위한 작년년도 구하기
-		int year = cal.get(Calendar.YEAR);
+		int year = Calendar.getInstance().get(Calendar.YEAR);
 		register.setRegYear(year-1);
 		
 
@@ -140,24 +149,28 @@ public class RegisterController {
 	public String enrolmentAdd(@RequestParam("subjectNo")int subjectNo,Model model,RegisterDTO register,HttpSession session) {
 		
 		//올해가 몇학기 인지 계산
-		Calendar cal = Calendar.getInstance();
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("MM");
-		String month = sdf.format(cal.getTime());
-		if(month.equals("01")||month.equals("02")){
+		int month = Calendar.getInstance().get(Calendar.MONTH)+1;
+
+		switch(month){
+		case 1:case 2:
 			register.setRegSemester("1");
-		} else if(month.equals("05")||month.equals("06")){
-			register.setRegSemester("s");
-		}else if(month.equals("07")||month.equals("08")){
+			break;
+		case 7: case 8:
 			register.setRegSemester("2");
-		}else if(month.equals("11")||month.equals("12")){
+			break;
+		case 3:case 4:case 5:case 6:
+			register.setRegSemester("s");
+			break;
+		case 9:case 10:case 11:case 12:
 			register.setRegSemester("f");
-		}else{
-			register.setRegSemester("");
+			break;
+		default:
+			register.setRegSemester("error");
+			break;
 		}
 		
 		//올해 수강신청 학년도
-		int year = cal.get(Calendar.YEAR);
+		int year = Calendar.getInstance().get(Calendar.YEAR);
 		register.setRegYear(year);
 		
 		register.setSubjectNo(subjectNo);
@@ -178,24 +191,28 @@ public class RegisterController {
 	public String enrolmentDelete(@RequestParam("subjectNo")int subjectNo,Model model,RegisterDTO register,HttpSession session) {
 		
 		//올해가 몇학기 인지 계산
-		Calendar cal = Calendar.getInstance();
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("MM");
-		String month = sdf.format(cal.getTime());
-		if(month.equals("01")||month.equals("02")){
+		int month = Calendar.getInstance().get(Calendar.MONTH)+1;
+
+		switch(month){
+		case 1:case 2:
 			register.setRegSemester("1");
-		} else if(month.equals("05")||month.equals("06")){
-			register.setRegSemester("s");
-		}else if(month.equals("07")||month.equals("08")){
+			break;
+		case 7: case 8:
 			register.setRegSemester("2");
-		}else if(month.equals("11")||month.equals("12")){
+			break;
+		case 3:case 4:case 5:case 6:
+			register.setRegSemester("s");
+			break;
+		case 9:case 10:case 11:case 12:
 			register.setRegSemester("f");
-		}else{
-			register.setRegSemester("");
+			break;
+		default:
+			register.setRegSemester("error");
+			break;
 		}
 		
 		//올해 수강신청 학년도
-		int year = cal.get(Calendar.YEAR);
+		int year = Calendar.getInstance().get(Calendar.YEAR);
 		register.setRegYear(year);
 		
 		//삭제할 과목 학수번호
