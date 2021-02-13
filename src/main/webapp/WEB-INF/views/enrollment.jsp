@@ -110,7 +110,7 @@
                 <tbody>
                 	<c:forEach var="list" items="${registerList}">
                 		<tr>
-		                    <td><button type="button" class="btn btn-outline-success btn-sm">신청</button></td>
+		                    <td><a type="submit" class="btn btn-outline-success btn-sm" href="<%=application.getContextPath()%>/enrolmentAdd?subjectNo=${list.subjectNo}">신청</a></td>
 		                    <td>${list.subjectNo}</td>
 		                    <td>${list.subjGroup}</td>
 		                    <td>${list.subjName}</td>

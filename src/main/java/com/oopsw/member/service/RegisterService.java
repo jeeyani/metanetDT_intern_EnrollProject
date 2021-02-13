@@ -35,4 +35,12 @@ public class RegisterService {
 		return registerDAO.getRegisterList(register);
 	}
 
+
+	public int setRegister(RegisterDTO register) {
+		// TODO Auto-generated method stub
+		return registerDAO.setRegister(register);
+	}
+
+
+
 }
