@@ -81,7 +81,7 @@
                     <th style="position:sticky; background-color: lightslategrey; top:0px">이수구분</th>
                     <th style="position:sticky; background-color: lightslategrey; top:0px">과목명</th>
                     <th style="position:sticky; background-color: lightslategrey; top:0px">등급</th>
-                    <th style="position:sticky; background-color: lightslategrey; top:0px">시수</th>
+                    <th style="position:sticky; background-color: lightslategrey; top:0px">학점</th>
                     <th style="position:sticky; background-color: lightslategrey; top:0px">평점</th>
                   </tr>
                 </thead>
