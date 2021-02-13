@@ -76,7 +76,12 @@ public class PlanController {
 	
 	//강의계획서 상세페이지
 	@RequestMapping(value = "/lecturePlanDetail", method = RequestMethod.GET)
-	public String lecturePlanDetail(@RequestParam("subjectNo")int subjectNo,Model model) {
+	public String lecturePlanDetail(@RequestParam("subjectNo")int subjectNo,Model model,HttpSession session) {
+		
+		//이름가져오기
+		String studentId =(String)session.getAttribute("studentId");
+		StudentDTO studentList= memberService.getStudentInfo(studentId);
+		model.addAttribute("studentList", studentList);
 		
 		SubjectDTO subjectDetail = planService.getPlanDetail(subjectNo);
 		model.addAttribute("subjectDetail", subjectDetail);

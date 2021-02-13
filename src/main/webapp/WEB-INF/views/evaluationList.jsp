@@ -89,7 +89,7 @@
 						<td>${gradeDTO.subjProfessor}</td>
 						<td>
 						<c:if test="${gradeDTO.evalHow ne ''}">
-							<button type="button" class="btn btn-outline-success btn-sm" diasbled>응시</button>
+							<button type="button" class="btn btn-outline-success btn-sm" disabled>응시완료</button>
 						</c:if>
 						<c:if test="${gradeDTO.evalHow eq ''}">
 							<form method="post" action="evaluationDetail">
