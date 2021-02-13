@@ -63,25 +63,25 @@
 							style="font-weight: bold">학수번호</label>
 					</div>
 					<div class="col-auto">
-						<input type="text" id="subjectNo" class="form-control" name="subjectNo" aria-describedby="passwordHelpInline">
+						<input type="text" id="subjectNo" class="form-control" name="subjectNo">
 					</div>
 					<div class="col-auto">
 						<label for="subjGroup" class="col-form-label" style="font-weight: bold">이수구분</label>
 					</div>
 					<div class="col-auto">
 						<select id="subjGroup" name="subjGroup" class="form-select">
-							<option selected>선택</option>
-							<option value="1">전공선택</option>
-							<option value="2">전공필수</option>
-							<option value="3">교양선택</option>
-							<option value="4">교양필수</option>
+							<option value="none" selected>전체출력</option>
+							<option value="전공선택">전공선택</option>
+							<option value="전공필수">전공필수</option>
+							<option value="교양선택">교양선택</option>
+							<option value="교양필수">교양필수</option>
 						</select>
 					</div>
 					<div class="col-auto">
 						<label for="subjName" class="col-form-label" style="font-weight: bold">과목명</label>
 					</div>
 					<div class="col-auto">
-						<input type="text" id="subjName" class="form-control" name="subjName" aria-describedby="passwordHelpInline">
+						<input type="text" id="subjName" class="form-control" name="subjName">
 					</div>
 					<div class="col-auto">
 						<a type="submit" class="btn btn-outline-dark" href="javascript:selectSubject()">조회</a>
@@ -183,16 +183,26 @@
   
   <script type="text/javascript">
 		function selectSubject(){
+			
+			var subjectNo = $('input#subjectNo').val();
+			var subjGroup = $('#subjGroup option:selected').val();
+			var subjName = $('input#subjName').val();
+						
 			$.ajax({
 				type:"POST",
 				url:"enrollmenAction",
-				data:{subjectNo: subjectNo, subjGroup:subjGroup, subjName:subjName},
+				data: { 
+					"subjectNo": subjectNo, 
+					"subjGroup":subjGroup, 
+					"subjName":subjName
+				},
 				success: function (data) {
 					$("#selectList").html(data);
 				}
 			});
 		}
-	</script>
+		
+	</script>	
   
 </body>
 

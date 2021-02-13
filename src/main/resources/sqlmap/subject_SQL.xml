@@ -37,6 +37,32 @@
 		ORDER BY lectureScore desc
 	</select>
 	
+	<select id="getSelectList" parameterType="com.oopsw.member.dto.RegisterDTO" resultType="com.oopsw.member.dto.RegisterDTO">
+		SELECT subject_no as subjectNo, subj_group as subjGroup, subj_name as subjName, subj_score as subjScore, lect_room as lectRoom
+		    , subj_professor as subjProfessor, lect_date as lectDate, lect_start as lectStart, lect_end as lectEnd, d.dept_name as deptName
+		    , ( SELECT ( SUM(eval_how)/COUNT(*) + SUM(eval_planning)/COUNT(*) 
+		               + SUM(eval_goal)/COUNT(*) + SUM(eval_consider)/COUNT(*) 
+		               + SUM(eval_test)/COUNT(*) ) / 5
+		        FROM registers r, subjects s1
+		        WHERE r.subject_no = s1.subject_no
+		          AND s1.subject_no = s.subject_no
+		          AND s1.subj_professor = s.subj_professor
+		          AND r.reg_year=#{register.regYear}
+		          AND r.reg_semester=#{register.subjSemester}
+		      )  as lectureScore
+		FROM subjects s, departmentes d
+		WHERE s.department_no = d.department_no AND subj_semester=#{register.subjSemester}
+		<if test='register.subjectNo != null and register.subjectNo != ""'>
+			AND subject_no=#{register.subjectNo} 
+		</if>
+		<if test='register.subjGroup != null and register.subjGroup != ""'>
+			AND subj_group=#{register.subjGroup} 
+		</if>
+		<if test='register.deptName != null and register.deptName != ""'>
+			AND subj_name=#{register.subjName} 
+		 </if>
+	</select>
+	
 	<select id ="getRegisterList" resultType="com.oopsw.member.dto.RegisterDTO">
 		 SELECT r.subject_no as subjectNo, subj_group as subjGroup , subj_name as subjName, subj_score as subjScore
 		 		, subj_professor as subjProfessor, lect_date as lectDate, lect_start as lectStart, lect_end as lectEnd
@@ -46,15 +72,6 @@
 		 AND s.department_no = d.department_no
 		 AND r.reg_year=#{register.regYear} AND r.reg_semester=#{register.regSemester}
 		 AND student_id = #{register.studentId}
-	</select>
-	
-	<select id="getSelectList" resultType="com.oopsw.member.dto.RegisterDTO">
-		 SELECT r.subject_no as subjectNo, subj_group as subjGroup, subj_name, subj_score, subj_name, subj_professor, lect_date, lect_start, lect_end
-		 FROM registers r, subjects s, departmentes d
-		 WHERE r.subject_no = s.subject_no
-		 AND s.department_no = d.department_no
-		 AND r.reg_year=#{register.regYear} AND r.reg_semester=#{register.regSemester}
-		 AND s.subject_no=#{register.subjectNo} 
 	</select>
 	
 	<select id="getTimeTable" resultType="com.oopsw.member.dto.SubjectDTO"> 
@@ -94,11 +111,7 @@
 		</if>
 		<if test='register.deptName !=null AND register.deptName != "" '>
 			AND d.dept_name=#{register.deptName} 
-		</if>
-		
-		
-		
-		
+		</if>			
 		
 		<!-- 
 		<if test="register.subjectNo !=null">

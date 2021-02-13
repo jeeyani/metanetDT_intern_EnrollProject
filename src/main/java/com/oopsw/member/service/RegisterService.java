@@ -47,7 +47,6 @@ public class RegisterService {
 	}
 
 	public Collection<RegisterDTO> getSelectList(RegisterDTO register) {
-
 		return registerDAO.getSelectList(register);
 	}
 

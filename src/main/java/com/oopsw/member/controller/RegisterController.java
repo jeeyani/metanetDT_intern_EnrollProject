@@ -72,7 +72,6 @@ public class RegisterController {
 		return "lectureSelectPlanList";
 
 	}
-		
 	
 	//강의계획서 상세페이지
 	@RequestMapping(value = "/lecturePlanDetail", method = RequestMethod.GET)
@@ -148,46 +147,62 @@ public class RegisterController {
 	
 	//수강신청 조회하기
 	@RequestMapping(value="/enrollmenAction", method=RequestMethod.POST)
-	public String enrollmenAction(HttpServletRequest request,Model model,RegisterDTO register){
+	public String enrollmenAction(HttpServletRequest request, Model model){
+		RegisterDTO register = new RegisterDTO();
 		
 		// 조건에 따른 조회 ...
 		// subjectNo		학수번호
 		// subjectGroup		이수구분
 		// subjName			과목명
 		
-		String subjectNo=request.getParameter("subjectNo");
-		register.setSubjectNo(Integer.parseInt(subjectNo));
-		register.setSubjGroup(request.getParameter("subjectGroup"));
-		register.setSubjName(request.getParameter("subjName"));
-		
-		
-		logger.info("=================================="+subjectNo);
-		
+		if(request.getParameter("subjectNo") != null && request.getParameter("subjectNo") != ""){
+			int subjectNo = Integer.parseInt(request.getParameter("subjectNo"));
+			register.setSubjectNo(subjectNo);
+			System.out.println(subjectNo);
+		}
+		String subjGroup = request.getParameter("subjGroup");
+		String subjName = request.getParameter("subjName");
+		if(subjGroup != null && subjGroup != "") {
+			if(!subjGroup.equals("none")){
+				register.setSubjGroup(subjGroup);
+				System.out.println(subjGroup);
+			}
+		}
+		if(subjName != null && subjName != ""){
+			register.setSubjName(subjName);
+			System.out.println(subjName);
+		}
 		
 		//올해가 몇학기 인지 계산
 		int month = Calendar.getInstance().get(Calendar.MONTH)+1;
 		
-		switch(month){
+		/*switch(month){
 		case 1:case 2:
-			register.setRegSemester("f");
+			register.setSubjSemester("f");
 			break;
 		case 7: case 8:
-			register.setRegSemester("s");
+			register.setSubjSemester("s");
 			break;
 		case 3:case 4:case 5:case 6:
-			register.setRegSemester("1");
+			register.setSubjSemester("1");
 			break;
 		case 9:case 10:case 11:case 12:
-			register.setRegSemester("2");
+			register.setSubjSemester("2");
 			break;
 		default:
-			register.setRegSemester("error");
+			register.setSubjSemester("error");
 			break;
-		}
+		}*/
+		register.setSubjSemester("1");
 		
-		Collection<RegisterDTO> selectList = registerService.getSelectList(register);
-		model.addAttribute("registerList", selectList);
+		int year = Calendar.getInstance().get(Calendar.YEAR-1);
+		//register.setRegYear(year);
+		register.setRegYear(2020);
 		
+		
+		Collection<RegisterDTO> registerList = registerService.getSelectList(register);
+		model.addAttribute("registerList", registerList);
+		System.out.println("enrollmenActionEnd");
 		return "enrollmentSelect";
 	}
 	
@@ -295,7 +310,6 @@ public class RegisterController {
 		}
 		
 		String studentId = session.getAttribute("studentId").toString();
-		System.out.println(studentId);
 		
 		// 이방식이 옳다.
 		//Collection<SubjectDTO> semesterGradeList = timetableService.getTimeTable(
@@ -307,9 +321,7 @@ public class RegisterController {
 		
 		model.addAttribute("courseList", courseList);
 		model.addAttribute("studentInfo", studentInfo);
-		
-		System.out.println(courseList);
-		
+
 		return "timetable";
 	}
 	
