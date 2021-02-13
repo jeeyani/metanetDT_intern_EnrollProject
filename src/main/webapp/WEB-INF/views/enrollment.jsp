@@ -147,12 +147,12 @@
                   </tr>
                 </thead>
                 <tbody>
-<%--                 	<c:if test="${registerOKList eq null}">
+                	<c:if test="${empty registerOKList}">
                 		<tr>
                 			<td colspan="9"> 조회된 Data가 없습니다</td>
                 		</tr>
                 	</c:if>
-                	<c:if test ="${registerOKList ne null}"> --%>
+                	<c:if test ="${!empty registerOKList}">
 	                	<c:forEach var="list" items="${registerOKList}">
 	                		<tr>
 			                    <td><a type="button" class="btn btn-outline-danger btn-sm" href="<%=application.getContextPath()%>/enrolmentDelete?subjectNo=${list.subjectNo}">삭제</a></td>
@@ -166,7 +166,7 @@
 			                    <td>${list.lectRoom}</td>
 			                  </tr>
 	                	</c:forEach>
-                <%-- 	</c:if> --%>
+                	</c:if>
                 </tbody>
 
                 
