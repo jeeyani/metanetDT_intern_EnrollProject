@@ -37,9 +37,16 @@
 	</select>
 	
 	<select id="getRegisterInfo" resultType="com.oopsw.member.dto.GradeDTO">
-		SELECT reg_year as regYear, reg_semester as regSemester, subj_name as subjName, subj_professor as subjProfessor 
+		SELECT register_no as registerNo, reg_year as regYear, reg_semester as regSemester, subj_name as subjName, subj_professor as subjProfessor 
 		FROM subjects s, registers r
 		WHERE s.subject_no = r.subject_no
 		AND register_no=#{registerNo}
 	</select>
+	
+	<select id="setEval" resultType="java.lang.Integer">
+		UPDATE registers SET eval_how=#{evalHow}, eval_planning=#{evalPlanning}, eval_goal=#{evalGoal}, eval_consider=#{evalConsider}, eval_test=#{evalTest} 
+ 		WHERE register_no=#{registerNo}
+	</select>
+	
+	
 </mapper>

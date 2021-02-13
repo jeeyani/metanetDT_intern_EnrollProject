@@ -10,8 +10,8 @@ import com.oopsw.member.dto.RegisterDTO;
 public interface GradeDAO {
 	public Collection<GradeDTO> getEvalList(@Param("studentId")String id, @Param("regYear")int regYear, @Param("regSemester")String regSemester);
 
-	public boolean setEval(@Param("registerNo")int registerNo, @Param("evalHow")int evalHow, @Param("evalPlanning")int evalPlanning,
-			@Param("evalGoal")int evalGoal, @Param("evalConsider")int evalConsider, @Param("evalTest")int evalTest);
+	public int setEval(@Param("evalHow")int evalHow, @Param("evalPlanning")int evalPlanning, @Param("evalGoal")int evalGoal, 
+			@Param("evalConsider")int evalConsider, @Param("evalTest")int evalTest, @Param("registerNo")int registerNo);
 
 	public Collection<GradeDTO> getSemGradeList(@Param("studentId")String studentId, @Param("regYear")int regYear, @Param("regSemester")String regSemester);
 

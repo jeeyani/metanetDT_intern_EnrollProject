@@ -21,9 +21,9 @@ public class GradeService {
 	}
 	
 	
-	public boolean setEval(int registerNo, int evalHow, int evalPlanning, int evalGoal, int evalConsider, int evalTest) {
-		// TODO Auto-generated method stub
-		return gradeDAO.setEval(registerNo, evalHow, evalPlanning, evalGoal, evalConsider, evalTest);
+	public int setEval(int evalHow, int evalPlanning, int evalGoal, int evalConsider, int evalTest, int registerNo) {
+		System.out.println("check setEval pre");
+		return gradeDAO.setEval(evalHow, evalPlanning, evalGoal, evalConsider, evalTest, registerNo);
 	}
 
 

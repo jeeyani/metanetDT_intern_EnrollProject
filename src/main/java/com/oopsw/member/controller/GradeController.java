@@ -68,20 +68,34 @@ public class GradeController {
 	
 	@RequestMapping(value = "/evaluationDetail", method = RequestMethod.POST)
 	public String evaluationDetail(HttpServletRequest request, Model model){
-		System.out.println(request.getAttribute("registerNo"));
-		GradeDTO registerInfo = gradeService.getRegisterInfo(Integer.parseInt((String)request.getAttribute("registerNo")));
-		model.addAttribute("subjectInfo", registerInfo);
+		
+		GradeDTO registerInfo = gradeService.getRegisterInfo(Integer.parseInt((String)request.getParameter("registerNo")));
+		
+		model.addAttribute("registerInfo", registerInfo);
 		
 		return "evaluationDetail";
 	}
 	
 	@RequestMapping(value = "/evaluationDetailAction", method = RequestMethod.POST)
-	public String evaluationDetailAction(HttpServletRequest request){ 
+	public String evaluationDetailAction(HttpServletRequest request){
+		System.out.println("check evaluationDetailAction pre");
 		
-		boolean result = gradeService.setEval(Integer.parseInt(request.getParameter("registerNo")), 1,2,3,4,5);
-		if(!result)
+		int result = gradeService.setEval( 
+				Integer.parseInt(request.getParameter("radioEvalHow")),
+				Integer.parseInt(request.getParameter("radioEvalPlanning")),
+				Integer.parseInt(request.getParameter("radioEvalGoal")),
+				Integer.parseInt(request.getParameter("radioEvalConsider")),
+				Integer.parseInt(request.getParameter("radioEvalTest")),
+				Integer.parseInt(request.getParameter("registerNo")));
+		
+		System.out.println("check evaluationDetailAction post");
+		System.out.println(Integer.parseInt(request.getParameter("registerNo")));
+		System.out.println(Integer.parseInt(request.getParameter("radioEvalHow")));
+		System.out.println(result);
+		
+		if(result != 1)
 			return "evaluationDetail";		
-		return "evaluationList";
+		return "redirect:evaluationList";
 	}
 	
 	//�б⺰ ���� UI
@@ -113,7 +127,6 @@ public class GradeController {
 	}
 	
 	
-	//�б⺰ ���� Ŭ��(��ȸ)
 	@RequestMapping(value = "/gradeSemesterAction", method = RequestMethod.POST)
 	public String gradeSemesterAction(HttpServletRequest request, Model model){ 
 		
@@ -130,7 +143,6 @@ public class GradeController {
 		return "gradeSemester";
 	}
 		
-	//��ü ���� ��ȸ
 	@RequestMapping(value = "/gradeTotal")
 	public String gradeTotal(HttpServletRequest request, Model model){ 
 

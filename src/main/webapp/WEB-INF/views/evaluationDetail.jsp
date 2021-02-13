@@ -53,7 +53,7 @@
 					</p>
 					<br>
 					<div style="overflow-y: auto; height: 300px">
-						<form id="research" class="form-horizontal">
+						<form id="research" class="form-horizontal" method="POST" action="evaluationDetailAction">
 							<table class="table table-striped table-hover" style="border-collapse: collapse; text-align: center; vertical-align: middle">
 								<thead>
 									<tr style="background-color: lightslategrey; color:white">
@@ -68,50 +68,51 @@
 								<tbody>
 									<tr>
 										<td>교수의 강의 방법이 적절하였다.</td>
-										<td><input class="evaluation" type="radio" name="radioEvalHow"/></td>
-										<td><input class="evaluation" type="radio" name="radioEvalHow"/></td>
-										<td><input class="evaluation" type="radio" name="radioEvalHow"/></td>
-										<td><input class="evaluation" type="radio" name="radioEvalHow"/></td>
-										<td><input class="evaluation" type="radio" name="radioEvalHow"/></td>
+										<td><input value="1" type="radio" name="radioEvalHow"/></td>
+										<td><input value="2" type="radio" name="radioEvalHow"/></td>
+										<td><input value="3" type="radio" name="radioEvalHow"/></td>
+										<td><input value="4" type="radio" name="radioEvalHow"/></td>
+										<td><input value="5" type="radio" name="radioEvalHow"/></td>
 									</tr>
 									<tr>
 										<td>수업은 강의계획서대로 계획성 있게 진행되었다.</td>
-										<td><input class="evaluation" type="radio"  name="radioEvalPlanning"/></td>
-										<td><input class="evaluation" type="radio"  name="radioEvalPlanning"/></td>
-										<td><input class="evaluation" type="radio"  name="radioEvalPlanning"/></td>
-										<td><input class="evaluation" type="radio"  name="radioEvalPlanning"/></td>
-										<td><input class="evaluation" type="radio"  name="radioEvalPlanning"/></td>
+										<td><input value="1" type="radio"  name="radioEvalPlanning"/></td>
+										<td><input value="2" type="radio"  name="radioEvalPlanning"/></td>
+										<td><input value="3" type="radio"  name="radioEvalPlanning"/></td>
+										<td><input value="4" type="radio"  name="radioEvalPlanning"/></td>
+										<td><input value="5" type="radio"  name="radioEvalPlanning"/></td>
 									</tr>
 									<tr>
 										<td>강의 내용이 과목명, 강의목표에 잘 부합하였다.</td>
-										<td><input class="evaluation" type="radio"  name="radioEvalGoal"/></td>
-										<td><input class="evaluation" type="radio"  name="radioEvalGoal"/></td>
-										<td><input class="evaluation" type="radio"  name="radioEvalGoal"/></td>
-										<td><input class="evaluation" type="radio"  name="radioEvalGoal"/></td>
-										<td><input class="evaluation" type="radio"  name="radioEvalGoal"/></td>
+										<td><input value="1" type="radio"  name="radioEvalGoal"/></td>
+										<td><input value="2" type="radio"  name="radioEvalGoal"/></td>
+										<td><input value="3" type="radio"  name="radioEvalGoal"/></td>
+										<td><input value="4" type="radio"  name="radioEvalGoal"/></td>
+										<td><input value="5" type="radio"  name="radioEvalGoal"/></td>
 									</tr>
 									<tr>
 										<td>강의내용은 학생들의 이해수준이 고려되었다.</td>
-										<td><input class="evaluation" type="radio"  name="radioEvalConsider"/></td>
-										<td><input class="evaluation" type="radio"  name="radioEvalConsider"/></td>
-										<td><input class="evaluation" type="radio"  name="radioEvalConsider"/></td>
-										<td><input class="evaluation" type="radio"  name="radioEvalConsider"/></td>
-										<td><input class="evaluation" type="radio"  name="radioEvalConsider"/></td>
+										<td><input value="1" type="radio"  name="radioEvalConsider"/></td>
+										<td><input value="2" type="radio"  name="radioEvalConsider"/></td>
+										<td><input value="3" type="radio"  name="radioEvalConsider"/></td>
+										<td><input value="4" type="radio"  name="radioEvalConsider"/></td>
+										<td><input value="5" type="radio"  name="radioEvalConsider"/></td>
 									</tr>
 									<tr>
 										<td>과제물이나 시험은 적절하며 공정하게 시행 및 평가 되었다.</td>
-										<td><input class="evaluation" type="radio"  name="radioEvalTest"/></td>
-										<td><input class="evaluation" type="radio"  name="radioEvalTest"/></td>
-										<td><input class="evaluation" type="radio"  name="radioEvalTest"/></td>
-										<td><input class="evaluation" type="radio"  name="radioEvalTest"/></td>
-										<td><input class="evaluation" type="radio"  name="radioEvalTest"/></td>
+										<td><input value="1" type="radio"  name="radioEvalTest"/></td>
+										<td><input value="2" type="radio"  name="radioEvalTest"/></td>
+										<td><input value="3" type="radio"  name="radioEvalTest"/></td>
+										<td><input value="4" type="radio"  name="radioEvalTest"/></td>
+										<td><input value="5" type="radio"  name="radioEvalTest"/></td>
 									</tr>
 								</tbody>
 							</table>
+							<div style="text-align: right;">
+								<input type="hidden" name="registerNo" value="${registerInfo.registerNo}"/>
+								<button type="submit" class="btn btn-outline-dark btn-sm">제출하기</button>
+							</div>
 						</form>
-						<div style="text-align: right;">
-						<button type="button" class="btn btn-outline-dark btn-sm">제출하기</button>
-						</div>
 						
 					</div>
 					</p>
