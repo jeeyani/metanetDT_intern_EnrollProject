@@ -44,11 +44,10 @@ public class RegisterController {
 	
 	//수강신청페이지
 	@RequestMapping(value = "/enrollment", method = RequestMethod.GET)
-	public String enrolment(HttpSession session, Model model,RegisterDTO register, RegisterDTO registerOK) {
+	public String enrolment(HttpSession session, Model model, RegisterDTO register, RegisterDTO registerOK) {
 		
 		//1.학생정보 가져오기
 		String studentId = (String)session.getAttribute("studentId");
-		
 		StudentDTO studentList = memberService.getStudentInfo(studentId);
 		model.addAttribute("studentList", studentList);
 		
@@ -58,30 +57,31 @@ public class RegisterController {
 		//올해가 몇학기 인지 계산
 		int month = Calendar.getInstance().get(Calendar.MONTH)+1;
 
-		switch(month){
+		/*switch(month){
 		case 1:case 2:
-			register.setRegSemester("1");
+			register.setRegSemester("f");
 			break;
 		case 7: case 8:
-			register.setRegSemester("2");
-			break;
-		case 3:case 4:case 5:case 6:
 			register.setRegSemester("s");
 			break;
+		case 3:case 4:case 5:case 6:
+			register.setRegSemester("1");
+			break;
 		case 9:case 10:case 11:case 12:
-			register.setRegSemester("f");
+			register.setRegSemester("2");
 			break;
 		default:
 			register.setRegSemester("error");
 			break;
-		}
+		}*/
 		
-		
+		register.setRegSemester("1");
 		model.addAttribute("semester", register.getRegSemester());
 		
 		//작년 평가점수를 가져오기 위한 작년년도 구하기
 		int year = Calendar.getInstance().get(Calendar.YEAR);
-		register.setRegYear(year-1);
+		//register.setRegYear(year-1);
+		register.setRegYear(2020);
 		
 
 		Collection<RegisterDTO> registerList = registerService.getSubjectList(register);
@@ -91,8 +91,8 @@ public class RegisterController {
 		//3.수강신청한 목록 가져오기
 		register.setRegYear(year);
 		
-		int studentId2 = Integer.parseInt((String)session.getAttribute("studentId"));
-		register.setStudentId(studentId2);
+		//int studentId2 = Integer.parseInt((String)session.getAttribute("studentId"));
+		register.setStudentId(Integer.parseInt(studentId));
 		Collection<RegisterDTO> registerOKList = registerService.getRegisterList(register);
 		model.addAttribute("registerOKList",registerOKList);
 		
@@ -103,39 +103,40 @@ public class RegisterController {
 	@RequestMapping(value="/enrollmenAction", method=RequestMethod.POST)
 	public String enrollmenAction(HttpServletRequest request,Model model,RegisterDTO register){
 		
+		// 조건에 따른 조회 ...
+		// subjectNo		학수번호
+		// subjectGroup		이수구분
+		// subjName			과목명
 		
-		String deptno=request.getParameter("deptno");
-		register.setSubjectNo(Integer.parseInt(deptno));
-		register.setSubjGroup(request.getParameter("deptgroup"));
+		String subjectNo=request.getParameter("subjectNo");
+		register.setSubjectNo(Integer.parseInt(subjectNo));
+		register.setSubjGroup(request.getParameter("subjectGroup"));
+		register.setSubjName(request.getParameter("subjName"));
 		
-		logger.info("=================================="+deptno);
 		
-		register.setDeptName(request.getParameter("deptname"));
+		logger.info("=================================="+subjectNo);
+		
 		
 		//올해가 몇학기 인지 계산
 		int month = Calendar.getInstance().get(Calendar.MONTH)+1;
 		
 		switch(month){
 		case 1:case 2:
-			register.setRegSemester("1");
+			register.setRegSemester("f");
 			break;
 		case 7: case 8:
-			register.setRegSemester("2");
-			break;
-		case 3:case 4:case 5:case 6:
 			register.setRegSemester("s");
 			break;
+		case 3:case 4:case 5:case 6:
+			register.setRegSemester("1");
+			break;
 		case 9:case 10:case 11:case 12:
-			register.setRegSemester("f");
+			register.setRegSemester("2");
 			break;
 		default:
 			register.setRegSemester("error");
 			break;
 		}
-		
-		int year = Calendar.getInstance().get(Calendar.YEAR);
-		register.setRegYear(year);
-		
 		
 		Collection<RegisterDTO> selectList = registerService.getSelectList(register);
 		model.addAttribute("registerList", selectList);

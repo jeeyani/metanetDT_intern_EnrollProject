@@ -56,7 +56,7 @@ public class HomeController {
 			return "studentInfo";
 		}
 		
-		return "redirect:/login";
+		return "redirect:/";
 	}
 	
 	//로그아웃
@@ -64,7 +64,7 @@ public class HomeController {
 	public String logoutAction(HttpSession session) {
 		
 		session.invalidate();
-		return "login";
+		return "redirect:/";
 	}
 	
 	

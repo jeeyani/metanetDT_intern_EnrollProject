@@ -59,17 +59,17 @@
 			<div class="row g-3 align-items-center">
 			
 					<div class="col-auto">
-						<label for="deptno" class="col-form-label"
+						<label for="subjectNo" class="col-form-label"
 							style="font-weight: bold">학수번호</label>
 					</div>
 					<div class="col-auto">
-						<input type="text" id="deptno" class="form-control" name="deptno" aria-describedby="passwordHelpInline">
+						<input type="text" id="subjectNo" class="form-control" name="subjectNo" aria-describedby="passwordHelpInline">
 					</div>
 					<div class="col-auto">
-						<label for="deptgroup" class="col-form-label" style="font-weight: bold">이수구분</label>
+						<label for="subjGroup" class="col-form-label" style="font-weight: bold">이수구분</label>
 					</div>
 					<div class="col-auto">
-						<select id="deptgroup" name="deptgroup" class="form-select">
+						<select id="subjGroup" name="subjGroup" class="form-select">
 							<option selected>선택</option>
 							<option value="1">전공선택</option>
 							<option value="2">전공필수</option>
@@ -78,10 +78,10 @@
 						</select>
 					</div>
 					<div class="col-auto">
-						<label for="deptname" class="col-form-label" style="font-weight: bold">과목명</label>
+						<label for="subjName" class="col-form-label" style="font-weight: bold">과목명</label>
 					</div>
 					<div class="col-auto">
-						<input type="text" id="deptname" class="form-control" name="deptname" aria-describedby="passwordHelpInline">
+						<input type="text" id="subjName" class="form-control" name="subjName" aria-describedby="passwordHelpInline">
 					</div>
 					<div class="col-auto">
 						<a type="submit" class="btn btn-outline-dark" href="javascript:selectSubject()">조회</a>
@@ -124,7 +124,6 @@
 		                  </tr>
                 	</c:forEach>
                 </tbody>
-       
               </table>
             </div>
           </p>
@@ -185,9 +184,9 @@
   <script type="text/javascript">
 		function selectSubject(){
 			$.ajax({
-				url:"enrollmenAction",
 				type:"POST",
-				data:{deptno:deptno, deptgroup:deptgroup, deptname:deptname},
+				url:"enrollmenAction",
+				data:{subjectNo: subjectNo, subjGroup:subjGroup, subjName:subjName},
 				success: function (data) {
 					$("#selectList").html(data);
 				}

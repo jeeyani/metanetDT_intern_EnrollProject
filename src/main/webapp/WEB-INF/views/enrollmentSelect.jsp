@@ -36,7 +36,7 @@
           <td style="color:blue; font-weight:bold">${list.lectureScore}</td>
         </tr>
     	</c:forEach>
-    </tbody>
+  </tbody>
 
-  </table>
+</table>
     

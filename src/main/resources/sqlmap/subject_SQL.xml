@@ -43,7 +43,7 @@
 	</select>
 	
 	<select id="getSelectList" resultType="com.oopsw.member.dto.RegisterDTO">
-		 SELECT r.subject_no as, subj_group, subj_name, subj_score, subj_name, subj_professor, lect_date, lect_start, lect_end
+		 SELECT r.subject_no as subjectNo, subj_group as subjGroup, subj_name, subj_score, subj_name, subj_professor, lect_date, lect_start, lect_end
 		 FROM registers r, subjects s, departmentes d
 		 WHERE r.subject_no = s.subject_no
 		 AND s.department_no = d.department_no
@@ -80,6 +80,21 @@
 	</sql>
 	
 	<sql id="subjectSearch">
+		<if test='register.subjectNo !=null AND register.subjectNo != "" '>
+			AND s.subject_no=#{register.subjectNo} 
+		</if>
+		<if test='register.subjGroup !=null AND register.subjGroup != "" '>
+			AND s.subj_group=#{register.subjGroup} 
+		</if>
+		<if test='register.deptName !=null AND register.deptName != "" '>
+			AND d.dept_name=#{register.deptName} 
+		</if>
+		
+		
+		
+		
+		
+		<!-- 
 		<if test="register.subjectNo !=null">
 			AND s.subject_no=#{register.subjectNo}
 			<if test="register.subjGroup !=null">
@@ -142,7 +157,7 @@
 					AND d.dept_name=#{register.deptName}
 				</if>
 			</if>
-		</if>
+		</if> -->
 	</sql>
 
 </mapper>
