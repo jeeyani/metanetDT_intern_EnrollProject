@@ -55,7 +55,7 @@ public class TimeController {
 		//	session.getAttribute("studentId"), Calendar.getInstance().get(Calendar.YEAR), semester);
 		
 		// 임시로 2020년 2학기 정보 출력.
-		Collection<SubjectDTO> courseList = timetableService.getTimeTable(studentId, 2020, "1");		
+		Collection<SubjectDTO> courseList = timetableService.getTimeTable(studentId, 2020, "2");		
 		StudentDTO studentInfo = memberService.getStudentInfo(studentId);
 		
 		model.addAttribute("courseList", courseList);

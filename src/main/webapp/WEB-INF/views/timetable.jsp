@@ -131,7 +131,6 @@
  						temp = 1;
  					}
  				}
- 			
  			</c:forEach>
  			if(temp == 0)
  				row.insertCell().innerHTML="";
