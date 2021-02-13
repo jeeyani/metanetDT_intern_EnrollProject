@@ -3,7 +3,8 @@
 <mapper namespace="com.oopsw.member.dao.TimetableDAO"> 
 	
 	<select id="getTimeTable" resultType="com.oopsw.member.dto.SubjectDTO"> 
-		 SELECT s.subj_group, s.subj_name, s.subj_score, d.dept_name, s.subj_professor, lect_date, lect_start, lect_end, lect_room 
+		 SELECT s.subj_group as subjGroup, s.subj_name as subjName, s.subj_score as subjScore, d.dept_name as deptName, s.subj_professor as subjProfessor,
+		  lect_date as lectDate, lect_start as lectStart, lect_end as lectEnd, lect_room as lectRoom 
 		 FROM registers r, departmentes d, subjects s 
 		 WHERE r.subject_no = s.subject_no 
 		 AND s.department_no = d.department_no 

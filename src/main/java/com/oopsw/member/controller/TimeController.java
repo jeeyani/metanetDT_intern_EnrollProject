@@ -44,12 +44,15 @@ public class TimeController {
 			semester = "error";
 		}
 		
+		String studentId = session.getAttribute("studentId").toString();
+		System.out.println(studentId);
 		
+		// 이방식이 옳다.
 		//Collection<SubjectDTO> semesterGradeList = timetableService.getTimeTable(
 		//	session.getAttribute("studentId"), Calendar.getInstance().get(Calendar.YEAR), semester);
 		
 		// 임시로 2020년 2학기 정보 출력.
-		Collection<SubjectDTO> semesterGradeList = timetableService.getTimeTable((String)session.getAttribute("studentId"), 2020, "2");
+		Collection<SubjectDTO> semesterGradeList = timetableService.getTimeTable(studentId, 2020, "2");
 		System.out.println(semesterGradeList);
 		
 		model.addAttribute("semesterGradeList", semesterGradeList);
