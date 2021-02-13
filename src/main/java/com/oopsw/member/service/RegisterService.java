@@ -41,6 +41,11 @@ public class RegisterService {
 		return registerDAO.setRegister(register);
 	}
 
+	public int deleteRegister(RegisterDTO register) {
+		
+		return registerDAO.deleteRegister(register);
+	}
+
 
 
 }

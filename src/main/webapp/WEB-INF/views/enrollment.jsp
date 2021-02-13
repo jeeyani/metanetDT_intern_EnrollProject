@@ -155,7 +155,7 @@
                 	<c:if test ="${registerOKList ne null}"> --%>
 	                	<c:forEach var="list" items="${registerOKList}">
 	                		<tr>
-			                    <td><button type="button" class="btn btn-outline-danger btn-sm">삭제</button></td>
+			                    <td><a type="button" class="btn btn-outline-danger btn-sm" href="<%=application.getContextPath()%>/enrolmentDelete?subjectNo=${list.subjectNo}">삭제</a></td>
 			                    <td>${list.subjectNo}</td>
 			                    <td>${list.subjGroup}</td>
 			                    <td>${list.subjName}</td>

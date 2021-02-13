@@ -21,5 +21,7 @@ public interface RegisterDAO {
 
 	int setRegister(@Param("register")RegisterDTO register);
 
+	int deleteRegister(@Param("register")RegisterDTO register);
+
 
 }

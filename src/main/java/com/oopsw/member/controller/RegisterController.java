@@ -174,9 +174,38 @@ public class RegisterController {
 	}
 	
 	//수강신청취소하기
-	@RequestMapping(value = "/enrolmentDelete", method = RequestMethod.POST)
-	public String enrolmentDelete() {
-				
+	@RequestMapping(value = "/enrolmentDelete", method = RequestMethod.GET)
+	public String enrolmentDelete(@RequestParam("subjectNo")int subjectNo,Model model,RegisterDTO register,HttpSession session) {
+		
+		//올해가 몇학기 인지 계산
+		Calendar cal = Calendar.getInstance();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("MM");
+		String month = sdf.format(cal.getTime());
+		if(month.equals("01")||month.equals("02")){
+			register.setRegSemester("1");
+		} else if(month.equals("05")||month.equals("06")){
+			register.setRegSemester("s");
+		}else if(month.equals("07")||month.equals("08")){
+			register.setRegSemester("2");
+		}else if(month.equals("11")||month.equals("12")){
+			register.setRegSemester("f");
+		}else{
+			register.setRegSemester("");
+		}
+		
+		//올해 수강신청 학년도
+		int year = cal.get(Calendar.YEAR);
+		register.setRegYear(year);
+		
+		//삭제할 과목 학수번호
+		register.setSubjectNo(subjectNo);
+		
+		int studentId =Integer.parseInt((String)session.getAttribute("studentId"));
+		register.setStudentId(studentId);
+		
+		int delectSubject = registerService.deleteRegister(register);
+		
 		return "redirect:enrollment";
 	}
 	

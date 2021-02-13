@@ -44,6 +44,11 @@
 		insert into registers(register_no, reg_year, reg_semester, student_id, subject_no)
  		values(registers_seq.NEXTVAL, #{register.regYear}, #{register.regSemester}, #{register.studentId}, #{register.subjectNo})
 	</insert>
+	
+	<delete id="deleteRegister" parameterType="com.oopsw.member.dto.RegisterDTO">
+		delete from registers
+		where reg_year=#{register.regYear} AND reg_semester=#{register.regSemester} AND student_id=#{register.studentId} AND subject_no=#{register.subjectNo}
+	</delete>
 
 	<sql id="search">
 		<if test="searchType != null">
