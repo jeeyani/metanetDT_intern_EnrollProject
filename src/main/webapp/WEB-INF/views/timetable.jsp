@@ -46,7 +46,7 @@
               </thead>
 			  <c:set var="subjScore_sum" value="0"/>
               <tbody>
-              	<c:forEach var="subjectDTO" items="${semesterGradeList}">
+              	<c:forEach var="subjectDTO" items="${courseList}">
               		<tr>
 	                  <td>${subjectDTO.subjGroup}</td>
 	                  <td>${subjectDTO.subjName}</td>
@@ -63,7 +63,7 @@
           </div>
 
           <div class="text-end fs-5 fw-bold">
-				 총 수강신청학점: ${fn:length(semesterGradeList)}과목  ${subjScore_sum}학점
+				 총 수강신청학점: ${fn:length(courseList)}과목  ${subjScore_sum}학점
           </div>
 
             <div class="row">
@@ -76,16 +76,17 @@
                   <tbody>
                     <tr>
                       <th style="background-color: rgb(187, 196, 204);;">학번</th>
-                      <td>2015112131</td>
+                      <td>${studentInfo.studentId }</td>
                       <th style=" background-color: rgb(187, 196, 204);;">성명</th>
-                      <td>강창기</td>
+                      <td>${studentInfo.name}</td>
                       <th style=" background-color: rgb(187, 196, 204);;">전공</th>
-                      <td>소프트웨어공학과</td>
+                      <td>${studentInfo.deptName }</td>
                     </tr>
                   </tbody>
                 </table>    
                 
                 <table class="table table-bordered text-center" >
+                  <thead>
                   <tr>
                     <th style="width:10%"></th>
                     <th style="width:18%">월</th>
@@ -94,72 +95,12 @@
                     <th style="width:18%">목</th>
                     <th style="width:18%">금</th>
                   </tr>
-                  <tr>
-                    <th >1교시</th>
-                    <td></td>
-                    <td></td>
-                    <td>컴파일러</td>
-                    <td>자바 프로그래밍</td>
-                    <td>데이터베이스</td>
-                  </tr>
-                  <tr>
-                    <th>2교시</th>
-                    <td></td>
-                    <td>객체지향</td>
-                    <td>컴파일러</td>
-                    <td>자바 프로그래밍</td>
-                    <td>데이터베이스</td>
-                  </tr>
-                  <tr>
-                    <th>3교시</th>
-                    <td></td>
-                    <td>객체지향</td>
-                    <td>컴파일러</td>
-                    <td>자바 프로그래밍</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th>4교시</th>
-                    <td></td>
-                    <td>객체지향</td>
-                    <td>컴파일러</td>
-                    <td>자바 프로그래밍</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th>5교시</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th>6교시</th>
-                    <td></td>
-                    <td>자료구조</td>
-                    <td></td>
-                    <td>Spring 프레임워크</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th>7교시</th>
-                    <td>C++ 프로그래밍</td>
-                    <td>자료구조</td>
-                    <td></td>
-                    <td>Spring 프레임워크</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th>8교시</th>
-                    <td>C++ 프로그래밍</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                  </thead>
+                  
+                  <tbody id="tablebody">
+                  </tbody>
                 </table>
-
+				
               </div>
             </div>
           </div>
@@ -168,7 +109,34 @@
 
     </div>
   </div>
-  <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
+  <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>  
 </body>
+<script type="text/javascript"> 
+ 	const day=["월","화","수","목","금"];
+ 	var my_tbody = document.getElementById('tablebody');
+ 	var courseList = "${courseList}"
+ 	for(var i=1; i<10; i++) {
+ 		var row = my_tbody.insertRow(my_tbody.rows.length);
+ 		row.insertCell().innerHTML= i+'교시';	
+ 		day.forEach(function (d){
+ 			// if 조건확인
+ 			// 
+ 			var temp = 0;
+ 			<c:forEach items="${courseList}" var="course">
+ 				if("${course.lectDate}" == d) 
+ 				{
+ 					if(i >= "${course.lectStart}" && i <= "${course.lectEnd}") 
+ 					{
+ 						row.insertCell().innerHTML="${course.deptName}";
+ 						temp = 1;
+ 					}
+ 				}
+ 			
+ 			</c:forEach>
+ 			if(temp == 0)
+ 				row.insertCell().innerHTML="";
+ 		})
+ 	}
+</script>
 
 </html>

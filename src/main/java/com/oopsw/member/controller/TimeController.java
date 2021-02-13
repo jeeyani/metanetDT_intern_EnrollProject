@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.oopsw.member.dto.GradeDTO;
+import com.oopsw.member.dto.StudentDTO;
 import com.oopsw.member.dto.SubjectDTO;
+import com.oopsw.member.service.MemberService;
 import com.oopsw.member.service.TimetableService;
 
 @Controller
@@ -22,6 +22,9 @@ public class TimeController {
 	
 	@Autowired
 	private TimetableService timetableService;
+	@Autowired
+	private MemberService memberService;
+	
 	
 	//시간표조회페이지가져오기
 	@RequestMapping(value = "/timetable")
@@ -52,10 +55,14 @@ public class TimeController {
 		//	session.getAttribute("studentId"), Calendar.getInstance().get(Calendar.YEAR), semester);
 		
 		// 임시로 2020년 2학기 정보 출력.
-		Collection<SubjectDTO> semesterGradeList = timetableService.getTimeTable(studentId, 2020, "2");
-		System.out.println(semesterGradeList);
+		Collection<SubjectDTO> courseList = timetableService.getTimeTable(studentId, 2020, "1");		
+		StudentDTO studentInfo = memberService.getStudentInfo(studentId);
 		
-		model.addAttribute("semesterGradeList", semesterGradeList);
+		model.addAttribute("courseList", courseList);
+		model.addAttribute("studentInfo", studentInfo);
+		
+		System.out.println(courseList);
+		
 		return "timetable";
 	}
 		
