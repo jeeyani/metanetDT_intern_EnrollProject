@@ -42,50 +42,6 @@ public class RegisterController {
 	private static final Logger logger = LoggerFactory.getLogger(RegisterController.class);
 	
 	
-	//강의계획서페이지
-	@RequestMapping(value = "/lecturePlan", method = RequestMethod.GET)
-	public String lecturePlan(HttpSession session, Model model) {
-		
-		//이름가져오기
-		String studentId =(String)session.getAttribute("studentId");
-		StudentDTO studentList= memberService.getStudentInfo(studentId);
-		model.addAttribute("studentList", studentList);
-		
-		//초기 보여지는 페이지는 조회되는 데이터가 없음
-		model.addAttribute("lecturePlanList", null);
-		
-		
-		return "lecturePlanList";
-	}
-	
-	//강의계획서페이지조회버튼 클릭
-	@RequestMapping(value = "/lecturePlanList", method = RequestMethod.GET)
-	public String lecturePlanList(HttpServletRequest request,Model model,SubjectDTO search) {
-		
-		logger.info("searchNAME:   "+search.getSearch());
-
-		String subjectName = request.getParameter("subjectName");
-		Collection<SubjectDTO> subjectList = registerService.getNameList(subjectName);
-		model.addAttribute("subjectList", subjectList);
-		
-		return "lectureNamePlanList";
-
-		
-		
-	/*	return "lecturePlanList";*/
-	}
-		
-	
-	//강의계획서 상세페이지
-	@RequestMapping(value = "/lecturePlanDetail", method = RequestMethod.GET)
-	public String lecturePlanDetail(@RequestParam("subjectNo")int subjectNo,Model model) {
-		
-		SubjectDTO subjectDetail = registerService.getPlanDetail(subjectNo);
-		model.addAttribute("subjectDetail", subjectDetail);
-		
-		return "lecturePlanDetail";
-	}
-	
 	//수강신청페이지
 	@RequestMapping(value = "/enrollment", method = RequestMethod.GET)
 	public String enrolment(HttpSession session, Model model,RegisterDTO register, RegisterDTO registerOK) {
