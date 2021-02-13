@@ -39,6 +39,11 @@
 		 AND r.reg_year=#{register.regYear} AND r.reg_semester=#{register.regSemester}
 		 AND student_id = #{register.studentId}
 	</select>
+	
+	<insert id="setRegister" parameterType="com.oopsw.member.dto.RegisterDTO">
+		insert into registers(register_no, reg_year, reg_semester, student_id, subject_no)
+ 		values(registers_seq.NEXTVAL, #{register.regYear}, #{register.regSemester}, #{register.studentId}, #{register.subjectNo})
+	</insert>
 
 	<sql id="search">
 		<if test="searchType != null">

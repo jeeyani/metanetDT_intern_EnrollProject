@@ -19,4 +19,7 @@ public interface RegisterDAO {
 
 	Collection<RegisterDTO> getRegisterList(@Param("register")RegisterDTO register);
 
+	int setRegister(@Param("register")RegisterDTO register);
+
+
 }

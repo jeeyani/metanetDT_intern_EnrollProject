@@ -16,7 +16,6 @@ import com.oopsw.member.dto.GradeDTO;
 import com.oopsw.member.dto.SubjectDTO;
 import com.oopsw.member.service.TimetableService;
 
-@Controller
 public class TimeController {
 	
 	
