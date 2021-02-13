@@ -138,6 +138,15 @@ public class SubjectDTO {
 	public void setProgressPlan(String progressPlan) {
 		this.progressPlan = progressPlan;
 	}
+	@Override
+	public String toString() {
+		return "SubjectDTO [search=" + search + ", subjectNo=" + subjectNo + ", subjGroup=" + subjGroup + ", subjName="
+				+ subjName + ", subjSemester=" + subjSemester + ", subjScore=" + subjScore + ", subjProfessor="
+				+ subjProfessor + ", lectDate=" + lectDate + ", lectStart=" + lectStart + ", lectEnd=" + lectEnd
+				+ ", lectRoom=" + lectRoom + ", deptmentNo=" + deptmentNo + ", deptName=" + deptName + ", outline="
+				+ outline + ", proceed=" + proceed + ", note=" + note + ", evaluation=" + evaluation + ", progressPlan="
+				+ progressPlan + "]";
+	}
 	
 	
 

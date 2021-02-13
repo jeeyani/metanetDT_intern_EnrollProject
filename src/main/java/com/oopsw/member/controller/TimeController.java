@@ -16,6 +16,7 @@ import com.oopsw.member.dto.GradeDTO;
 import com.oopsw.member.dto.SubjectDTO;
 import com.oopsw.member.service.TimetableService;
 
+@Controller
 public class TimeController {
 	
 	
@@ -23,7 +24,7 @@ public class TimeController {
 	private TimetableService timetableService;
 	
 	//시간표조회페이지가져오기
-	@RequestMapping(value = "/timetable", method = RequestMethod.GET)
+	@RequestMapping(value = "/timetable")
 	public String timetable(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		
@@ -49,6 +50,7 @@ public class TimeController {
 		
 		// 임시로 2020년 2학기 정보 출력.
 		Collection<SubjectDTO> semesterGradeList = timetableService.getTimeTable((String)session.getAttribute("studentId"), 2020, "2");
+		System.out.println(semesterGradeList);
 		
 		model.addAttribute("semesterGradeList", semesterGradeList);
 		return "timetable";
