@@ -2,6 +2,9 @@ package com.oopsw.member.dto;
 
 public class SubjectDTO {
 
+	//검색 항목
+	private String search;
+	
 	//교과목정보
 	private int subjectNo;
 	private String subjGroup;
@@ -25,6 +28,14 @@ public class SubjectDTO {
 	private String evaluation; //평가방법
 	private String progressPlan; //강의진행계획
 	
+	
+	
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
 	public int getSubjectNo() {
 		return subjectNo;
 	}

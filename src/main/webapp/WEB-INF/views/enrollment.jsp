@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!doctype html>
 <html lang="en">
 
@@ -14,7 +17,7 @@
     integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
     crossorigin="anonymous"></script>
 
-
+<jsp:useBean id="now" class="java.util.Date"></jsp:useBean>
   <title>메타대 학사정보시스템</title>
 </head>
 
@@ -34,6 +37,7 @@
 
           <p class="fs-5 fw-bold">학적정보</p>
           <p class="lead">
+          	<fmt:formatDate value="${now}" pattern="yyyy" var="today"/>
             <table class="table table-striped table-hover text-center">
               <tr style="background-color: lightslategrey; color:white">
                 <th>년도 / 학기</th>
@@ -42,10 +46,10 @@
                 <th>소속학과</th>
               </tr>
               <tr>
-                <td>2021학년도 1학기</td>
-                <td>2015112131</td>
-                <td>강창기</td>
-                <td>소프트웨어공학과</td>
+                <td><c:out value="${today}"/>학년도 "학기표시고민"학기</td>
+                <td>${studentList.studentId}</td>
+                <td>${studentList.name}</td>
+                <td>${studentList.deptName}</td>
               </tr>
             </table>
           </p>

@@ -19,4 +19,9 @@ public class RegisterService {
 		return registerDAO.getNameList(subjectName);
 	}
 
+	public SubjectDTO getPlanDetail(int subjectNo) {
+		
+		return registerDAO.getPlanDetail(subjectNo);
+	}
+
 }

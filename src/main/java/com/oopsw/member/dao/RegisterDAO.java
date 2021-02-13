@@ -12,4 +12,6 @@ public interface RegisterDAO {
 
 	Collection<SubjectDTO> getNameList(@Param("subjectName")String subjectName);
 
+	SubjectDTO getPlanDetail(@Param("subjectNo")int subjectNo);
+
 }

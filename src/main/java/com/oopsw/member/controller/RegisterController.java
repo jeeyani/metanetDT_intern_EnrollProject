@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.oopsw.member.dto.StudentDTO;
 import com.oopsw.member.dto.SubjectDTO;
@@ -54,39 +56,45 @@ public class RegisterController {
 	
 	//강의계획서페이지조회버튼 클릭
 	@RequestMapping(value = "/lecturePlanList", method = RequestMethod.GET)
-	public String lecturePlanList(HttpServletRequest request,Model model) {
+	public String lecturePlanList(HttpServletRequest request,Model model,SubjectDTO search) {
 		
-		logger.info("subjectName"+request.getParameter("subjectName"));
-		logger.info("professorName"+request.getParameter("professorName"));
-		logger.info("subjectId"+request.getParameter("subjectId"));
+		logger.info("searchNAME:   "+search.getSearch());
+
+		String subjectName = request.getParameter("subjectName");
+		Collection<SubjectDTO> subjectList = registerService.getNameList(subjectName);
+		model.addAttribute("subjectList", subjectList);
 		
-		if(request.getParameter("subjectName") != null){
-			String subjectName = request.getParameter("subjectName");
-			Collection<SubjectDTO> subjectList = registerService.getNameList(subjectName);
-			model.addAttribute("subjectList", subjectList);
-			
-			return "lecturePlanList";
-		}
+		return "lectureNamePlanList";
+
 		
 		
-		return "lecturePlanList";
+	/*	return "lecturePlanList";*/
 	}
 		
 	
 	//강의계획서 상세페이지
-	@RequestMapping(value = "/lecturePlanDetail", method = RequestMethod.POST)
-	public String lecturePlanDetail() {
+	@RequestMapping(value = "/lecturePlanDetail", method = RequestMethod.GET)
+	public String lecturePlanDetail(@RequestParam("subjectNo")int subjectNo,Model model) {
+		
+		SubjectDTO subjectDetail = registerService.getPlanDetail(subjectNo);
+		model.addAttribute("subjectDetail", subjectDetail);
 		
 		return "lecturePlanDetail";
 	}
 	
 	//수강신청페이지
 	@RequestMapping(value = "/enrollment", method = RequestMethod.GET)
-	public String enrolment() {
+	public String enrolment(HttpSession session, Model model) {
 		
 		//학생정보 가져오기
+		String studentId = (String)session.getAttribute("studentId");
+		
+		StudentDTO studentList = memberService.getStudentInfo(studentId);
+		model.addAttribute("studentList", studentList);
+		
 		
 		//수강신청 가능 목록 가져오기
+		
 				
 		//수강신청한 목록 가져오기
 		

@@ -19,6 +19,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
 	crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <title>메타대 학사정보시스템</title>
 </head>
@@ -40,15 +41,25 @@
 				<p class="fs-5 fw-bold">구분</p>
 				<p class="lead">
 					<div>
-					<form action="lecturePlanList" method="get">
-						<input type="radio" name="subjectName" value="subjectName" checked="checked">과목명 
-						<input type="radio" name="professorName" value="professorName">교수명 
-						<input type="radio" name="subjectId" value="subjectId">학수번호 
-						<input type="text" name="search"> <button type="submit" class="btn btn-outline-dark btn-sm">검색</button>
-					</form>
+						<input type="radio" name="subjectSearch" value="subjectName" checked="checked">과목명 
+						<input type="radio" name="subjectSearch" value="professorName">교수명 
+						<input type="radio" name="subjectSearch" value="subjectId">학수번호 
+						<input type="text" name="search"> <a type="submit" class="btn btn-outline-dark btn-sm" href="javascript:planSearch()">검색</a>
 					</div>
+					<script type="text/javascript">
+						function planSearch(){
+							$.ajax({
+								url:"lecturePlanList",
+								type:'POST',
+								data:{subjectSearch:subjectSearch},
+								success: function (data) {
+									$("#PlanList").html(data);
+								}
+							});
+						}
+					
+					</script>
 					<br>
-
 				</p>
 
 				<p>
@@ -70,42 +81,8 @@
 									<td colspan="5">조회된 Data가 없습니다.</td>
 								</tr>	
 							</c:if>
-							<c:if test="${lecturePlanList.subjectNo != null}">
-								<tr>
-								<td>2</td>
-								<td>101003</td>
-								<td><a href="#" style="color:black;text-decoration: none">데이터베이스</a></td>
-								<td>컴퓨터공학과</td>
-								<td>이교수</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>101002</td>
-									<td><a href="#" style="color:black;text-decoration: none">컴퓨터개론</a></td>
-									<td>컴퓨터공학과</td>
-									<td>박교수</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>101004</td>
-									<td><a href="#" style="color:black;text-decoration: none">Spring 프레임워크</a></td>
-									<td>소프트웨어공학과</td>
-									<td>다람쥐</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>101001</td>
-									<td><a href="#" style="color:black;text-decoration: none">객체지향 프로그래밍</a></td>
-									<td>컴퓨터공학과</td>
-									<td>김교수</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>101005</td>
-									<td><a href="#" style="color:black;text-decoration: none">컴파일러</a></td>
-									<td>컴퓨터공학과</td>
-									<td>송진국</td>
-								</tr>
+							<c:if test="${subjectList.subjectNo != null}">
+								<div class="PlanList"></div>
 							</c:if>
 							
 						</tbody>
@@ -119,6 +96,7 @@
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
+
 </body>
 
 </html>
