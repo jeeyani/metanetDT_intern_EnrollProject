@@ -28,6 +28,16 @@
 		      )  as lectureScore
 		FROM subjects s, departmentes d
 		WHERE s.department_no = d.department_no AND subj_semester=#{register.regSemester}
+		ORDER BY lectureScore desc
+	</select>
+	
+	<select id ="getRegisterList" resultType="com.oopsw.member.dto.RegisterDTO">
+		 SELECT r.subject_no as subjectNo, subj_group as subjGroup , subj_name as subjName, subj_score as subjScore
+		 		, subj_professor as subjProfessor, lect_date as lectDate, lect_start as lectStart, lect_end as lectEnd
+		 FROM registers r, subjects s
+		 WHERE r.subject_no = s.subject_no
+		 AND r.reg_year=#{register.regYear} AND r.reg_semester=#{register.regSemester}
+		 AND student_id = #{register.studentId}
 	</select>
 
 	<sql id="search">

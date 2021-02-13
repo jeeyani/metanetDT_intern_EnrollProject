@@ -122,103 +122,6 @@
 		                    <td style="color:blue; font-weight:bold">${list.lectureScore}</td>
 		                  </tr>
                 	</c:forEach>
-                  <!-- <tr>
-                    <td><button type="button" class="btn btn-outline-success btn-sm">신청</button></td>
-                    <td>00110</td>
-                    <td>전공심화</td>
-                    <td>Spring 프레임워크</td>
-                    <td>3</td>
-                    <td>소프트웨어공학과</td>
-                    <td>다람쥐</td>
-                    <td>목 6~7</td>
-                    <td>PL실</td>
-                    <td style="color:blue; font-weight:bold">4.6</td>
-                  </tr>
-                  <tr>
-                    <td><button type="button" class="btn btn-outline-success btn-sm">신청</button></td>
-                    <td>00130</td>
-                    <td>전공핵심</td>
-                    <td>객체지향</td>
-                    <td>2</td>
-                    <td>컴퓨터공학과</td>
-                    <td>사과몽</td>
-                    <td>화 2~4</td>
-                    <td>멀티미디어실습실</td>
-                    <td style="color:red; font-weight:bold">2.7</td>
-                  </tr>
-                  <tr>
-                    <td><button type="button" class="btn btn-outline-success btn-sm">신청</button></td>
-                    <td>00211</td>
-                    <td>전공필수</td>
-                    <td>C++ 프로그래밍</td>
-                    <td>3</td>
-                    <td>컴퓨터공학과</td>
-                    <td>딸기몽</td>
-                    <td>월 7~8</td>
-                    <td>PC실</td>
-                    <td style="color:blue; font-weight:bold">4.3</td>
-                  </tr>
-                  <tr>
-                    <td><button type="button" class="btn btn-outline-success btn-sm">신청</button></td>
-                    <td>00510</td>
-                    <td>전공심화</td>
-                    <td>컴파일러</td>
-                    <td>3</td>
-                    <td>컴퓨터공학과</td>
-                    <td>송진국</td>
-                    <td>수 1~4</td>
-                    <td>201호</td>
-                    <td style="color:darkgoldenrod; font-weight:bold">3.5</td>
-                  </tr>
-                  
-                  <tr>
-                    <td><button type="button" class="btn btn-outline-success btn-sm">신청</button></td>
-                    <td>00110</td>
-                    <td>전공심화</td>
-                    <td>Spring 프레임워크</td>
-                    <td>3</td>
-                    <td>소프트웨어공학과</td>
-                    <td>다람쥐</td>
-                    <td>목 6~7</td>
-                    <td>PL실</td>
-                    <td style="color:blue; font-weight:bold">4.6</td>
-                  </tr>
-                  <tr>
-                    <td><button type="button" class="btn btn-outline-success btn-sm">신청</button></td>
-                    <td>00130</td>
-                    <td>전공핵심</td>
-                    <td>객체지향</td>
-                    <td>2</td>
-                    <td>컴퓨터공학과</td>
-                    <td>사과몽</td>
-                    <td>화 2~4</td>
-                    <td>멀티미디어실습실</td>
-                    <td style="color:blue; font-weight:bold">4.2</td>
-                  </tr>
-                  <tr>
-                    <td><button type="button" class="btn btn-outline-success btn-sm">신청</button></td>
-                    <td>00211</td>
-                    <td>전공필수</td>
-                    <td>C++ 프로그래밍</td>
-                    <td>3</td>
-                    <td>컴퓨터공학과</td>
-                    <td>딸기몽</td>
-                    <td>월 7~8</td>
-                    <td>PC실</td>
-                    <td style="color:blue; font-weight:bold">4.3</td>
-                  </tr>
-                  <tr>
-                    <td><button type="button" class="btn btn-outline-success btn-sm">신청</button></td>
-                    <td>00510</td>
-                    <td>전공심화</td>
-                    <td>컴파일러</td>
-                    <td>3</td>
-                    <td>컴퓨터공학과</td>
-                    <td>송진국</td>
-                    <td>수 1~4</td>
-                    <td>201호</td>
-                    <td style="color:darkgoldenrod; font-weight:bold">3.5</td>
-                  </tr> -->
                 </tbody>
                 
               </table>
@@ -236,7 +139,7 @@
                     <th style="position:sticky; background-color: lightslategrey; top:0px;">학수번호</th>
                     <th style="position:sticky; background-color: lightslategrey; top:0px">이수구분</th>
                     <th style="position:sticky; background-color: lightslategrey; top:0px">과목명</th>
-                    <th style="position:sticky; background-color: lightslategrey; top:0px">시수</th>
+                    <th style="position:sticky; background-color: lightslategrey; top:0px">학점</th>
                     <th style="position:sticky; background-color: lightslategrey; top:0px">개설학과</th>
                     <th style="position:sticky; background-color: lightslategrey; top:0px">담당교수</th>
                     <th style="position:sticky; background-color: lightslategrey; top:0px">시간표</th>
@@ -244,52 +147,26 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td><button type="button" class="btn btn-outline-danger btn-sm">삭제</button></td>
-                    <td>00110</td>
-                    <td>전공심화</td>
-                    <td>Spring 프레임워크</td>
-                    <td>3</td>
-                    <td>소프트웨어공학과</td>
-                    <td>다람쥐</td>
-                    <td>목 6~7</td>
-                    <td>PL실</td>
-                  </tr>
-                  <tr>
-                    <td><button type="button" class="btn btn-outline-danger btn-sm">삭제</button></td>
-                    <td>00130</td>
-                    <td>전공핵심</td>
-                    <td>객체지향</td>
-                    <td>2</td>
-                    <td>컴퓨터공학과</td>
-                    <td>사과몽</td>
-                    <td>화 2~4</td>
-                    <td>멀티미디어실습실</td>
-                  </tr>
-                  <tr>
-                    <td><button type="button" class="btn btn-outline-danger btn-sm">삭제</button></td>
-                    <td>00211</td>
-                    <td>전공필수</td>
-                    <td>C++ 프로그래밍</td>
-                    <td>3</td>
-                    <td>컴퓨터공학과</td>
-                    <td>딸기몽</td>
-                    <td>월 7~8</td>
-                    <td>PC실</td>
-                  </tr>
-                  <tr>
-                    <td><button type="button" class="btn btn-outline-danger btn-sm">삭제</button></td>
-                    <td>00510</td>
-                    <td>전공심화</td>
-                    <td>컴파일러</td>
-                    <td>3</td>
-                    <td>컴퓨터공학과</td>
-                    <td>송진국</td>
-                    <td>수 1~4</td>
-                    <td>201호</td>
-                  </tr>
-                  
-                  
+<%--                 	<c:if test="${registerOKList eq null}">
+                		<tr>
+                			<td colspan="9"> 조회된 Data가 없습니다</td>
+                		</tr>
+                	</c:if>
+                	<c:if test ="${registerOKList ne null}"> --%>
+	                	<c:forEach var="list" items="${registerOKList}">
+	                		<tr>
+			                    <td><button type="button" class="btn btn-outline-danger btn-sm">삭제</button></td>
+			                    <td>${list.subjectNo}</td>
+			                    <td>${list.subjGroup}</td>
+			                    <td>${list.subjName}</td>
+			                    <td>${list.subjScore}</td>
+			                    <td>${list.deptName}</td>
+			                    <td>${list.subjProfessor}</td>
+			                    <td>${list.lectDate} ${list.lectStart}~${list.lectEnd}</td>
+			                    <td>${list.lectRoom}</td>
+			                  </tr>
+	                	</c:forEach>
+                <%-- 	</c:if> --%>
                 </tbody>
 
                 

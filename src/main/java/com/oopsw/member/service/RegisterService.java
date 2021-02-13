@@ -30,4 +30,9 @@ public class RegisterService {
 		return registerDAO.getSubjectList(register);
 	}
 
+	public Collection<RegisterDTO> getRegisterList(RegisterDTO register) {
+		
+		return registerDAO.getRegisterList(register);
+	}
+
 }

@@ -17,4 +17,6 @@ public interface RegisterDAO {
 
 	Collection<RegisterDTO> getSubjectList(@Param("register")RegisterDTO register);
 
+	Collection<RegisterDTO> getRegisterList(@Param("register")RegisterDTO register);
+
 }

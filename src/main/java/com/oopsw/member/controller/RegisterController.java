@@ -87,16 +87,16 @@ public class RegisterController {
 	
 	//수강신청페이지
 	@RequestMapping(value = "/enrollment", method = RequestMethod.GET)
-	public String enrolment(HttpSession session, Model model,RegisterDTO register) {
+	public String enrolment(HttpSession session, Model model,RegisterDTO register, RegisterDTO registerOK) {
 		
-		//학생정보 가져오기
+		//1.학생정보 가져오기
 		String studentId = (String)session.getAttribute("studentId");
 		
 		StudentDTO studentList = memberService.getStudentInfo(studentId);
 		model.addAttribute("studentList", studentList);
 		
 		
-		//수강신청 가능 목록 가져오기
+		//2.수강신청 가능 목록 가져오기
 		
 		//올해가 몇학기 인지 계산
 		Calendar cal = Calendar.getInstance();
@@ -119,15 +119,15 @@ public class RegisterController {
 		int year = cal.get(Calendar.YEAR);
 		register.setRegYear(year-1);
 		
-		logger.info("작년: "+register.getRegYear());
-		logger.info("학기: "+register.getRegSemester());
-		
+
 		Collection<RegisterDTO> registerList = registerService.getSubjectList(register);
 		model.addAttribute("registerList",registerList);
 		
 		
-		//수강신청한 목록 가져오기
-		
+		//3.수강신청한 목록 가져오기
+		register.setRegYear(year);
+		Collection<RegisterDTO> registerOKList = registerService.getRegisterList(register);
+		model.addAttribute("registerOKList",registerOKList);
 		
 		return "enrollment";
 	}
