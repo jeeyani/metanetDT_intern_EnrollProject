@@ -11,11 +11,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-    crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    	integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+		    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+		    crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <jsp:useBean id="now" class="java.util.Date"></jsp:useBean>
   <title>메타대 학사정보시스템</title>
@@ -54,44 +55,42 @@
             </table>
           </p>
 
-          
-          
-          <p class=" col-auto fs-5 fw-bold" style="width:300px">수강가능목록</p>
-          <div class="row g-3 align-items-center">
-            
+			<p class=" col-auto fs-5 fw-bold" style="width: 300px">수강가능목록</p>
+			<div class="row g-3 align-items-center">
+			
+					<div class="col-auto">
+						<label for="deptno" class="col-form-label"
+							style="font-weight: bold">학수번호</label>
+					</div>
+					<div class="col-auto">
+						<input type="text" id="deptno" class="form-control" name="deptno" aria-describedby="passwordHelpInline">
+					</div>
+					<div class="col-auto">
+						<label for="deptgroup" class="col-form-label" style="font-weight: bold">이수구분</label>
+					</div>
+					<div class="col-auto">
+						<select id="deptgroup" name="deptgroup" class="form-select">
+							<option selected>선택</option>
+							<option value="1">전공선택</option>
+							<option value="2">전공필수</option>
+							<option value="3">교양선택</option>
+							<option value="4">교양필수</option>
+						</select>
+					</div>
+					<div class="col-auto">
+						<label for="deptname" class="col-form-label" style="font-weight: bold">과목명</label>
+					</div>
+					<div class="col-auto">
+						<input type="text" id="deptname" class="form-control" name="deptname" aria-describedby="passwordHelpInline">
+					</div>
+					<div class="col-auto">
+						<a type="submit" class="btn btn-outline-dark" href="javascript:selectSubject()">조회</a>
+					</div>
+			</div>
+			
+			<p></p>
 
-              <div class="col-auto">
-                <label for="deptno" class="col-form-label" style="font-weight:bold">학수번호</label>
-              </div>
-              <div class="col-auto">
-                <input type="text" id="deptno" class="form-control" aria-describedby="passwordHelpInline">
-              </div>
-              <div class="col-auto">
-                <label for="deptgroup" class="col-form-label" style="font-weight:bold">이수구분</label>
-              </div>
-              <div class="col-auto">
-                <select id="deptgroup" class="form-select">
-                  <option selected>선택</option>
-                  <option value="1">전공핵심</option>
-                  <option value="2">전공필수</option>
-                  <option value="3">전공심화</option>
-                  <option value="4">교양필수</option>
-                </select>
-              </div>
-              <div class="col-auto">
-                <label for="deptname" class="col-form-label" style="font-weight:bold">과목명</label>
-              </div>
-              <div class="col-auto">
-                <input type="text" id="deptname" class="form-control" aria-describedby="passwordHelpInline">
-              </div>
-              <div class="col-auto">
-                <button type="button" class="btn btn-outline-dark">조회</button>
-              </div>
-
-          </div>
-          <p></p>
-
-            <div style="overflow-y:auto; height:300px">
+            <div style="overflow-y:auto; height:300px" id="selectList">
               <table class="table table-striped table-hover" style="border-collapse: collapse; text-align: center; vertical-align:middle">
                 <thead>
                   <tr style="color: white;">
@@ -107,7 +106,9 @@
                     <th style="position:sticky; background-color: lightslategrey; top:0px">강의평가점수</th>
                   </tr>
                 </thead>
+               
                 <tbody>
+                	
                 	<c:forEach var="list" items="${registerList}">
                 		<tr>
 		                    <td><a type="submit" class="btn btn-outline-success btn-sm" href="<%=application.getContextPath()%>/enrolmentAdd?subjectNo=${list.subjectNo}">신청</a></td>
@@ -123,7 +124,7 @@
 		                  </tr>
                 	</c:forEach>
                 </tbody>
-                
+       
               </table>
             </div>
           </p>
@@ -180,6 +181,19 @@
   </div>
   
   <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
+  
+  <script type="text/javascript">
+		function selectSubject(){
+			$.ajax({
+				url:"enrollmenAction",
+				type:"POST",
+				data:{deptno:deptno, deptgroup:deptgroup, deptname:deptname},
+				success: function (data) {
+					$("#selectList").html(data);
+				}
+			});
+		}
+	</script>
   
 </body>
 

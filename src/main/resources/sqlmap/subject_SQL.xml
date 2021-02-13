@@ -5,7 +5,7 @@
 	<select id="getNameList" resultType="com.oopsw.member.dto.StudentDTO"> 
 		 SELECT s.subject_no,subj_name,subj_score,dep.dept_name,subj_professor
 		 FROM subjects s, departmentes dep
-		 WHERE dep.department_no = s.department_no <include refid="search"></include>
+		 WHERE dep.department_no = s.department_no
 	</select>
 	<select id="getPlanDetail" resultType="com.oopsw.member.dto.StudentDTO"> 
 		 SELECT s.subject_no,subj_name,subj_score,dep.dept_name,subj_professor,lect_date,lect_start,lect_end,lect_room,outline,proceed,note,evaluation,progress_plan
@@ -42,6 +42,25 @@
 		 AND student_id = #{register.studentId}
 	</select>
 	
+	<select id="getSelectList" resultType="com.oopsw.member.dto.RegisterDTO">
+		 SELECT r.subject_no as, subj_group, subj_name, subj_score, subj_name, subj_professor, lect_date, lect_start, lect_end
+		 FROM registers r, subjects s, departmentes d
+		 WHERE r.subject_no = s.subject_no
+		 AND s.department_no = d.department_no
+		 AND r.reg_year=#{register.regYear} AND r.reg_semester=#{register.regSemester}
+		 AND s.subject_no=#{register.subjectNo} 
+	</select>
+	
+	<select id="getTimeTable" resultType="com.oopsw.member.dto.SubjectDTO"> 
+		 SELECT s.subj_group as subjGroup, s.subj_name as subjName, s.subj_score as subjScore, d.dept_name as deptName, s.subj_professor as subjProfessor,
+		  lect_date as lectDate, lect_start as lectStart, lect_end as lectEnd, lect_room as lectRoom 
+		 FROM registers r, departmentes d, subjects s 
+		 WHERE r.subject_no = s.subject_no 
+		 AND s.department_no = d.department_no 
+		 AND student_id=#{studentId}
+		 AND r.reg_year=#{regYear} AND r.reg_semester=#{regSemester}
+	</select>
+	
 	<insert id="setRegister" parameterType="com.oopsw.member.dto.RegisterDTO">
 		insert into registers(register_no, reg_year, reg_semester, student_id, subject_no)
  		values(registers_seq.NEXTVAL, #{register.regYear}, #{register.regSemester}, #{register.studentId}, #{register.subjectNo})
@@ -57,6 +76,72 @@
 			<if test="searchType == 's'.toString()">AND s.subj_name LIKE '%'||#{search}||'%'</if>
 			<if test="searchType == 'p'.toString()">AND s.subj_professor LIKE '%'||#{search}||'%'</if>
 			<if test="searchType == 'n'.toString()">AND s.subject_no LIKE '%'||#{search}||'%'</if>
+		</if>
+	</sql>
+	
+	<sql id="subjectSearch">
+		<if test="register.subjectNo !=null">
+			AND s.subject_no=#{register.subjectNo}
+			<if test="register.subjGroup !=null">
+				AND s.subject_no=#{register.subjectNo} 
+				AND s.subj_group=#{register.subjGroup}	
+				<if test="register.deptName !=null">
+					AND s.subject_no=#{register.subjectNo} 
+					AND s.subj_group=#{register.subjGroup}
+					AND d.dept_name=#{register.deptName}
+				</if>		
+			</if>
+			<if test="register.deptName !=null">
+				AND s.subject_no=#{register.subjectNo} 
+				AND d.dept_name=#{register.deptName}
+				<if test="register.subjGroup !=null">
+					AND s.subject_no=#{register.subjectNo} 
+					AND s.subj_group=#{register.subjGroup}
+					AND d.dept_name=#{register.deptName}
+				</if>		
+			</if>
+		</if>
+		<if test="register.subjGroup !=null">
+			AND s.subj_group=#{register.subjGroup}
+			<if test="register.subjectNo !=null">
+				AND s.subj_group=#{register.subjGroup}
+				AND s.subject_no=#{register.subjectNo} 
+				<if test="register.deptName !=null">
+					AND s.subj_group=#{register.subjGroup}
+					AND s.subject_no=#{register.subjectNo}
+					AND d.dept_name=#{register.deptName}
+				</if>
+			</if>
+			<if test="register.deptName !=null">
+				AND s.subj_group=#{register.subjGroup}
+				AND d.dept_name=#{register.deptName}
+				<if test="register.subjectNo !=null">
+					AND s.subj_group=#{register.subjGroup}
+					AND s.subject_no=#{register.subjectNo}
+					AND d.dept_name=#{register.deptName}
+				</if>
+			</if>
+		</if>
+		<if test="register.deptName !=null">
+			AND d.dept_name=#{register.deptName}
+			<if test="register.subjectNo !=null">
+				AND d.dept_name=#{register.deptName}
+				AND s.subject_no=#{register.subjectNo}
+				<if test="register.subjGroup !=null">
+					AND s.subj_group=#{register.subjGroup}
+					AND s.subject_no=#{register.subjectNo}
+					AND d.dept_name=#{register.deptName}
+				</if>
+			</if>
+			<if test="register.subjGroup !=null">
+				AND d.dept_name=#{register.deptName}
+				AND s.subject_no=#{register.subjectNo}
+				<if test="register.subjectNo !=null">
+					AND s.subj_group=#{register.subjGroup}
+					AND s.subject_no=#{register.subjectNo}
+					AND d.dept_name=#{register.deptName}
+				</if>
+			</if>
 		</if>
 	</sql>
 
