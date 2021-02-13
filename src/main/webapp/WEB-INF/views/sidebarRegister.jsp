@@ -10,7 +10,7 @@
 			<li class="nav-item">
 				<div class="bg-light p-3 rounded">
 					<p>반갑습니다 ${studentList.name}님</p>
-					<button type="button" class="btn btn-outline-danger btn-sm" href="<%=application.getContextPath()%>/logoutAction" style="text-decoration: none">Logout</button>
+					<a type="button" class="btn btn-outline-danger btn-sm" href="<%=application.getContextPath()%>/logoutAction" style="text-decoration: none">Logout</a>
 				</div>
 			</li>
 			<p></p>
