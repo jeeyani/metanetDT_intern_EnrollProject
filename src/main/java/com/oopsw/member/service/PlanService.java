@@ -16,9 +16,9 @@ public class PlanService {
 	@Autowired
 	private PlanDAO planDAO;
 	
-	public Collection<SubjectDTO> getNameList(String subjectName) {
+	public Collection<SubjectDTO> getSelectPlanList(SubjectDTO search) {
 		
-		return planDAO.getNameList(subjectName);
+		return planDAO.getSelectPlanList(search);
 	}
 
 	public SubjectDTO getPlanDetail(int subjectNo) {

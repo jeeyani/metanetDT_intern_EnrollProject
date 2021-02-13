@@ -41,31 +41,26 @@
 				<p class="fs-5 fw-bold">구분</p>
 				<p class="lead">
 					<div>
-						<input type="radio" name="subjectSearch" value="subjectName" checked="checked">과목명 
-						<input type="radio" name="subjectSearch" value="professorName">교수명 
-						<input type="radio" name="subjectSearch" value="subjectId">학수번호 
-						<input type="text" name="search"> <a type="submit" class="btn btn-outline-dark btn-sm" href="javascript:planSearch()">검색</a>
+						<input type="radio" name="subjectSearch" value="s" checked="checked">과목명 
+						<input type="radio" name="subjectSearch" value="p">교수명 
+						<input type="radio" name="subjectSearch" value="n">학수번호 
+						<input type="text" id="search" name="search"> <a type="submit" class="btn btn-outline-dark btn-sm" href="javascript:planSearch()">검색</a>
 					</div>
-					<script type="text/javascript">
-						function planSearch(){
-							$.ajax({
-								url:"lecturePlanList",
-								type:'POST',
-								data:{subjectSearch:subjectSearch},
-								success: function (data) {
-									$("#PlanList").html(data);
-								}
-							});
-						}
 					
-					</script>
 					<br>
 				</p>
 
 				<p>
-				<div style="overflow-y: auto; height: 300px">
+				<div style="overflow-y: auto; height: 300px" id="PlanList">
 					<table class="table table-striped table-hover"
 						style="border-collapse: collapse; text-align: center; vertical-align: middle">
+						<colgroup>
+							<col width="15%">
+							<col width="15%">
+							<col width="30%">
+							<col width="20%">
+							<col width="*">
+						</colgroup>
 						<thead>
 							<tr style="color: white;">
 								<th style="position: sticky; background-color: lightslategrey; top: 0px">학기</th>
@@ -75,16 +70,10 @@
 								<th style="position: sticky; background-color: lightslategrey; top: 0px">담당교수</th>
 							</tr>
 						</thead>
-						<tbody>
-							<c:if test="${lecturePlanList.subjectNo == null}">
-								<tr>
-									<td colspan="5">조회된 Data가 없습니다.</td>
-								</tr>	
-							</c:if>
-							<c:if test="${subjectList.subjectNo != null}">
-								<div class="PlanList"></div>
-							</c:if>
-							
+						<tbody>	
+							<tr>
+								<td colspan="5">조회된 Data가 없습니다.</td>
+							</tr>	
 						</tbody>
 
 					</table>
@@ -98,5 +87,22 @@
 	<jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
 
 </body>
+<script type="text/javascript">
+	
+	function planSearch(){
+		var radioItem = $('input[name="subjectSearch"]:checked').val();
+		var searchTest = $('input#search').val();
 
+		
+		$.ajax({
+			url:"lecturePlanList",
+			type:"POST",
+			data:{"radioItem":radioItem, "searchTest":searchTest},
+			success: function (data) {
+				$("#PlanList").html(data);
+			}
+		});
+	}
+
+</script>
 </html>

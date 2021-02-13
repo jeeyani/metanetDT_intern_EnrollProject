@@ -59,20 +59,18 @@ public class PlanController {
 	}
 	
 	//강의계획서페이지조회버튼 클릭
-	@RequestMapping(value = "/lecturePlanList", method = RequestMethod.GET)
+	@RequestMapping(value = "/lecturePlanList", method = RequestMethod.POST)
 	public String lecturePlanList(HttpServletRequest request,Model model,SubjectDTO search) {
 		
-		logger.info("searchNAME:   "+search.getSearch());
+		search.setRadioItem(request.getParameter("radioItem"));
+		search.setSearch(request.getParameter("searchTest"));
 
-		String subjectName = request.getParameter("subjectName");
-		Collection<SubjectDTO> subjectList = planService.getNameList(subjectName);
+
+		Collection<SubjectDTO> subjectList = planService.getSelectPlanList(search);
 		model.addAttribute("subjectList", subjectList);
 		
-		return "lectureNamePlanList";
+		return "lectureSelectPlanList";
 
-		
-		
-	/*	return "lecturePlanList";*/
 	}
 		
 	

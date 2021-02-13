@@ -2,22 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="com.oopsw.member.dao.PlanDAO"> 
 	
-	<select id="getNameList" resultType="com.oopsw.member.dto.StudentDTO"> 
-		 SELECT s.subject_no,subj_name,subj_score,dep.dept_name,subj_professor
+	<select id="getSelectPlanList" resultType="com.oopsw.member.dto.SubjectDTO"> 
+		 SELECT s.subject_no as subjectNo, subj_name as subjName,subj_score as subjScore
+		 		,dep.dept_name as deptName,subj_professor as subjProfessor, subj_semester as subjSemester
 		 FROM subjects s, departmentes dep
 		 WHERE dep.department_no = s.department_no
+		 <include refid="searchitem"/>
 	</select>
-	<select id="getPlanDetail" resultType="com.oopsw.member.dto.StudentDTO"> 
-		 SELECT s.subject_no,subj_name,subj_score,dep.dept_name,subj_professor,lect_date,lect_start,lect_end,lect_room,outline,proceed,note,evaluation,progress_plan
+	
+	<select id="getPlanDetail" resultType="com.oopsw.member.dto.SubjectDTO"> 
+		 SELECT s.subject_no as subjectNo,subj_name as subjName,subj_score as subjScore,subj_semester as subjSemester
+		 		,dep.dept_name deptName,subj_professor as subjProfessor,lect_date as lectDate, subj_group as subjGroup
+		 		,lect_start as lectStart,lect_end as lectEnd,lect_room as lectRoom
+		 		,outline,proceed,note,evaluation,progress_plan as progressPlan
 		 FROM subjects s, departmentes dep
 		 WHERE dep.department_no = s.department_no AND s.subject_no =#{subjectNo}
 	</select>
+	
+	
 
-	<sql id="search">
-		<if test="searchType != null">
-			<if test="searchType == 's'.toString()">AND s.subj_name LIKE '%'||#{search}||'%'</if>
-			<if test="searchType == 'p'.toString()">AND s.subj_professor LIKE '%'||#{search}||'%'</if>
-			<if test="searchType == 'n'.toString()">AND s.subject_no LIKE '%'||#{search}||'%'</if>
+	<sql id="searchitem">
+		<if test="search.radioItem != null">
+			<if test="search.radioItem == 's'.toString()">AND s.subj_name LIKE '%'||#{search.search}||'%'</if>
+			<if test="search.radioItem == 'p'.toString()">AND s.subj_professor LIKE '%'||#{search.search}||'%'</if>
+			<if test="search.radioItem == 'n'.toString()">AND s.subject_no LIKE '%'||#{search.search}||'%'</if>
 		</if>
 	</sql>
 

@@ -61,8 +61,8 @@
 							<tr>
 								<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">학수구분</th>
 								<td>${subjectDetail.subjGroup}</td>
-								<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">평가방법</th>
-								<td>이거컬럼...없네?</td>
+								<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">강의실</th>
+								<td>${subjectDetail.lectRoom}</td>
 							</tr>
 							<tr>
 								<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">학점구성</th>

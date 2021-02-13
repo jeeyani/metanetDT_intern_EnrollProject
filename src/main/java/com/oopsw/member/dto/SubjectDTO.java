@@ -3,6 +3,7 @@ package com.oopsw.member.dto;
 public class SubjectDTO {
 
 	//검색 항목
+	private String radioItem;
 	private String search;
 	
 	//교과목정보
@@ -138,22 +139,22 @@ public class SubjectDTO {
 	public void setProgressPlan(String progressPlan) {
 		this.progressPlan = progressPlan;
 	}
+	
+	
+	public String getRadioItem() {
+		return radioItem;
+	}
+	public void setRadioItem(String radioItem) {
+		this.radioItem = radioItem;
+	}
 	@Override
 	public String toString() {
-		return "SubjectDTO [search=" + search + ", subjectNo=" + subjectNo + ", subjGroup=" + subjGroup + ", subjName="
-				+ subjName + ", subjSemester=" + subjSemester + ", subjScore=" + subjScore + ", subjProfessor="
-				+ subjProfessor + ", lectDate=" + lectDate + ", lectStart=" + lectStart + ", lectEnd=" + lectEnd
-				+ ", lectRoom=" + lectRoom + ", deptmentNo=" + deptmentNo + ", deptName=" + deptName + ", outline="
-				+ outline + ", proceed=" + proceed + ", note=" + note + ", evaluation=" + evaluation + ", progressPlan="
-				+ progressPlan + "]";
+		return "SubjectDTO [radioItem=" + radioItem + ", search=" + search + ", subjectNo=" + subjectNo + ", subjGroup="
+				+ subjGroup + ", subjName=" + subjName + ", subjSemester=" + subjSemester + ", subjScore=" + subjScore
+				+ ", subjProfessor=" + subjProfessor + ", lectDate=" + lectDate + ", lectStart=" + lectStart
+				+ ", lectEnd=" + lectEnd + ", lectRoom=" + lectRoom + ", deptmentNo=" + deptmentNo + ", deptName="
+				+ deptName + ", outline=" + outline + ", proceed=" + proceed + ", note=" + note + ", evaluation="
+				+ evaluation + ", progressPlan=" + progressPlan + "]";
 	}
-	
-	
 
-	
-	
-	
-	
-	
-	
 }
