@@ -88,10 +88,10 @@
 						<td>${gradeDTO.deptName}</td>
 						<td>${gradeDTO.subjProfessor}</td>
 						<td>
-						<c:if test="${empty gradeDTO.evalHow}">
+						<c:if test="${gradeDTO.evalHow ne ''}">
 							<button type="button" class="btn btn-outline-success btn-sm" diasbled>응시</button>
 						</c:if>
-						<c:if test="${not empty gradeDTO.evalHow}">
+						<c:if test="${gradeDTO.evalHow eq ''}">
 							<form method="post" action="evaluationDetail">
 								<input type="hidden" name="registerNo" value="${gradeDTO.registerNo}"/>
 								<button type="submit" class="btn btn-outline-danger btn-sm">미응시</button>

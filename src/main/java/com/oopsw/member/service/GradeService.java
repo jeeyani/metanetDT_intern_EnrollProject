@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.oopsw.member.dao.GradeDAO;
+import com.oopsw.member.dto.EvaluationDTO;
 import com.oopsw.member.dto.GradeDTO;
 import com.oopsw.member.dto.RegisterDTO;
 
@@ -21,9 +22,8 @@ public class GradeService {
 	}
 	
 	
-	public int setEval(int evalHow, int evalPlanning, int evalGoal, int evalConsider, int evalTest, int registerNo) {
-		System.out.println("check setEval pre");
-		return gradeDAO.setEval(evalHow, evalPlanning, evalGoal, evalConsider, evalTest, registerNo);
+	public int setEval(EvaluationDTO evaluationDTO) {
+		return gradeDAO.setEval(evaluationDTO);
 	}
 
 

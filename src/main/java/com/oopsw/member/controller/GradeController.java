@@ -2,6 +2,8 @@ package com.oopsw.member.controller;
 
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.oopsw.member.dto.EvaluationDTO;
 import com.oopsw.member.dto.GradeDTO;
 import com.oopsw.member.dto.RegisterDTO;
 import com.oopsw.member.dto.StudentDTO;
@@ -57,7 +60,7 @@ public class GradeController {
 		/*Collection<GradeDTO> evaluationList = 
 				gradeService.getEvalList((String)session.getAttribute("studentId"), Calendar.getInstance().get(Calendar.YEAR), semester);*/
 		Collection<GradeDTO> evaluationList = 
-				gradeService.getEvalList((String)session.getAttribute("studentId"), 2020, "1");
+				gradeService.getEvalList((String)session.getAttribute("studentId"), 2020, "2");
 		StudentDTO studentInfo = memberService.getStudentInfo((String)session.getAttribute("studentId"));
 		
 		model.addAttribute("evaluationList", evaluationList);
@@ -78,27 +81,24 @@ public class GradeController {
 	
 	@RequestMapping(value = "/evaluationDetailAction", method = RequestMethod.POST)
 	public String evaluationDetailAction(HttpServletRequest request){
-		System.out.println("check evaluationDetailAction pre");
-		
-		int result = gradeService.setEval( 
+
+		EvaluationDTO evaluationDTO = new EvaluationDTO(
+				Integer.parseInt(request.getParameter("registerNo")),
 				Integer.parseInt(request.getParameter("radioEvalHow")),
 				Integer.parseInt(request.getParameter("radioEvalPlanning")),
 				Integer.parseInt(request.getParameter("radioEvalGoal")),
 				Integer.parseInt(request.getParameter("radioEvalConsider")),
-				Integer.parseInt(request.getParameter("radioEvalTest")),
-				Integer.parseInt(request.getParameter("registerNo")));
-		
-		System.out.println("check evaluationDetailAction post");
-		System.out.println(Integer.parseInt(request.getParameter("registerNo")));
-		System.out.println(Integer.parseInt(request.getParameter("radioEvalHow")));
+				Integer.parseInt(request.getParameter("radioEvalTest")));
+		System.out.println(evaluationDTO);
+		int result = gradeService.setEval(evaluationDTO);
+					
 		System.out.println(result);
 		
 		if(result != 1)
-			return "evaluationDetail";		
+			return "redirect:evaluationDetail";		
 		return "redirect:evaluationList";
 	}
-	
-	//�б⺰ ���� UI
+
 	@RequestMapping(value = "/gradeSemester")
 	public String gradeSemester(HttpServletRequest request, Model model){ 
 		

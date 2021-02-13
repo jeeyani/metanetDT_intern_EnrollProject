@@ -4,14 +4,14 @@ import java.util.Collection;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.oopsw.member.dto.EvaluationDTO;
 import com.oopsw.member.dto.GradeDTO;
 import com.oopsw.member.dto.RegisterDTO;
 
 public interface GradeDAO {
 	public Collection<GradeDTO> getEvalList(@Param("studentId")String id, @Param("regYear")int regYear, @Param("regSemester")String regSemester);
 
-	public int setEval(@Param("evalHow")int evalHow, @Param("evalPlanning")int evalPlanning, @Param("evalGoal")int evalGoal, 
-			@Param("evalConsider")int evalConsider, @Param("evalTest")int evalTest, @Param("registerNo")int registerNo);
+	public int setEval(EvaluationDTO evaluationDTO);
 
 	public Collection<GradeDTO> getSemGradeList(@Param("studentId")String studentId, @Param("regYear")int regYear, @Param("regSemester")String regSemester);
 

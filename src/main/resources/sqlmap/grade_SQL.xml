@@ -43,10 +43,10 @@
 		AND register_no=#{registerNo}
 	</select>
 	
-	<select id="setEval" resultType="java.lang.Integer">
+	<update id="setEval" parameterType="com.oopsw.member.dto.EvaluationDTO">
 		UPDATE registers SET eval_how=#{evalHow}, eval_planning=#{evalPlanning}, eval_goal=#{evalGoal}, eval_consider=#{evalConsider}, eval_test=#{evalTest} 
  		WHERE register_no=#{registerNo}
-	</select>
+	</update>
 	
 	
 </mapper>
