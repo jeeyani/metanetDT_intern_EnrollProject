@@ -127,7 +127,7 @@
  				{
  					if(i >= "${course.lectStart}" && i <= "${course.lectEnd}") 
  					{
- 						row.insertCell().innerHTML="${course.deptName}";
+ 						row.insertCell().innerHTML="${course.subjName}";
  						temp = 1;
  					}
  				}

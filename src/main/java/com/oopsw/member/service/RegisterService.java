@@ -46,6 +46,16 @@ public class RegisterService {
 		return registerDAO.deleteRegister(register);
 	}
 
+	public Collection<RegisterDTO> getSelectList(RegisterDTO register) {
 
+		return registerDAO.getSelectList(register);
+	}
+
+/*	@Autowired
+	private TimetableDAO timetableDAO;*/
+	
+	public Collection<SubjectDTO> getTimeTable(String studentId, int regYear, String regSemester){
+		return registerDAO.getTimeTable(studentId, regYear, regSemester);
+	}
 
 }

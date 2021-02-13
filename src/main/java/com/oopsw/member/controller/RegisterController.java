@@ -38,6 +38,7 @@ public class RegisterController {
 	@Autowired
 	private MemberService memberService;
 	
+	
 	private static final Logger logger = LoggerFactory.getLogger(RegisterController.class);
 	
 	
@@ -101,8 +102,6 @@ public class RegisterController {
 		//올해가 몇학기 인지 계산
 		int month = Calendar.getInstance().get(Calendar.MONTH)+1;
 
-		logger.info(""+month);
-		
 		switch(month){
 		case 1:case 2:
 			register.setRegSemester("1");
@@ -142,6 +141,50 @@ public class RegisterController {
 		model.addAttribute("registerOKList",registerOKList);
 		
 		return "enrollment";
+	}
+	
+	//수강신청 조회하기
+	@RequestMapping(value="/enrollmenAction", method=RequestMethod.POST)
+	public String enrollmenAction(HttpServletRequest request,Model model,RegisterDTO register){
+		
+		
+		String deptno=request.getParameter("deptno");
+		register.setSubjectNo(Integer.parseInt(deptno));
+		register.setSubjGroup(request.getParameter("deptgroup"));
+		
+		logger.info("=================================="+deptno);
+		
+		register.setDeptName(request.getParameter("deptname"));
+		
+		//올해가 몇학기 인지 계산
+		int month = Calendar.getInstance().get(Calendar.MONTH)+1;
+		
+		switch(month){
+		case 1:case 2:
+			register.setRegSemester("1");
+			break;
+		case 7: case 8:
+			register.setRegSemester("2");
+			break;
+		case 3:case 4:case 5:case 6:
+			register.setRegSemester("s");
+			break;
+		case 9:case 10:case 11:case 12:
+			register.setRegSemester("f");
+			break;
+		default:
+			register.setRegSemester("error");
+			break;
+		}
+		
+		int year = Calendar.getInstance().get(Calendar.YEAR);
+		register.setRegYear(year);
+		
+		
+		Collection<RegisterDTO> selectList = registerService.getSelectList(register);
+		model.addAttribute("registerList", selectList);
+		
+		return "enrollmentSelect";
 	}
 	
 	//수강신청하기
@@ -226,7 +269,45 @@ public class RegisterController {
 		return "redirect:enrollment";
 	}
 	
-	
+	//시간표조회페이지가져오기
+	@RequestMapping(value = "/timetable")
+	public String timetable(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		
+		
+		int month = Calendar.getInstance().get(Calendar.MONTH)+1;
+		String semester = "";
+		switch(month){
+		case 1:case 2:
+			semester = "f";
+		case 7: case 8:
+			semester = "s";
+		case 3:case 4:case 5:case 6:
+			semester = "1";
+		case 9:case 10:case 11:case 12:
+			semester = "2";
+		default:
+			semester = "error";
+		}
+		
+		String studentId = session.getAttribute("studentId").toString();
+		System.out.println(studentId);
+		
+		// 이방식이 옳다.
+		//Collection<SubjectDTO> semesterGradeList = timetableService.getTimeTable(
+		//	session.getAttribute("studentId"), Calendar.getInstance().get(Calendar.YEAR), semester);
+		
+		// 임시로 2020년 2학기 정보 출력.
+		Collection<SubjectDTO> courseList = registerService.getTimeTable(studentId, 2020, "1");		
+		StudentDTO studentInfo = memberService.getStudentInfo(studentId);
+		
+		model.addAttribute("courseList", courseList);
+		model.addAttribute("studentInfo", studentInfo);
+		
+		System.out.println(courseList);
+		
+		return "timetable";
+	}
 	
 	
 }

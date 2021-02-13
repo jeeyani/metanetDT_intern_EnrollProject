@@ -11,17 +11,19 @@ import com.oopsw.member.dto.SubjectDTO;
 @Repository
 public interface RegisterDAO {
 
-	Collection<SubjectDTO> getNameList(@Param("subjectName")String subjectName);
+	public Collection<SubjectDTO> getNameList(@Param("subjectName")String subjectName);
 
-	SubjectDTO getPlanDetail(@Param("subjectNo")int subjectNo);
+	public SubjectDTO getPlanDetail(@Param("subjectNo")int subjectNo);
 
-	Collection<RegisterDTO> getSubjectList(@Param("register")RegisterDTO register);
+	public Collection<RegisterDTO> getSubjectList(@Param("register")RegisterDTO register);
 
-	Collection<RegisterDTO> getRegisterList(@Param("register")RegisterDTO register);
+	public Collection<RegisterDTO> getRegisterList(@Param("register")RegisterDTO register);
 
-	int setRegister(@Param("register")RegisterDTO register);
+	public int setRegister(@Param("register")RegisterDTO register);
 
-	int deleteRegister(@Param("register")RegisterDTO register);
+	public int deleteRegister(@Param("register")RegisterDTO register);
 
+	public Collection<RegisterDTO> getSelectList(@Param("register")RegisterDTO register);
 
+	public Collection<SubjectDTO> getTimeTable(@Param("studentId")String studentId, @Param("regYear")int regYear, @Param("regSemester")String regSemester);
 }
