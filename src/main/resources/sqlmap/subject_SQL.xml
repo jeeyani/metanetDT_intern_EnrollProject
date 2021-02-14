@@ -111,9 +111,9 @@
 
 	<sql id="searchitem">
 		<if test="search.radioItem != null">
-			<if test="search.radioItem == 's'.toString()">AND s.subj_name LIKE '%'||#{search.search}||'%'</if>
-			<if test="search.radioItem == 'p'.toString()">AND s.subj_professor LIKE '%'||#{search.search}||'%'</if>
-			<if test="search.radioItem == 'n'.toString()">AND s.subject_no LIKE '%'||#{search.search}||'%'</if>
+			<if test="search.radioItem == 's'.toString()">AND s.subj_name LIKE '%'||#{search.search}||'%' ORDER BY subj_name ASC</if>
+			<if test="search.radioItem == 'p'.toString()">AND s.subj_professor LIKE '%'||#{search.search}||'%' ORDER BY subj_professor ASC</if>
+			<if test="search.radioItem == 'n'.toString()">AND s.subject_no LIKE '%'||#{search.search}||'%' ORDER BY subject_no ASC</if>
 		</if>
 	</sql>
 	
