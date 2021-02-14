@@ -76,11 +76,11 @@
                   <tbody>
                     <tr>
                       <th style="background-color: rgb(187, 196, 204);;">학번</th>
-                      <td>${studentInfo.studentId }</td>
+                      <td>${studentList.studentId }</td>
                       <th style=" background-color: rgb(187, 196, 204);;">성명</th>
-                      <td>${studentInfo.name}</td>
+                      <td>${studentList.name}</td>
                       <th style=" background-color: rgb(187, 196, 204);;">전공</th>
-                      <td>${studentInfo.deptName }</td>
+                      <td>${studentList.deptName }</td>
                     </tr>
                   </tbody>
                 </table>    

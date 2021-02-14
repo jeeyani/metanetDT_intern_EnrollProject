@@ -138,9 +138,13 @@ public class GradeController {
 	}
 	
 	@RequestMapping(value = "/gradeSemesterAction", method = RequestMethod.POST)
-	public String gradeSemesterAction(HttpServletRequest request, Model model){ 
-
-		HttpSession session = request.getSession();
+	public String gradeSemesterAction(HttpServletRequest request, Model model, HttpSession session){ 
+		//이름가져오기
+		String studentId =(String)session.getAttribute("studentId");
+		StudentDTO studentList= memberService.getStudentInfo(studentId);
+		model.addAttribute("studentList", studentList);
+		
+		session = request.getSession();
 		String regYear = request.getParameter("regYear");
 		String regSemester = request.getParameter("regSemester");
 		

@@ -210,7 +210,7 @@ public class RegisterController {
 		
 		int year = Calendar.getInstance().get(Calendar.YEAR-1);
 		//register.setRegYear(year);
-		register.setRegYear(2020);
+		register.setRegYear(2021);
 		
 		
 		Collection<RegisterDTO> registerList = registerService.getSelectList(register);
@@ -249,7 +249,7 @@ public class RegisterController {
 		//올해 수강신청 학년도
 		/*int year = Calendar.getInstance().get(Calendar.YEAR);
 		register.setRegYear(year);*/
-		register.setRegYear(2020);
+		register.setRegYear(2021);
 		
 		register.setSubjectNo(subjectNo);
 		
@@ -344,9 +344,14 @@ public class RegisterController {
 	
 	//시간표조회페이지가져오기
 	@RequestMapping(value = "/timetable")
-	public String timetable(HttpServletRequest request, Model model) {
-		HttpSession session = request.getSession();
+	public String timetable(HttpServletRequest request, Model model, HttpSession session) {
 		
+		//이름가져오기
+		String studentId =(String)session.getAttribute("studentId");
+		StudentDTO studentList= memberService.getStudentInfo(studentId);
+		model.addAttribute("studentList", studentList);
+		
+		session = request.getSession();
 		
 		int month = Calendar.getInstance().get(Calendar.MONTH)+1;
 		String semester = "";
@@ -363,18 +368,15 @@ public class RegisterController {
 			semester = "error";
 		}
 		
-		String studentId = session.getAttribute("studentId").toString();
 		
 		// 이방식이 옳다.
 		//Collection<SubjectDTO> semesterGradeList = timetableService.getTimeTable(
 		//	session.getAttribute("studentId"), Calendar.getInstance().get(Calendar.YEAR), semester);
 		
 		// 임시로 2020년 2학기 정보 출력.
-		Collection<SubjectDTO> courseList = registerService.getTimeTable(studentId, 2020, "1");		
-		StudentDTO studentInfo = memberService.getStudentInfo(studentId);
+		Collection<SubjectDTO> courseList = registerService.getTimeTable(studentId, 2021, "1");
 		
 		model.addAttribute("courseList", courseList);
-		model.addAttribute("studentInfo", studentInfo);
 
 		return "timetable";
 	}
