@@ -33,7 +33,7 @@
 			<jsp:include page="/WEB-INF/views/sidebarStudent.jsp"></jsp:include>
 			<!-- 사이드바 -->
 
-			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+			<main class="col-md-9">
 
 			<div class="p-4 p-md-5 mb-4 rounded">
 				<p class="text-center fs-3 fw-bold">학생정보</p>
