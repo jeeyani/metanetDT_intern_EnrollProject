@@ -5,6 +5,18 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <table class="table table-striped table-hover" style="border-collapse: collapse; text-align: center; vertical-align:middle">
+     <colgroup>
+		<col width="7%">
+		<col width="9%">
+		<col width="9%">
+		<col width="15%">
+		<col width="5%">
+		<col width="15%">
+		<col width="9%">
+		<col width="9%">
+		<col width="9%">
+		<col width="*">
+	</colgroup>
     <thead>
       <tr style="color: white;">
         <th style="position:sticky; background-color: lightslategrey; top:0px;">#</th>
