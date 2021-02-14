@@ -1,5 +1,7 @@
 package com.oopsw.member.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -9,8 +11,10 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -217,7 +221,7 @@ public class RegisterController {
 	
 	//수강신청하기
 	@RequestMapping(value = "/enrolmentAdd", method = RequestMethod.GET)
-	public String enrolmentAdd(@RequestParam("subjectNo")int subjectNo,Model model,RegisterDTO register,RegisterDTO registerOK,HttpSession session) {
+	public String enrolmentAdd(@RequestParam("subjectNo")int subjectNo,Model model,RegisterDTO register,RegisterDTO registerOK,HttpSession session,HttpServletResponse response) throws IOException {
 		
 		/*
 		//올해가 몇학기 인지 계산
@@ -270,15 +274,24 @@ public class RegisterController {
 		
 		logger.info("수강신청한 목록 학점 총 수 : ================="+sum);
 		
-		//해당 과목 수강신청하기
+		//**해당 과목 수강신청하기
 		
+		//최대한 학점 수 초과시 신청 불가 **(최대학점 수 변경해야함!!!)
 		if(sum >=3){
-			String fail = "fail";
-			model.addAttribute("fail", fail);
-			return "redirect:enrollment";
+			
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("result", "fail");
+			String json = jsonObject.toString();
+			
+			PrintWriter out = response.getWriter();
+			response.setContentType("application/json;charset=utf-8");
+			out.println(json);
+			out.flush();
+			out.close();
+			
+			return "enrollment";
 		}
 		
-		logger.info("실행되남=================");
 		
 		int registerSuccess = registerService.setRegister(register);
 		

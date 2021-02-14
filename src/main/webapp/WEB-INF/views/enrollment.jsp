@@ -123,7 +123,8 @@
                 	
                 	<c:forEach var="list" items="${registerList}">
                 		<tr>
-		                    <td><a id="okbutton" type="submit" class="btn btn-outline-success btn-sm" href="<%=application.getContextPath()%>/enrolmentAdd?subjectNo=${list.subjectNo}">신청</a></td>
+		                    <%-- <td><a id="okbutton" type="submit" class="btn btn-outline-success btn-sm" href="<%=application.getContextPath()%>/enrolmentAdd?subjectNo=${list.subjectNo}">신청</a></td> --%>
+		                    <td><a type="submit" id="subjectNum" class="btn btn-outline-success btn-sm" href="javascript:scoreCheck(${list.subjectNo})">신청</a></td>
 		                    <td>${list.subjectNo}</td>
 		                    <td>${list.subjGroup}</td>
 		                    <td><a href="<%=application.getContextPath()%>/lecturePlanDetail?subjectNo=${list.subjectNo}" style="color: black; text-decoration: none">${list.subjName}</a></td>
@@ -213,14 +214,22 @@
 				}
 			});
 		}
-		
-		var check = "${faill}";
-		
-		$(function(){
-		    $('#okbutton').click(function(){
-		        if(check.equal('fail')) alert("신청가능한 최대 학점 수를 초과할 수 없습니다.");
-		    });
-		});
+
+		function scoreCheck(subjectNo){
+			$.ajax({
+				type:"GET",
+				url:"enrolmentAdd",
+				data: { 
+					"subjectNo": subjectNo
+				},
+				success: function (data) {
+					console.log("success");
+					if(data.result =="fail"){ 
+			        	alert("신청가능한 최대 학점 수를 초과할 수 없습니다.");
+			        	}
+				}
+			});
+		}
 	</script>	
   
 </body>
