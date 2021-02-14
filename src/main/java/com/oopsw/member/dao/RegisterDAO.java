@@ -11,6 +11,8 @@ import com.oopsw.member.dto.SubjectDTO;
 @Repository
 public interface RegisterDAO {
 	
+	public Collection<SubjectDTO> getAllPlan();
+	
 	public Collection<SubjectDTO> getSelectPlanList(@Param("search")SubjectDTO search);
 
 	public SubjectDTO getPlanDetail(@Param("subjectNo")int subjectNo);
@@ -26,4 +28,6 @@ public interface RegisterDAO {
 	public Collection<RegisterDTO> getSelectList(@Param("register")RegisterDTO register);
 
 	public Collection<SubjectDTO> getTimeTable(@Param("studentId")String studentId, @Param("regYear")int regYear, @Param("regSemester")String regSemester);
+
+	
 }

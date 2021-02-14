@@ -71,9 +71,22 @@
 							</tr>
 						</thead>
 						<tbody>	
-							<tr>
-								<td colspan="5">조회된 Data가 없습니다.</td>
-							</tr>	
+							<c:if test="${empty subjectList}">
+								<tr>
+									<td colspan="5">조회된 Data가 없습니다.</td>
+								</tr>	
+							</c:if>
+							<c:if test="${!empty subjectList}">
+								<c:forEach var="list" items="${subjectList}"> 
+									<tr>	
+										<td>${list.subjSemester}</td>
+										<td>${list.subjectNo}</td>
+										<td><a href="<%=application.getContextPath()%>/lecturePlanDetail?subjectNo=${list.subjectNo}" style="color: black; text-decoration: none">${list.subjName}</a></td>
+										<td>${list.deptName}</td>
+										<td>${list.subjProfessor}</td>
+									</tr>
+								</c:forEach>
+							</c:if>	
 						</tbody>
 
 					</table>
