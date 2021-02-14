@@ -145,7 +145,7 @@ public class RegisterController {
 		
 		//3.수강신청한 목록 가져오기
 		//register.setRegYear(year);
-		registerOK.setRegYear(2020);
+		registerOK.setRegYear(2021);
 		
 		//int studentId2 = Integer.parseInt((String)session.getAttribute("studentId"));
 		registerOK.setStudentId(Integer.parseInt(studentId));
@@ -277,7 +277,7 @@ public class RegisterController {
 		//**해당 과목 수강신청하기
 		
 		//최대한 학점 수 초과시 신청 불가 **(최대학점 수 변경해야함!!!)
-		if(sum >=3){
+		if(sum >=9){
 			
 			JSONObject jsonObject = new JSONObject();
 			jsonObject.put("result", "fail");

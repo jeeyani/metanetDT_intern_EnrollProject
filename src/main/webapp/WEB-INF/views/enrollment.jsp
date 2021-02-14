@@ -94,12 +94,12 @@
               <table class="table table-striped table-hover" style="border-collapse: collapse; text-align: center; vertical-align:middle">
                 <colgroup>
 					<col width="7%">
-					<col width="9%">
-					<col width="9%">
+					<col width="8.5%">
+					<col width="8.5%">
+					<col width="17%">
+					<col width="6%">
 					<col width="15%">
-					<col width="5%">
-					<col width="15%">
-					<col width="9%">
+					<col width="8.5%">
 					<col width="9%">
 					<col width="9%">
 					<col width="*">
@@ -146,6 +146,17 @@
           <p>
             <div style="overflow-y:auto; height:200px">
               <table class="table table-striped table-hover" style="border-collapse: collapse; text-align: center; vertical-align:middle">
+                <colgroup>
+					<col width="7%">
+					<col width="9%">
+					<col width="9%">
+					<col width="18%">
+					<col width="6%">
+					<col width="18%">
+					<col width="9%">
+					<col width="9%">
+					<col width="*">
+				</colgroup>
                 <thead>
                   <tr style="color: white;">
                     <th style="position:sticky; background-color: lightslategrey; top:0px;">#</th>
@@ -223,10 +234,11 @@
 					"subjectNo": subjectNo
 				},
 				success: function (data) {
-					console.log("success");
+					
 					if(data.result =="fail"){ 
 			        	alert("신청가능한 최대 학점 수를 초과할 수 없습니다.");
 			        	}
+					window.location.href = "<%=application.getContextPath()%>/enrollment";
 				}
 			});
 		}

@@ -5,14 +5,14 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <table class="table table-striped table-hover" style="border-collapse: collapse; text-align: center; vertical-align:middle">
-     <colgroup>
+	<colgroup>
 		<col width="7%">
-		<col width="9%">
-		<col width="9%">
+		<col width="8.5%">
+		<col width="8.5%">
+		<col width="17%">
+		<col width="6%">
 		<col width="15%">
-		<col width="5%">
-		<col width="15%">
-		<col width="9%">
+		<col width="8.5%">
 		<col width="9%">
 		<col width="9%">
 		<col width="*">
