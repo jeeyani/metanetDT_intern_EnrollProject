@@ -65,9 +65,9 @@ public class GradeController {
 		/*Collection<GradeDTO> evaluationList = 
 				gradeService.getEvalList((String)session.getAttribute("studentId"), Calendar.getInstance().get(Calendar.YEAR), semester);*/
 		Collection<GradeDTO> evaluationList = 
-				gradeService.getEvalList((String)session.getAttribute("studentId"), 2020, "2");
+				gradeService.getEvalList((String)session.getAttribute("studentId"), 2020, "1");
 		StudentDTO studentInfo = memberService.getStudentInfo((String)session.getAttribute("studentId"));
-		
+				
 		model.addAttribute("evaluationList", evaluationList);
 		model.addAttribute("studentInfo", studentInfo);
 		
@@ -107,8 +107,6 @@ public class GradeController {
 
 	@RequestMapping(value = "/gradeSemester")
 	public String gradeSemester(HttpServletRequest request, Model model, HttpSession session){ 
-		
-		
 		//이름가져오기
 		String studentId =(String)session.getAttribute("studentId");
 		StudentDTO studentList= memberService.getStudentInfo(studentId);
@@ -138,7 +136,6 @@ public class GradeController {
 		model.addAttribute("semesterGradeList", result);
 		return "gradeSemester";
 	}
-	
 	
 	@RequestMapping(value = "/gradeSemesterAction", method = RequestMethod.POST)
 	public String gradeSemesterAction(HttpServletRequest request, Model model){ 

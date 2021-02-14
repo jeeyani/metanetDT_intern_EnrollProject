@@ -153,7 +153,8 @@ public class RegisterController {
 	
 	//수강신청 조회하기
 	@RequestMapping(value="/enrollmenAction", method=RequestMethod.POST)
-	public String enrollmenAction(HttpServletRequest request, Model model, HttpSession session, RegisterDTO register){
+	public String enrollmenAction(HttpServletRequest request, Model model, HttpSession session){
+		RegisterDTO register = new RegisterDTO();
 		String studentId = session.getAttribute("studentId").toString();
 		register.setStudentId(Integer.parseInt(studentId));
 		// 조건에 따른 조회 ...
