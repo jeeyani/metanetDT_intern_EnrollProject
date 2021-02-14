@@ -126,7 +126,7 @@
 		                    <td><a type="submit" class="btn btn-outline-success btn-sm" href="<%=application.getContextPath()%>/enrolmentAdd?subjectNo=${list.subjectNo}">신청</a></td>
 		                    <td>${list.subjectNo}</td>
 		                    <td>${list.subjGroup}</td>
-		                    <td>${list.subjName}</td>
+		                    <td><a href="<%=application.getContextPath()%>/lecturePlanDetail?subjectNo=${list.subjectNo}" style="color: black; text-decoration: none">${list.subjName}</a></td>
 		                    <td>${list.subjScore}</td>
 		                    <td>${list.deptName}</td>
 		                    <td>${list.subjProfessor}</td>
@@ -170,7 +170,7 @@
 			                    <td><a type="button" class="btn btn-outline-danger btn-sm" href="<%=application.getContextPath()%>/enrolmentDelete?subjectNo=${list.subjectNo}">삭제</a></td>
 			                    <td>${list.subjectNo}</td>
 			                    <td>${list.subjGroup}</td>
-			                    <td>${list.subjName}</td>
+			                    <td><a href="<%=application.getContextPath()%>/lecturePlanDetail?subjectNo=${list.subjectNo}" style="color: black; text-decoration: none">${list.subjName}</a></td>
 			                    <td>${list.subjScore}</td>
 			                    <td>${list.deptName}</td>
 			                    <td>${list.subjProfessor}</td>

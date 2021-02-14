@@ -141,7 +141,7 @@ public class RegisterController {
 		
 		//3.수강신청한 목록 가져오기
 		//register.setRegYear(year);
-		registerOK.setRegYear(2020);
+		registerOK.setRegYear(2021);
 		
 		//int studentId2 = Integer.parseInt((String)session.getAttribute("studentId"));
 		registerOK.setStudentId(Integer.parseInt(studentId));
