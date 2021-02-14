@@ -285,7 +285,7 @@ public class RegisterController {
 		if(sum >=9){
 			
 			JSONObject jsonObject = new JSONObject();
-			jsonObject.put("result", "fail");
+			jsonObject.put("result", "fail1");
 			String json = jsonObject.toString();
 			
 			PrintWriter out = response.getWriter();
@@ -315,10 +315,20 @@ public class RegisterController {
 				int chkLectEnd = subjectDTO.getLectEnd();
 				
 				// 3-2. 신청클릭한 과목 시간을 비교한다.     신청과목.시작시간 <= 기존과목.시작시간   && 신청과목.끝시간 <= 기존과목.시작시간   ||   신청과목.시작시간 > 기존과목.끝시간
-				if( !( (chkLectStart < subject.getLectStart() && chkLectEnd <= subject.getLectStart()) || (chkLectStart >= subject.getLectEnd() && chkLectEnd > subject.getLectEnd()) ) )
+				if( !( (chkLectStart < subject.getLectStart() && chkLectEnd < subject.getLectStart()) || (chkLectStart > subject.getLectEnd() && chkLectEnd > subject.getLectEnd()) ) )
 				{
 					System.out.println("검사: 시간이 겹칩니다 !!!");
-					// alert 띄워주자...
+
+					JSONObject jsonObject = new JSONObject();
+					jsonObject.put("result", "fail2");
+					String json = jsonObject.toString();
+					
+					PrintWriter out = response.getWriter();
+					response.setContentType("application/json;charset=utf-8");
+					out.println(json);
+					out.flush();
+					out.close();
+					
 					return "enrollment";				
 				}	
 			}

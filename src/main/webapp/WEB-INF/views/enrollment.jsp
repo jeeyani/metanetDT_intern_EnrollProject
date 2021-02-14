@@ -238,9 +238,12 @@
 				},
 				success: function (data) {
 					
-					if(data.result =="fail"){ 
-			        	alert("신청가능한 최대 학점 수를 초과할 수 없습니다.");
-			        	}
+					if(data.result =="fail1"){ 
+		        		alert("신청가능한 최대 학점 수를 초과할 수 없습니다.");
+		        	}
+					if(data.result =="fail2"){ 
+		        		alert("기존 신청과목과 시간이 중복됩니다.");
+		        	}
 					window.location.href = "<%=application.getContextPath()%>/enrollment";
 				}
 			});
