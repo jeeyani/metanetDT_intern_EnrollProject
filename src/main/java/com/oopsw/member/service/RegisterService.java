@@ -15,6 +15,11 @@ public class RegisterService {
 	@Autowired
 	private RegisterDAO registerDAO;
 	
+	public Collection<SubjectDTO> getAllPlan() {
+		
+		return registerDAO.getAllPlan();
+	}
+	
 	public Collection<SubjectDTO> getSelectPlanList(SubjectDTO search) {
 		
 		return registerDAO.getSelectPlanList(search);
@@ -56,5 +61,6 @@ public class RegisterService {
 	public Collection<SubjectDTO> getTimeTable(String studentId, int regYear, String regSemester){
 		return registerDAO.getTimeTable(studentId, regYear, regSemester);
 	}
+
 
 }

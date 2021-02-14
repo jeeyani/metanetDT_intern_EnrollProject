@@ -2,6 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="com.oopsw.member.dao.RegisterDAO"> 
 	
+	<!-- 강의계획서 전체 조회 -->
+	<select id="getAllPlan" resultType="com.oopsw.member.dto.SubjectDTO"> 
+		 SELECT s.subject_no as subjectNo, subj_name as subjName,subj_score as subjScore
+		 		,dep.dept_name as deptName,subj_professor as subjProfessor, subj_semester as subjSemester
+		 FROM subjects s, departmentes dep
+		 WHERE dep.department_no = s.department_no
+		 ORDER BY subj_name ASC
+	</select>
+	
+	<!-- 검색기능 조회 -->
 	<select id="getSelectPlanList" resultType="com.oopsw.member.dto.SubjectDTO"> 
 		 SELECT s.subject_no as subjectNo, subj_name as subjName,subj_score as subjScore
 		 		,dep.dept_name as deptName,subj_professor as subjProfessor, subj_semester as subjSemester
@@ -101,9 +111,9 @@
 
 	<sql id="searchitem">
 		<if test="search.radioItem != null">
-			<if test="search.radioItem == 's'.toString()">AND s.subj_name LIKE '%'||#{search.search}||'%'</if>
-			<if test="search.radioItem == 'p'.toString()">AND s.subj_professor LIKE '%'||#{search.search}||'%'</if>
-			<if test="search.radioItem == 'n'.toString()">AND s.subject_no LIKE '%'||#{search.search}||'%'</if>
+			<if test="search.radioItem == 's'.toString()">AND s.subj_name LIKE '%'||#{search.search}||'%' ORDER BY subj_name ASC</if>
+			<if test="search.radioItem == 'p'.toString()">AND s.subj_professor LIKE '%'||#{search.search}||'%' ORDER BY subj_professor ASC</if>
+			<if test="search.radioItem == 'n'.toString()">AND s.subject_no LIKE '%'||#{search.search}||'%' ORDER BY subject_no ASC</if>
 		</if>
 	</sql>
 	

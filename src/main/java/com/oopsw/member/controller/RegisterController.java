@@ -55,10 +55,15 @@ public class RegisterController {
 		StudentDTO studentList= memberService.getStudentInfo(studentId);
 		model.addAttribute("studentList", studentList);
 		
-		//초기 보여지는 페이지는 조회되는 데이터가 없음
+		/*//초기 보여지는 페이지는 조회되는 데이터가 없음
 		model.addAttribute("lecturePlanList", null);
 		
+		*/
 		
+		//전체 강의계획서 목록 가져오기
+		Collection<SubjectDTO> subjectList = registerService.getAllPlan();
+		model.addAttribute("subjectList", subjectList);
+				
 		return "lecturePlanList";
 	}
 	
