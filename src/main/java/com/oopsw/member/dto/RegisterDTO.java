@@ -130,6 +130,17 @@ public class RegisterDTO {
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "RegisterDTO [subjectNo=" + subjectNo + ", subjGroup=" + subjGroup + ", subjName=" + subjName
+				+ ", subjSemester=" + subjSemester + ", subjScore=" + subjScore + ", subjProfessor=" + subjProfessor
+				+ ", lectDate=" + lectDate + ", lectStart=" + lectStart + ", lectEnd=" + lectEnd + ", lectRoom="
+				+ lectRoom + ", lectureScore=" + lectureScore + ", deptmentNo=" + deptmentNo + ", deptName=" + deptName
+				+ ", studentId=" + studentId + ", registerNo=" + registerNo + ", regYear=" + regYear + ", regSemester="
+				+ regSemester + "]";
+	}
+	
+	
 	
 	
 	

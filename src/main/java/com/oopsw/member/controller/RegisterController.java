@@ -297,10 +297,34 @@ public class RegisterController {
 			return "enrollment";
 		}
 		
+		/*************         과목 신청할때 시간 겹치는지 확인합니다...           *****************/
+		// 1. 신청 클릭한 과목 정보를 가져온다
+		SubjectDTO subjectDTO = registerService.getSubject(register);
+		
+		// 2. 내가 2021년 1학기 201500123 학번 학생의 수강신청 정보를 가져온다.
+		Collection<SubjectDTO> subjectlist = registerService.getSubjList(studentId, Calendar.getInstance().get(Calendar.YEAR), "1");
+		
+		for (SubjectDTO subject : subjectlist) {
+			
+			// 3-1. 신청클릭학 과목 날짜와 비교한다.
+			if(subjectDTO.getLectDate().equals(subject.getLectDate()))
+			{
+				System.out.println("검사: 날짜가 동일합니다.");
+				
+				int chkLectStart = subjectDTO.getLectStart();
+				int chkLectEnd = subjectDTO.getLectEnd();
+				
+				// 3-2. 신청클릭한 과목 시간을 비교한다.     신청과목.시작시간 <= 기존과목.시작시간   && 신청과목.끝시간 <= 기존과목.시작시간   ||   신청과목.시작시간 > 기존과목.끝시간
+				if( !( (chkLectStart < subject.getLectStart() && chkLectEnd <= subject.getLectStart()) || (chkLectStart >= subject.getLectEnd() && chkLectEnd > subject.getLectEnd()) ) )
+				{
+					System.out.println("검사: 시간이 겹칩니다 !!!");
+					// alert 띄워주자...
+					return "enrollment";				
+				}	
+			}
+		}
 		
 		int registerSuccess = registerService.setRegister(register);
-		
-		
 		return "redirect:enrollment";
 	}
 	
