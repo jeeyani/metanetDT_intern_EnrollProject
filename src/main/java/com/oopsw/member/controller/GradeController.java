@@ -131,7 +131,7 @@ public class GradeController {
 		}
 		
 		Collection<GradeDTO> result = gradeService.getSemGradeList(
-				(String)session.getAttribute("studentId"), Calendar.getInstance().get(Calendar.YEAR), semester);
+				(String)session.getAttribute("studentId"), Calendar.getInstance().get(Calendar.YEAR), "1");
 		
 		model.addAttribute("semesterGradeList", result);
 		return "gradeSemester";

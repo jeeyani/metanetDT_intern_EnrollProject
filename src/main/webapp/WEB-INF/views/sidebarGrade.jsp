@@ -3,8 +3,8 @@
 
 <nav id="sidebarMenu"
 	class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
-	style="border-right: 0.5px solid black">
-	<div class="position-sticky pt-3">
+	style="border-right: 0.5px solid black; height:100000px">
+	<div class="position-sticky pt-3" style="padding:20px;">
 		<ul class="nav flex-column">
 			<li class="nav-item">
               <div class="bg-light p-3 rounded">

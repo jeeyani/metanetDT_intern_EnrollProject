@@ -16,23 +16,23 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
     crossorigin="anonymous"></script>
-
-
+	
+	
   <title>메타대 학사정보시스템</title>
 </head>
 
-<body class="bg-light">
-   <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
+<body class="bg-light" style="overflow:hidden">
+	<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 
-  <div class="container-fluid">
-    <div class="row">
-
-      <jsp:include page="/WEB-INF/views/sidebarGrade.jsp"></jsp:include>
-
-      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        
-        
-        <form method="post" action="gradeSemesterAction">
+	<div class="container-fluid">
+	   <div class="row">
+	
+	     <jsp:include page="/WEB-INF/views/sidebarGrade.jsp"></jsp:include>
+	
+	     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="height:auto">
+	       
+	       
+	       <form method="post" action="gradeSemesterAction">
 	        <div class="p-4 p-md-5 mb-4 rounded">
 	          <p class="text-center fs-3 fw-bold">학기별 성적 조회</p>          
 	        
@@ -67,31 +67,28 @@
 	            <div class="col-auto">
 	              <button type="submit" class="btn btn-outline-dark">조회</button>
 	            </div>
-	
 	          </div>
-          </form>
-          
-          
-          
-          <p>
-            <div style="overflow-y:auto; height:500px">
-              <table class="table table-striped table-hover" style="border-collapse: collapse; text-align: center; vertical-align:middle">
-                <thead>
-                  <tr style="color: white;">
-                    <th style="position:sticky; background-color: lightslategrey; top:0px">이수구분</th>
-                    <th style="position:sticky; background-color: lightslategrey; top:0px">과목명</th>
-                    <th style="position:sticky; background-color: lightslategrey; top:0px">등급</th>
-                    <th style="position:sticky; background-color: lightslategrey; top:0px">학점</th>
-                    <th style="position:sticky; background-color: lightslategrey; top:0px">평점</th>
-                  </tr>
-                </thead>
-                <tbody>
-                	<c:set var="subjScore_sum" value="0"/>
-                	<c:set var="grade_sum" value="0"/>
-                	<c:set var="subjScore_length" value="${fn:length(semesterGradeList)}"/>
-                	
-                	<c:forEach var="gradeDTO" items="${semesterGradeList}">
-                		<tr>
+	         </form>
+	         
+	         <p></p>
+	         <div style="overflow-y:auto; height:500px">
+	             <table class="table table-striped table-hover" style="border-collapse: collapse; text-align: center; vertical-align:middle">
+	               <thead>
+	                 <tr style="color: white;">
+	                   <th style="position:sticky; background-color: lightslategrey; top:0px">이수구분</th>
+	                   <th style="position:sticky; background-color: lightslategrey; top:0px">과목명</th>
+	                   <th style="position:sticky; background-color: lightslategrey; top:0px">등급</th>
+	                   <th style="position:sticky; background-color: lightslategrey; top:0px">학점</th>
+	                   <th style="position:sticky; background-color: lightslategrey; top:0px">평점</th>
+	                 </tr>
+	               </thead>
+	               <tbody>
+	               	<c:set var="subjScore_sum" value="0"/>
+	               	<c:set var="grade_sum" value="0"/>
+	               	<c:set var="subjScore_length" value="${fn:length(semesterGradeList)}"/>
+	               	
+	               	<c:forEach var="gradeDTO" items="${semesterGradeList}">
+	               		<tr>
 		                    <td>${gradeDTO.subjGroup}</td>
 		                    <td>${gradeDTO.subjName}</td>
 		                    <td>
@@ -109,27 +106,26 @@
 		                    </td>
 		                    <td>${gradeDTO.subjScore}</td>
 		                    <td>${gradeDTO.grade}</td>
-                  		</tr>
-                  		<c:set var="subjScore_sum" value="${subjScore_sum + gradeDTO.subjScore}"/>
-                  		<c:set var="grade_sum" value="${grade_sum + gradeDTO.grade}"/>
-                	</c:forEach>
-                </tbody>
-              </table>
-              
-              <div style="float:right">
-                <label class="fw-bold" style="margin:0px 10px">취득학점</label><c:out value="${subjScore_sum}"/>학점
-                <!-- NaN 체크 !  -->
-                <label class="fw-bold"  style="margin:0px 10px 0px 20px">평균학점</label><fmt:formatNumber value="${grade_sum / subjScore_length}" pattern="#.##"/>
-              </div>
-            </div>
-          </p>
-          
-          
-        </div>
-      </main>
-
-    </div>
-  </div>
+	                 		</tr>
+	                 		<c:set var="subjScore_sum" value="${subjScore_sum + gradeDTO.subjScore}"/>
+	                 		<c:set var="grade_sum" value="${grade_sum + gradeDTO.grade}"/>
+	               	</c:forEach>
+	               </tbody>
+	             </table>
+	             
+	             <div style="float:right">
+	               <label class="fw-bold" style="margin:0px 10px">취득학점</label><c:out value="${subjScore_sum}"/>학점
+	               <!-- NaN 체크 !  -->
+	               <label class="fw-bold"  style="margin:0px 10px 0px 20px">평균학점</label><fmt:formatNumber value="${grade_sum / subjScore_length}" pattern="#.##"/>
+	             </div>
+	           </div>
+	         
+	       </div>
+	     </main>
+	
+	   </div>
+	</div>
+	
 	<jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
 </body>
 
