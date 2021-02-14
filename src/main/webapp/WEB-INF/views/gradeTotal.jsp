@@ -21,7 +21,7 @@
   <title>메타대 학사정보시스템</title>
 </head>
 
-<body class="bg-light" style="overflow:hidden">
+<body class="bg-light">
  <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
  
   <div class="container-fluid">
@@ -29,7 +29,7 @@
 
       <jsp:include page="/WEB-INF/views/sidebarGrade.jsp"></jsp:include>
 
-      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <main class="col-9 ms-sm-5 px-md-4">
         
           <p>
             <div style="overflow-y:auto; height:800px">

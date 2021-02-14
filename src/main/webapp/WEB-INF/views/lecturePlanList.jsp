@@ -24,7 +24,7 @@
 <title>메타대 학사정보시스템</title>
 </head>
 
-<body class="bg-light" style="overflow:hidden">
+<body class="bg-light" style="overflow:auto;">
 	<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 
 	<div class="container-fluid">
@@ -33,7 +33,7 @@
 			<jsp:include page="/WEB-INF/views/sidebarRegister.jsp"></jsp:include>
 			<!-- 사이드바 -->
 
-			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+			<main class="col-9 ms-sm-5 px-md-4">
 
 			<div class="p-4 p-md-5 mb-4 rounded">
 				<p class="text-center fs-3 fw-bold">강의계획서 조회</p>
@@ -51,7 +51,7 @@
 				</p>
 
 				<p>
-				<div style="overflow-y: auto; height: 300px" id="PlanList">
+				<div style="overflow-y: auto; height: auto;" id="PlanList">
 					<table class="table table-striped table-hover"
 						style="border-collapse: collapse; text-align: center; vertical-align: middle">
 						<colgroup>

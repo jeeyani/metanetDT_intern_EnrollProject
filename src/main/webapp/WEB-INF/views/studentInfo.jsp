@@ -22,7 +22,7 @@
 <title>메타대 학사정보시스템</title>
 </head>
 
-<body class="bg-light" style="overflow:hidden">
+<body class="bg-light">
 	
 	<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 	
@@ -33,53 +33,52 @@
 			<jsp:include page="/WEB-INF/views/sidebarStudent.jsp"></jsp:include>
 			<!-- 사이드바 -->
 
-			<main class="col-md-9">
-
-			<div class="p-4 p-md-5 mb-4 rounded">
-				<p class="text-center fs-3 fw-bold">학생정보</p>
-
-				<br>
-
-				<p>
-				<div style="overflow-y: auto; height: 100%">
-					<table class="table table-striped table-hover" style="border-collapse: collapse; text-align: center; vertical-align: middle">
-						<colgroup>
-							<col width="20%">
-							<col width="35%">
-							<col width="20%">
-							<col width="*">
-						</colgroup>
-						<tbody>
-							<tr>
-								<th colspan="4" style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">학생 정보</th>
-							</tr>
-							<tr>
-								<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">성명</th>
-								<td>${studentList.name}</td>
-								<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">학적상태</th>
-								<td>${studentList.state}</td>
-							</tr>
-							<tr>
-								<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">학번</th>
-								<td>${studentList.studentId}</td>
-								<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">학과</th>
-								<td>${studentList.deptName}</td>
-							</tr>
-							<tr>
-								<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">전화번호</th>
-								<td>${studentList.phone}</td>
-								<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">이메일</th>
-								<td>${studentList.email}@metanet.co.kr</td>
-							</tr>
-							<tr>
-								<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">주소</th>
-								<td colspan="3">${studentList.address}</td>
-							</tr>
-						</tbody>
-					</table>
+			<main class="col-9 ms-sm-5 px-md-4">
+				<div class="p-4 p-md-5 mb-4 rounded">
+					<p class="text-center fs-3 fw-bold">학생정보</p>
+	
+					<br>
+	
+					<p>
+					<div style="overflow-y: auto; height: 100%">
+						<table class="table table-striped table-hover" style="border-collapse: collapse; text-align: center; vertical-align: middle">
+							<colgroup>
+								<col width="20%">
+								<col width="35%">
+								<col width="20%">
+								<col width="*">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th colspan="4" style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">학생 정보</th>
+								</tr>
+								<tr>
+									<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">성명</th>
+									<td>${studentList.name}</td>
+									<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">학적상태</th>
+									<td>${studentList.state}</td>
+								</tr>
+								<tr>
+									<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">학번</th>
+									<td>${studentList.studentId}</td>
+									<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">학과</th>
+									<td>${studentList.deptName}</td>
+								</tr>
+								<tr>
+									<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">전화번호</th>
+									<td>${studentList.phone}</td>
+									<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">이메일</th>
+									<td>${studentList.email}@metanet.co.kr</td>
+								</tr>
+								<tr>
+									<th style="position: sticky; background-color: lightslategrey; top: 0px; color: white;">주소</th>
+									<td colspan="3">${studentList.address}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					</p>
 				</div>
-				</p>
-			</div>
 			</main>
 
 		</div>

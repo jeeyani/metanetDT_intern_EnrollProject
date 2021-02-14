@@ -21,7 +21,7 @@
   <title>메타대 학사정보시스템</title>
 </head>
 
-<body class="bg-light" style="overflow:hidden">
+<body class="bg-light">
 	<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 
 	<div class="container-fluid">
@@ -29,49 +29,58 @@
 	
 	     <jsp:include page="/WEB-INF/views/sidebarGrade.jsp"></jsp:include>
 	
-	     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="height:auto">
-	       
-	       
-	       <form method="post" action="gradeSemesterAction">
-	        <div class="p-4 p-md-5 mb-4 rounded">
-	          <p class="text-center fs-3 fw-bold">학기별 성적 조회</p>          
-	        
-	          <div class="row g-3 align-items-center">
-	            <div class="col-auto">
-	              <label for="deptname" class="col-form-label" style="font-weight:bold">년도</label>
-	            </div>
-	            <div class="col-auto">
-	            
-	            <!-- foreach로 데이터싹 가져와야함...
-	            <option <c:if test="${regYear eq 2021}">selected</c:if> value="2021">2021</option>
-	            -->
-	              <select name="regYear" class="form-select">
-	                <option <c:if test="${regYear eq 2021}">selected</c:if> value="2021">2021</option>
-	                <option <c:if test="${regYear eq 2020}">selected</c:if> value="2020">2020</option>
-	                <option <c:if test="${regYear eq 2019}">selected</c:if> value="2019">2019</option>
-	                <option <c:if test="${regYear eq 2018}">selected</c:if> value="2018">2018</option>
-	                <option <c:if test="${regYear eq 2017}">selected</c:if> value="2017">2017</option>
-	              </select>
-	            </div>
-	            <div class="col-auto">
-	              <label for="deptname" class="col-form-label" style="font-weight:bold">학기</label>
-	            </div>
-	            <div class="col-auto">
-	              <select name="regSemester" class="form-select">
-	                <option <c:if test="${regSemester eq '1'}">selected</c:if> value="1">1학기</option>
-	                <option <c:if test="${regSemester eq 's'}">selected</c:if> value="s">여름학기</option>
-	                <option <c:if test="${regSemester eq '2'}">selected</c:if> value="2">2학기</option>
-	                <option <c:if test="${regSemester eq 'f'}">selected</c:if> value="f">겨울학기</option>
-	              </select>
-	            </div>
-	            <div class="col-auto">
-	              <button type="submit" class="btn btn-outline-dark">조회</button>
-	            </div>
-	          </div>
-	         </form>
-	         
-	         <p></p>
-	         <div style="overflow-y:auto; height:500px">
+	     <main class="col-9 ms-sm-5 px-md-4">
+			
+				<div class="p-5 mb-4 rounded">
+					<p class="text-center fs-3 fw-bold">학기별 성적 조회</p>
+				</div>
+			
+	         <div style="height:500px">
+	         	<form method="post" action="gradeSemesterAction" style="margin-bottom: 10px;">
+					<div class="row g-3 align-items-center">
+						<div class="col-auto">
+							<label for="deptname" class="col-form-label"
+								style="font-weight: bold">년도</label>
+						</div>
+						<div class="col-auto">
+
+							<!-- foreach로 데이터싹 가져와야함...
+		            <option <c:if test="${regYear eq 2021}">selected</c:if> value="2021">2021</option>
+		            -->
+							<select name="regYear" class="form-select">
+								<option <c:if test="${regYear eq 2021}">selected</c:if>
+									value="2021">2021</option>
+								<option <c:if test="${regYear eq 2020}">selected</c:if>
+									value="2020">2020</option>
+								<option <c:if test="${regYear eq 2019}">selected</c:if>
+									value="2019">2019</option>
+								<option <c:if test="${regYear eq 2018}">selected</c:if>
+									value="2018">2018</option>
+								<option <c:if test="${regYear eq 2017}">selected</c:if>
+									value="2017">2017</option>
+							</select>
+						</div>
+						<div class="col-auto">
+							<label for="deptname" class="col-form-label"
+								style="font-weight: bold">학기</label>
+						</div>
+						<div class="col-auto">
+							<select name="regSemester" class="form-select">
+								<option <c:if test="${regSemester eq '1'}">selected</c:if>
+									value="1">1학기</option>
+								<option <c:if test="${regSemester eq 's'}">selected</c:if>
+									value="s">여름학기</option>
+								<option <c:if test="${regSemester eq '2'}">selected</c:if>
+									value="2">2학기</option>
+								<option <c:if test="${regSemester eq 'f'}">selected</c:if>
+									value="f">겨울학기</option>
+							</select>
+						</div>
+						<div class="col-auto">
+							<button type="submit" class="btn btn-outline-dark">조회</button>
+						</div>
+					</div>
+				</form>
 	             <table class="table table-striped table-hover" style="border-collapse: collapse; text-align: center; vertical-align:middle">
 	               <thead>
 	                 <tr style="color: white;">
@@ -119,12 +128,9 @@
 	               <label class="fw-bold"  style="margin:0px 10px 0px 20px">평균학점</label><fmt:formatNumber value="${grade_sum / subjScore_length}" pattern="#.##"/>
 	             </div>
 	           </div>
-	         
+	         </main>
 	       </div>
-	     </main>
-	
 	   </div>
-	</div>
 	
 	<jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
 </body>

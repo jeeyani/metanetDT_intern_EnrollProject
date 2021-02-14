@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<header class="d-flex flex-column flex-md-rows">
+<header class="d-flex flex-column flex-md-rows" style=" top:0; left: 0; right: 0;">
 
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark" style="background-color: #dcdcdc;">
       <div class="container-fluid">

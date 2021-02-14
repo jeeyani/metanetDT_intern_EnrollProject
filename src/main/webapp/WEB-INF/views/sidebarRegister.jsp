@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 
 <nav id="sidebarMenu"
-	class="col-md-3 col-lg-2 d-md-block sidebar collapse"
-	style="height:1000px;  width:300px; overflow:hidden; background-color:#eeeeee">
+	class="col-3 d-block sidebar collapse"
+	style="height:auto; width:280px; overflow:hidden; background-color:#eeeeee">
 	<div class="position-sticky pt-3" style="padding:20px;">
 		<ul class="nav flex-column">
 			<li class="nav-item" style="margin-bottom:80px; margin-top:50px">
