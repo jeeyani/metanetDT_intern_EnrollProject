@@ -145,7 +145,7 @@ public class RegisterController {
 		
 		//3.수강신청한 목록 가져오기
 		//register.setRegYear(year);
-		registerOK.setRegYear(2021);
+		registerOK.setRegYear(2020);
 		
 		//int studentId2 = Integer.parseInt((String)session.getAttribute("studentId"));
 		registerOK.setStudentId(Integer.parseInt(studentId));
@@ -301,8 +301,8 @@ public class RegisterController {
 	
 	//수강신청취소하기
 	@RequestMapping(value = "/enrolmentDelete", method = RequestMethod.GET)
-	public String enrolmentDelete(@RequestParam("subjectNo")int subjectNo,Model model,RegisterDTO register,HttpSession session) {
-		
+	public String enrolmentDelete(@RequestParam("subjectNo")int subjectNo,Model model,HttpSession session) {
+		RegisterDTO register = new RegisterDTO();
 		/*
 		//올해가 몇학기 인지 계산
 		int month = Calendar.getInstance().get(Calendar.MONTH)+1;
