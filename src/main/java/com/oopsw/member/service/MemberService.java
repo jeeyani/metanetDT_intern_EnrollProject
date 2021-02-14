@@ -16,7 +16,15 @@ public class MemberService {
 	private MemberDAO memberDAO;
 
 	public String login(String id, String pw) {
-		return memberDAO.login(id, pw);
+
+		String DBstudent = memberDAO.login(id, pw);
+		
+		if(DBstudent == null){
+			return "fail";
+		} else{
+			return DBstudent;
+		}
+		
 	}
 	
 	public Collection<String> getMembers() {

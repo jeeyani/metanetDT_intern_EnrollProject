@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 
@@ -71,7 +72,11 @@ body {
 	        <p></p>
 	        <input style="height:auto; padding:10px; font-size: 16px;" type="text" name="id" class="form-control" placeholder="학번 ex) 201512345" required autofocus>
 	        <input style="height:auto; padding:10px; font-size: 16px;" type="password" name="pw" class="form-control" placeholder="비밀번호" required>
-	        <p></p>
+	        <p>
+	        <c:if test="${error eq 'fail'}">
+	        	 <span style="color:white"><strong>로그인 정보가 일치하지 않습니다.</strong></span>
+	        </c:if>
+	        </p>
 	        <input class="w-100 btn btn-lg btn-secondary" type="submit" value="로그인"/>
 	     	</form>
 	   </div>

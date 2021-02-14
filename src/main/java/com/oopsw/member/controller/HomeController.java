@@ -44,9 +44,8 @@ public class HomeController {
 			
 		String loginOK = memberService.login(request.getParameter("id"), request.getParameter("pw"));
 		
-		logger.info(loginOK);
 			
-		if(loginOK !=null){
+		if(!loginOK.equals("fail")){
 			
 			session.setAttribute("studentId", loginOK);
 			String studentId =(String)session.getAttribute("studentId");
@@ -54,9 +53,11 @@ public class HomeController {
 			model.addAttribute("studentList", studentList);
 
 			return "studentInfo";
+			
+		}else{
+			model.addAttribute("error",loginOK);
+			return "login";
 		}
-		
-		return "redirect:/";
 	}
 	
 	//로그아웃
