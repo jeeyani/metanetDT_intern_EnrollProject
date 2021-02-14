@@ -31,7 +31,7 @@
 		<jsp:include page="/WEB-INF/views/sidebarRegister.jsp"></jsp:include>
       
 
-      <main class="col-md-9">
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         
         <div class="p-4 p-md-5 mb-4 rounded">
           <p class="text-center fs-3 fw-bold">수강 신청</p>

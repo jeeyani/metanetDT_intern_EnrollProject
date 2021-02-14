@@ -19,7 +19,7 @@
   <title>메타대 학사정보시스템</title>
 </head>
 
-<body class="bg-light" style="overflow:hidden">
+<body class="bg-light" style="overflow:hidden visible">
   <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 
   <div class="container-fluid">
@@ -30,7 +30,7 @@
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         
         <div class="p-4 p-md-5 mb-4 rounded">
-
+			<p class="text-center fs-3 fw-bold">나의 시간표 조회</p>
           <div>
             <table class="table" style="border-collapse: collapse; text-align: center; vertical-align:middle">              
               <thead>
