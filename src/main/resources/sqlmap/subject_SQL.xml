@@ -58,8 +58,8 @@
 		<if test='register.subjGroup != null and register.subjGroup != ""'>
 			AND subj_group=#{register.subjGroup} 
 		</if>
-		<if test='register.deptName != null and register.deptName != ""'>
-			AND subj_name=#{register.subjName} 
+		<if test='register.subjName != null and register.subjName != ""'>
+			AND subj_name like '%' || #{register.subjName} || '%' 
 		 </if>
 	</select>
 	

@@ -160,14 +160,16 @@ public class RegisterController {
 			register.setSubjectNo(subjectNo);
 			System.out.println(subjectNo);
 		}
+		
 		String subjGroup = request.getParameter("subjGroup");
-		String subjName = request.getParameter("subjName");
 		if(subjGroup != null && subjGroup != "") {
 			if(!subjGroup.equals("none")){
 				register.setSubjGroup(subjGroup);
 				System.out.println(subjGroup);
 			}
 		}
+		
+		String subjName = request.getParameter("subjName");
 		if(subjName != null && subjName != ""){
 			register.setSubjName(subjName);
 			System.out.println(subjName);
@@ -202,7 +204,7 @@ public class RegisterController {
 		
 		Collection<RegisterDTO> registerList = registerService.getSelectList(register);
 		model.addAttribute("registerList", registerList);
-		System.out.println("enrollmenActionEnd");
+
 		return "enrollmentSelect";
 	}
 	
