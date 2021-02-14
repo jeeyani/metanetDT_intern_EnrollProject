@@ -217,7 +217,7 @@ public class RegisterController {
 	
 	//수강신청하기
 	@RequestMapping(value = "/enrolmentAdd", method = RequestMethod.GET)
-	public String enrolmentAdd(@RequestParam("subjectNo")int subjectNo,Model model,RegisterDTO register,HttpSession session) {
+	public String enrolmentAdd(@RequestParam("subjectNo")int subjectNo,Model model,RegisterDTO register,RegisterDTO registerOK,HttpSession session) {
 		
 		/*
 		//올해가 몇학기 인지 계산
@@ -253,7 +253,33 @@ public class RegisterController {
 		register.setStudentId(studentId);
 		
 		
+		
+		//3.수강신청한 목록 가져오기
+		//register.setRegYear(year);
+		registerOK.setRegYear(2021);
+		
+		//int studentId2 = Integer.parseInt((String)session.getAttribute("studentId"));
+		registerOK.setStudentId(studentId);
+		Collection<RegisterDTO> registerOKList = registerService.getRegisterList(registerOK);
+		model.addAttribute("registerOKList",registerOKList);
+		
+		int sum =0;
+		for(RegisterDTO item:registerOKList){
+			sum+=item.getSubjScore();
+		}
+		
+		logger.info("수강신청한 목록 학점 총 수 : ================="+sum);
+		
 		//해당 과목 수강신청하기
+		
+		if(sum >=3){
+			String fail = "fail";
+			model.addAttribute("fail", fail);
+			return "redirect:enrollment";
+		}
+		
+		logger.info("실행되남=================");
+		
 		int registerSuccess = registerService.setRegister(register);
 		
 		
@@ -290,7 +316,7 @@ public class RegisterController {
 		//올해 수강신청 학년도
 		/*int year = Calendar.getInstance().get(Calendar.YEAR);
 		register.setRegYear(year);*/
-		register.setRegYear(2020);
+		register.setRegYear(2021);
 		
 		//삭제할 과목 학수번호
 		register.setSubjectNo(subjectNo);
