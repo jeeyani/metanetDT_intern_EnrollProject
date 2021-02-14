@@ -123,7 +123,7 @@
                 	
                 	<c:forEach var="list" items="${registerList}">
                 		<tr>
-		                    <td><a type="submit" class="btn btn-outline-success btn-sm" href="<%=application.getContextPath()%>/enrolmentAdd?subjectNo=${list.subjectNo}">신청</a></td>
+		                    <td><a id="okbutton" type="submit" class="btn btn-outline-success btn-sm" href="<%=application.getContextPath()%>/enrolmentAdd?subjectNo=${list.subjectNo}">신청</a></td>
 		                    <td>${list.subjectNo}</td>
 		                    <td>${list.subjGroup}</td>
 		                    <td><a href="<%=application.getContextPath()%>/lecturePlanDetail?subjectNo=${list.subjectNo}" style="color: black; text-decoration: none">${list.subjName}</a></td>
@@ -214,6 +214,13 @@
 			});
 		}
 		
+		var check = "${faill}";
+		
+		$(function(){
+		    $('#okbutton').click(function(){
+		        if(check.equal('fail')) alert("신청가능한 최대 학점 수를 초과할 수 없습니다.");
+		    });
+		});
 	</script>	
   
 </body>
