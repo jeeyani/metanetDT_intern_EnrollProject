@@ -8,7 +8,7 @@
         <a class="navbar-brand">
         	<img src="<%=application.getContextPath()%>/resources/img/logo_metanet.png" width="150" style="margin:0px 10px"/>
        	</a>
-        <div class="collapse navbar-collapse" id="navbarText" style="margin-left:105px">
+        <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link" href="<%=application.getContextPath()%>/studentInfo">학생정보</a>
@@ -20,10 +20,11 @@
               <a class="nav-link" href="<%=application.getContextPath()%>/enrollment">수강신청</a>
             </li>
           </ul>
-          <span class="navbar-text">
+          <span class="navbar-text" style="margin-right:40px">
+          	<b>수강신청 시스템</b>
           </span>
         </div>
       </div>
     </nav>
 
-  </header>
+</header>

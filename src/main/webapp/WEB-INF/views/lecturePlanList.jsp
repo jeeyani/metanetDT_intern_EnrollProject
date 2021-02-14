@@ -24,7 +24,7 @@
 <title>메타대 학사정보시스템</title>
 </head>
 
-<body class="bg-light">
+<body class="bg-light" style="overflow:hidden">
 	<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 
 	<div class="container-fluid">
