@@ -62,5 +62,15 @@ public class RegisterService {
 		return registerDAO.getTimeTable(studentId, regYear, regSemester);
 	}
 
+	// 과목 정보 가져온다
+	public SubjectDTO getSubject(RegisterDTO register) {
+		return registerDAO.getSubject(register);
+	}
+
+	// 과목 정보 리스트 가져온다.
+	public Collection<SubjectDTO> getSubjList(int studentId, int regYear, String regSemester) {
+		return registerDAO.getSubjList(studentId, regYear, regSemester);
+	}
+
 
 }

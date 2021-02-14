@@ -124,7 +124,10 @@
                 	<c:forEach var="list" items="${registerList}">
                 		<tr>
 		                    <%-- <td><a id="okbutton" type="submit" class="btn btn-outline-success btn-sm" href="<%=application.getContextPath()%>/enrolmentAdd?subjectNo=${list.subjectNo}">신청</a></td> --%>
-		                    <td><a type="submit" id="subjectNum" class="btn btn-outline-success btn-sm" href="javascript:scoreCheck(${list.subjectNo})">신청</a></td>
+		                    <td>
+		                    	<a type="submit" id="subjectNum" class="btn btn-outline-success btn-sm" href="javascript:scoreCheck(${list.subjectNo})">신청
+		                    	</a>
+	                    	</td>
 		                    <td>${list.subjectNo}</td>
 		                    <td>${list.subjGroup}</td>
 		                    <td><a href="<%=application.getContextPath()%>/lecturePlanDetail?subjectNo=${list.subjectNo}" style="color: black; text-decoration: none">${list.subjName}</a></td>

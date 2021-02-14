@@ -29,5 +29,9 @@ public interface RegisterDAO {
 
 	public Collection<SubjectDTO> getTimeTable(@Param("studentId")String studentId, @Param("regYear")int regYear, @Param("regSemester")String regSemester);
 
+	public SubjectDTO getSubject(@Param("registerDTO")RegisterDTO registerDTO);
+
+	public Collection<SubjectDTO> getSubjList(@Param("studentId")int studentId, @Param("regYear")int regYear, @Param("regSemester")String regSemester);
+
 	
 }
