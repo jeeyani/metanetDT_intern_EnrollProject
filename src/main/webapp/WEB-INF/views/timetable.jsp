@@ -147,10 +147,11 @@
 
 /* 
 	$(document).ready(function(){
+		console.log("ready");
 		for(var i=1; i<6; i++) {
 			setRowspan(2);	
 		}
-	})
+	});
 	
 	function setRowspan(num) 
 	{	//num 병합을 원하는 열
@@ -158,26 +159,26 @@
 		  var mergeCount = 0;	//병합 수
 		  var mergeRowNum = 0;	//병합들어갈 row
 	
-		  $('tr','#time').each(function(row){  // #테이블ID값
+		  $('#time').each(function(row){  // #테이블ID값
 		    if(row > 0 )
 		    {
 		      var item = $(':eq(' + num +')',$(this)).html();
-		      if(mergeItem != item  ) {
+		      if(mergeItem != item) {
 		        mergeCount = 1;
 		        mergeItem = item ;
 		        mergeRowNum = row;
 		      }
 		      else
 		      {
-		    	  console.log(mergeItem)
+		    	console.log(mergeItem);
 		        mergeCount = mergeCount + 1;
 		        $("tr:eq("+mergeRowNum+") > td:eq("+num+")").attr("rowspan",mergeCount);
 		        $('td:eq('+num+')',$(this)).hide();	//병합될 값들 숨김처리
 		      }
 		    }
-		  })
+		  });
 	} 
-*/
+ */
 	
 </script>
 
