@@ -47,25 +47,27 @@ public class GradeController {
 		model.addAttribute("studentList", studentList);
 		
 		int month = Calendar.getInstance().get(Calendar.MONTH)+1;
+		int year=0;
 		String semester = "";
 		switch(month){
-		case 1:case 2:
-			semester = "f";
-		case 7: case 8:
-			semester = "s";
-		case 3:case 4:case 5:case 6:
-			semester = "1";
-		case 9:case 10:case 11:case 12:
+		case 1:case 2:case 9:case 10:case 11:case 12:
 			semester = "2";
+			year = Calendar.getInstance().get(Calendar.YEAR)-1;
+			break;
+		case 3:case 4:case 5:case 6:case 7: case 8:
+			semester = "1";
+			year = Calendar.getInstance().get(Calendar.YEAR);
+			break;
+			
 		default:
 			semester = "error";
 		}
 		
 		
-		/*Collection<GradeDTO> evaluationList = 
-				gradeService.getEvalList((String)session.getAttribute("studentId"), Calendar.getInstance().get(Calendar.YEAR), semester);*/
 		Collection<GradeDTO> evaluationList = 
-				gradeService.getEvalList((String)session.getAttribute("studentId"), 2020, "1");
+				gradeService.getEvalList((String)session.getAttribute("studentId"), year, semester);
+		/*Collection<GradeDTO> evaluationList = 
+				gradeService.getEvalList((String)session.getAttribute("studentId"), 2020, "1");*/
 		StudentDTO studentInfo = memberService.getStudentInfo((String)session.getAttribute("studentId"));
 				
 		model.addAttribute("evaluationList", evaluationList);

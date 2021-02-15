@@ -84,7 +84,7 @@
 					
 					<div class="col-12">
 						<br>
-						<h3>1학기 시간표</h3>
+						<h3>${semester}학기 시간표</h3>
 						<br>
 
 						<table class="table table-bordered">
@@ -147,8 +147,8 @@
  /* 
 	$(document).ready(function(){
 		console.log("ready");
-		for(var i=1; i<6; i++) {
-			setRowspan(2);	
+		for(var i=1; i<5; i++) {
+			setRowspan(i);
 		}
 	});
 	
