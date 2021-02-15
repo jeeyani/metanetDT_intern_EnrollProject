@@ -61,10 +61,10 @@
 		          AND s1.subject_no = s.subject_no
 		          AND s1.subj_professor = s.subj_professor
 		          AND r.reg_year=#{register.regYear}
-		          AND r.reg_semester=#{register.subjSemester}
+		          AND r.reg_semester=#{register.regSemester}
 		      )  as lectureScore
 		FROM subjects s, departmentes d
-		WHERE s.department_no = d.department_no AND subj_semester=#{register.subjSemester}
+		WHERE s.department_no = d.department_no AND subj_semester=#{register.regSemester}
 		AND subject_no NOT IN (SELECT subject_no FROM registers WHERE student_id=#{register.studentId})
 		<if test='register.subjectNo != null and register.subjectNo != ""'>
 			AND subject_no=#{register.subjectNo} 
@@ -75,6 +75,7 @@
 		<if test='register.subjName != null and register.subjName != ""'>
 			AND subj_name like '%' || #{register.subjName} || '%' 
 		 </if>
+		 ORDER BY lectureScore desc
 	</select>
 	
 	<!-- 현재 수강신청 한 목록 조회 -->

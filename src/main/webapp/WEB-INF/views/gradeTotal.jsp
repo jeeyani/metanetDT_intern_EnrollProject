@@ -42,12 +42,17 @@
 					<thead>
 						<c:set var="subjScore_sum" value="0" />
 						<c:set var="grade_sum" value="0" />
-						<c:set var="subjScore_length" value="${fn:length(allGradeList)}" />
-
+						<c:set var="subjScore_length" value="0" />
+						
+						
 						<c:forEach var="gradeDTO" items="${allGradeList}">
-							<c:set var="subjScore_sum"
-								value="${subjScore_sum + gradeDTO.subjScore}" />
-							<c:set var="grade_sum" value="${grade_sum + gradeDTO.grade}" />
+							<c:if test="${ !(gradeDTO.regYear eq curYear and gradeDTO.regSemester eq curSemester)}">						
+								<c:set var="subjScore_sum"
+									value="${subjScore_sum + gradeDTO.subjScore}" />
+								<c:set var="subjScore_length"
+									value="${subjScore_length + 1}" />
+								<c:set var="grade_sum" value="${grade_sum + gradeDTO.grade}" />
+							</c:if>
 						</c:forEach>
 
 						<tr>

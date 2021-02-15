@@ -212,11 +212,16 @@ public class RegisterController {
 		}
 		
 		
-		int year = Calendar.getInstance().get(Calendar.YEAR-1);
-		register.setRegYear(year);
+		int year = Calendar.getInstance().get(Calendar.YEAR);
+		register.setRegYear(year-1);
 		
 		
 		Collection<RegisterDTO> registerList = registerService.getSelectList(register);
+		for(RegisterDTO ree : registerList)
+		{
+			logger.info(""+ree.getLectureScore());
+		}
+		
 		model.addAttribute("registerList", registerList);
 
 		return "enrollmentSelect";
