@@ -11,16 +11,16 @@
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="<%=application.getContextPath()%>/studentInfo">학생정보</a>
+              <a class="nav-link" style="color:white;" href="<%=application.getContextPath()%>/studentInfo">학생정보</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<%=application.getContextPath()%>/gradeSemester">성적정보</a>
+              <a class="nav-link" style="color:white;" href="<%=application.getContextPath()%>/gradeSemester">성적정보</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<%=application.getContextPath()%>/enrollment">수강신청</a>
+              <a class="nav-link" style="color:white;" href="<%=application.getContextPath()%>/enrollment">수강신청</a>
             </li>
           </ul>
-          <span class="navbar-text" style="margin-right:40px">
+          <span class="navbar-text" style="margin-right:40px; color:white;">
           	<b>수강신청 시스템</b>
           </span>
         </div>

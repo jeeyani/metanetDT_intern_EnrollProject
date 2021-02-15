@@ -30,7 +30,7 @@
 		<jsp:include page="/WEB-INF/views/sidebarGrade.jsp"></jsp:include>
 
 
-      <main class="col-9 ms-sm-auto px-md-4">
+      <main class="col-9 ms-sm-5 px-md-4">
         <div class="p-4 p-md-5 mb-4 rounded">
         	
 			<p class="text-center fs-3 fw-bold">강의 평가 현황</p>
