@@ -144,11 +144,10 @@
 </body>
 
 <script>
-
-/* 
+ /* 
 	$(document).ready(function(){
-		for(var i=1; i<6; i++) {
-			setRowspan(2);	
+		for(var i=1; i<5; i++) {
+			setRowspan(i);	
 		}
 	})
 	
@@ -158,7 +157,7 @@
 		  var mergeCount = 0;	//병합 수
 		  var mergeRowNum = 0;	//병합들어갈 row
 	
-		  $('tr','#time').each(function(row){  // #테이블ID값
+		  $("#time tr").each(function(row){  // #테이블ID값
 		    if(row > 0 )
 		    {
 		      var item = $(':eq(' + num +')',$(this)).html();
@@ -177,7 +176,7 @@
 		    }
 		  })
 	} 
-*/
+ */
 	
 </script>
 
