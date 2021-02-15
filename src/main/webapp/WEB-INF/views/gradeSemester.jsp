@@ -48,8 +48,8 @@
 		            <option <c:if test="${regYear eq 2021}">selected</c:if> value="2021">2021</option>
 		            -->
 							<select name="regYear" class="form-select">
-								<option <c:if test="${regYear eq 2021}">selected</c:if>
-									value="2021">2021</option>
+								<!-- <option <c:if test="${regYear eq 2021}">selected</c:if>
+									value="2021">2021</option> -->
 								<option <c:if test="${regYear eq 2020}">selected</c:if>
 									value="2020">2020</option>
 								<option <c:if test="${regYear eq 2019}">selected</c:if>

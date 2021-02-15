@@ -121,19 +121,19 @@ public class GradeController {
 		String semester = "";
 		switch(month){
 		case 1:case 2:
-			semester = "f";
+			semester = "f";break;
 		case 7: case 8:
-			semester = "s";
+			semester = "s";break;
 		case 3:case 4:case 5:case 6:
-			semester = "1";
+			semester = "1";break;
 		case 9:case 10:case 11:case 12:
-			semester = "2";
+			semester = "2";break;
 		default:
-			semester = "error";
+			semester = "error";break;
 		}
 		
 		Collection<GradeDTO> result = gradeService.getSemGradeList(
-				(String)session.getAttribute("studentId"), Calendar.getInstance().get(Calendar.YEAR), "1");
+				(String)session.getAttribute("studentId"), Calendar.getInstance().get(Calendar.YEAR)-1, "1");
 		
 		model.addAttribute("semesterGradeList", result);
 		return "gradeSemester";
@@ -170,12 +170,39 @@ public class GradeController {
 		model.addAttribute("studentList", studentList);
 		
 		StudentDTO student = memberService.getStudentInfo((String)session.getAttribute("studentId"));
+		
 		Collection<GradeDTO> result = gradeService.gradeTotal((String)session.getAttribute("studentId"));
+		
 		Collection<RegisterDTO> yearSemesterList = gradeService.getYearSemesterList((String)session.getAttribute("studentId"));
 				
+		int month = Calendar.getInstance().get(Calendar.MONTH)+1;
+		
+		String semester = "";
+		switch(month){
+		case 1:case 2:
+			semester = "1";
+			break;
+		case 7: case 8:
+			semester = "2";
+			break;
+		case 3:case 4:case 5:case 6:
+			semester = "s";
+			break;
+		case 9:case 10:case 11:case 12:
+			semester = "f";
+			break;
+		default:
+			semester = "error";
+			break;
+		}
+		
 		model.addAttribute("studentInfo", student);
 		model.addAttribute("allGradeList", result);
 		model.addAttribute("yearSemesterList", yearSemesterList);
+		model.addAttribute("curYear", Calendar.getInstance().get(Calendar.YEAR));
+		model.addAttribute("curSemester", semester);
+		System.out.println(Calendar.getInstance().get(Calendar.YEAR));
+		System.out.println(semester);
 		
 		return "gradeTotal";
 	}
