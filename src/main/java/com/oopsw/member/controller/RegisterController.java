@@ -383,15 +383,20 @@ public class RegisterController {
 		String semester = "";
 		switch(month){
 		case 1:case 2:
-			semester = "f";
+			semester="1";
+			break;
 		case 7: case 8:
-			semester = "s";
+			semester="2";
+			break;
 		case 3:case 4:case 5:case 6:
-			semester = "1";
+			semester="s";
+			break;
 		case 9:case 10:case 11:case 12:
-			semester = "2";
+			semester="f";
+			break;
 		default:
-			semester = "error";
+			semester="error";
+			break;
 		}
 		
 		
@@ -403,6 +408,7 @@ public class RegisterController {
 		Collection<SubjectDTO> courseList = registerService.getTimeTable(studentId, 2021, "1");
 		
 		model.addAttribute("courseList", courseList);
+		model.addAttribute("semester", semester);
 
 		return "timetable";
 	}
