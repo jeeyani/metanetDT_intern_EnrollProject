@@ -65,11 +65,11 @@ body {
 </header>
 	
 	 <main style="position:absolute; top:50%; left:50%; transform: translateX(-50%) translateY(-50%)" class="form-signin">
-	   <div class="rounded" style="background-color: rgb(12, 52, 161); padding:20px;">
+	   <div class="rounded bg-dark" style="background-color:#212529; padding:20px;">
 		<img src="<spring:url value='/resources/img/logo_metanet.png'/>">
 		<form method="post" action="loginAction">
 	        <p></p>
-	        <input style="height:auto; padding:10px; font-size: 16px;" type="text" name="id" class="form-control" placeholder="학번 ex) 201512345" required autofocus>
+	        <input style="height:auto; padding:10px; font-size: 16px;" type="text" name="id" class="form-control" placeholder="학번" required autofocus>
 	        <input style="height:auto; padding:10px; font-size: 16px;" type="password" name="pw" class="form-control" placeholder="비밀번호" required>
 	        <p>
 	        <c:if test="${error eq 'fail'}">
