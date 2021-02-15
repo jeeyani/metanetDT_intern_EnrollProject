@@ -1,0 +1,206 @@
+CREATE SEQUENCE departmentes_seq
+INCREMENT BY 1
+START WITH 30000
+MINVALUE 30000
+MAXVALUE 39999;
+
+CREATE SEQUENCE subjects_seq
+INCREMENT BY 1
+START WITH 10000
+MINVALUE 10000
+MAXVALUE 19999;
+
+CREATE SEQUENCE registers_seq
+INCREMENT BY 1
+START WITH 40000
+MINVALUE 40000
+MAXVALUE 49999;
+
+-- 학과정보
+INSERT INTO departmentes
+VALUES (departmentes_seq.NEXTVAL, '컴퓨터공학과');
+INSERT INTO departmentes
+VALUES (departmentes_seq.NEXTVAL, '소프트웨어공학과');
+INSERT INTO departmentes
+VALUES (departmentes_seq.NEXTVAL, '전자공학과');
+INSERT INTO departmentes
+VALUES (departmentes_seq.NEXTVAL, '정보통신과');
+
+-- 학생정보
+INSERT INTO students
+VALUES ('201500123','12345!','강창기','010-5127-0318','M','cgkang','서울시 구로구','재학',30000)
+INSERT INTO students
+VALUES ('201500124','987456!','박지연','010-3862-4344','F','jiyani','서울시 광진구','재학',30000)
+INSERT INTO students
+VALUES ('201500125','654951#','장종현','010-3426-8859','M','whdgus8809','서울시 동작구','재학',30001)
+INSERT INTO students
+VALUES ('201500126','852741**','이수연','010-4031-2103','F','dldus0609','서울시 은평구','재학',30001)
+
+-- 수강가능과목
+INSERT INTO subjects
+VALUES (subjects_seq.NEXTVAL,'전공필수','정보통신입문','2',3,'이승결','화',4,6,'하-512','21세기를 맞으며 전 세계는 정보화 문명의 새로운 물결로 넘치고 있다. 이제 정보통신기술이 없이는 사회 자체의 존속이 불가능해지고 있다. 언제, 어디서나, 누구든지, 멀티미디어정보를 가장 지능적이고 인간친화적인 형태로 주고 받을 수 있는 정보통신 서비스와 기술은 더욱 더 중요해지고 있다. 본 과목은 정보화 혁명의 근본적 변화를 가져온 정보통신공학의 기본 원리와 역사를 살펴보며, 미래 정보통신 문명의 변화와 발전을 전망해 본다. 정보와 신호의 생산으로 부터 수요에 이르기까지, 가공, 처리, 저장, 수송, 분배되는 과학적/공학적 기초 이론, 원리, 방법론을 공부한다. 신호, 시스템, 아날로그/디지털 개념, 정보처리, 전화의 원리, 논리, 컴퓨터, 인터넷, 네트워크, 스마트 카드, 코딩, 게임이론, 정보이론, 광통신, 이동통신 등을 공부한다.','강의 및 질의 응답','1) 과제 제출 시간을 지켜야 합니다.<br>
+2) 본 과목은 전공필수이며 신입생에게 정보통신공학을 소개하는 교과목이므로, 1학년 1학기에 반드시 수강해야 합니다. 1학년 1학기에 이 과목을 수강하지 않으면, 교과목 이수체계를 따르지 못하게 되어 앞으로 공부를 해 나가는데 큰 불편함이 발생할 수 있습니다.','중간고사 40% <br> 기말고사 40% <br> 출석 10% <br> 과제 5%<br> 퀴즈 5%','1.강의소개<br>2.Sensors and Actuators<br> 3.Converting Between Analog and Digital Signals<br>4.Combinational Logic Circuits<br>5.Sequential Logic Circuits and FPGA',30003)
+
+INSERT INTO subjects
+VALUES (subjects_seq.NEXTVAL,'전공선택','유닉스 프로그래밍','2',3,'이주홍','화',1,3,'하-322','UNIX 시스템의 File, Directory, Process, Signal Handling, Inter Process Communication, Terminal
+I/O, Socket 등등의 System Call 들을 배운다.','강의와 예제 프로그램 설명, 연습문제 숙제, 실습. 텀 프로젝트 실행','- 선수과목으로 C(C++) 언어 프로그래밍을 수강한 학생만 수강할 수 있다.<br>
+- 과제를 copy 하거나 모방을 할 시에는 부정행위로 간주 하여 0점를 부여함.','중간고사0%<br>기말고사60%<br> 출석 10% <br>과제 30%','1. 전반적인 과목 진행 계획 및 평가방법 소개<br> 2.유닉스프로그래밍에 대한 기본개념 및 용어설명<br> 3. 유닉스 SystemCall을 이용한 파일처리 소개 및 활용<br> 4. 유닉스 파일시스템에 대한 구조 설명<br> 5.프로세스를 활용한 프로그래밍 방법',30000)
+
+INSERT INTO subjects
+VALUES(subjects_seq.NEXTVAL, '전공필수', '데이터베이스', '1', 3, '강창구', '금', 1, 2, '5관201호', '데이터베이스 관리 시스템이란 대량의 데이터를 효율적으로 관리 운영하기 위한 소프트웨어이다. 지식 정보화 사회에서 급속히 증가되는 각종 데이터를 관리 운영하여 활용하는 것은 모든 조직의 필수적인 일이다. 이에 본 강좌에서는 졸업 후 직장에서 접하게 될 데이터베이스 기술에 관련된 이론적 기반이 될 내용을 학습하여 실무에 응용할 수 있도록 하는 게 주 목적이다.', 
+'LMS + 일부 대면수업', '강의를 따라가기 위해 반드시 교재를 필참해야 한다.<br>', 
+'중간고사 30% <br> 기말고사 30% <br> 출석 10% <br> 과제 30%', '추후 논의',  30000)
+
+INSERT INTO subjects VALUES(subjects_seq.NEXTVAL, '전공선택', '컴퓨터보안', '1', 3, '이문규', '목', 6, 8, '7관601호','symmetric and asymmetric cryptography, network security, system security, case study','주당 2시간: 교재 및 슬라이드로 이론 수업 진행','- C 또는 C++ 프로그래밍 및 자료구조 수강 후 수강할 것 (프로그래밍 과제 다수 부여됨)<br>- 중간고사: 4/20 화요일 20:00-21:30<br>- 기말고사: 6/8 화요일 20:00-21:30','중간고사 35%<br> 기말고사 35% <br>출석 10%<br> 과제20% ','1.Vulnerability / security requirements <br>2.Web hacking: basic concepts <br>3.Web hacking: SQL injection <br>4.Block Ciphers and the Data Encryption Standard<br> 5.- Advanced Encryption Standard',30000)
+
+INSERT INTO subjects
+VALUES (subjects_seq.NEXTVAL,'전공선택','인터넷 프로그래밍','1',3,'이연','화',4,8,'하-324',
+'HTML5, JavaScript, CSS 등과 같은 클아이언트 인터넷 프로그래밍 언어와 서버 인터넷 프로그래밍 언어의 대표 주자들 중 하나인 JSP 및 JDBC 프로그래밍에 대한 기술을 학습하고, 웹페이지 프로그래밍의 주 프레임워크인 스프링 프레임워크를 공부하고 마지막으로 데이터베이스를 사용하는 웹페이지를 설계하고 구현한다.-강제입력은 개강후에 신청 받으며 10명 추가로 강입 받을 예정입니다',
+'이론 수업 2시간, 실습 수업 2시간,실습 수업내에 실습 과제를 완성하며 실습 과제 중 4회는 채점하는 과제로 최종 과제 점수에 포함.<br>그 외 수업 시간 외 개인프로젝트가 있음.<br>중간 고사는 실기 시험, 기말 고사는 기말 과제+실기 시험.',
+'- 지각 3회 = 결석 1회<br>- 본 과목은 선수과목인 객체지향프로그래밍II의 OOP에 대한 사전 지식을 요구합니다.<br>- 수업 내용중에는 클래스 생성 정도의 부분적인 JAVA 프로그래밍 지식을 요구하고 있습니다.<br> 자바기반응용프로그래밍 수강자나, 사전 개인 학습하신 분들의 수강을 권장합니다.','중간고사30%<br> 기말고가30%<br> 출석10%<br> 과제20%<br> 퀴즈10%',
+'1.강좌 소개 및 HTML5 맛보기<br> 2.HTML5 기본<br> 3.HTML5 입력 양식 작성과 멀티미디어<br> 4.CSS(Cascading Style Sheets) 기본<br>  5.JavaScript 기초<br> 6.JSP 기본 문법<br>  7.JSP와 JAVA Beans, Cookie, Session<br> 8.JSP와 JDBC 프로그래밍<br> 9.SQL Procedure와 CallableStatement, 고급 Lib 활용',30000)
+
+INSERT INTO subjects
+VALUES (subjects_seq.NEXTVAL,'전공필수','운영체제','1',3,'김완규','월',6,8,'18동-201',
+'운영체제의 기본개념과 시스템의 중요 자원(프로세스, CPU스케줄링, 디스크 스케줄링, 실기억장치, 가상기억장치, 파일 시스템 등)관리에 관하여 학습한다',
+'이론 수업 3시간. 중간 및 기말을 필기시험으로 치르게 됨.',
+'- 지각 3회 = 결석 1회<br> 본 과목은 정보처리기사 자격증 취득에 도움을 줄 수 있음. 따라사서 해당 학기에 자격증 필기시험 합격 시 가산점을 부여 ',
+'중간고사30%<br> 기말고가30%<br> 출석10%<br> 과제10%<br> 퀴즈20%',
+'1.Operating System 개요 및 유형<br>2.Process/ Process 상태전이/ Interrupt처리<br>3.CPU Scheduling (단계 및 목적)<br>4.Scheduling의 종류(Algorithms)<br>5.Disk Scheduling (개요 및 목적)<br>6.Disk Scheduling Algorithms <br>7. Real Storage (실기억 장치 관리)<br>8.고정분할 다중 프로그래밍 / 가변분할 다중프로그래밍<br>이후 진행은 추후 논의.',
+30000)
+
+INSERT INTO subjects
+VALUES (subjects_seq.NEXTVAL,'전공선택','프로그래밍언어론','1',3,'송진국','월',2,4,'18동-411',
+'프로그래밍 언어의 패러다임을 기반으로 언어의 기본요소와 일반적인 특징들, 언어 구현시 고려사항 등을 학습하여, 유용하게 프로그래밍할 수 있고, 프로그래밍 언어를 선택하는 능력을 증대시키며, 새로운 언어를 배우기 쉽게 한다',
+'이론 수업 2시간, 실습 수업 1시간,실습 수업내에 실습 과제를 완성하며 실습 과제 중 4회는 채점하는 과제로 최종 과제 점수에 포함.<br>그 외 수업 시간 외 개인프로젝트가 있음.<br>중간 고사는 실기 시험, 기말 고사는 기말 과제+실기 시험.',
+'- 지각 3회 = 결석 1회<br>',
+'중간고사30%<br> 기말고사40%<br> 출석10%<br> 퀴즈10%',
+'1.프로그래밍 언어 소개<br>2.프로그래밍언어의 변천<br>3.프로그래밍언어 설계<br>4.프로그래밍 언어의 구문과 구현기법<br>5.변수,비인딩,선언,배정문,상수<br>6.표현식,조건문,반복문,goto문,<br>7.자료형<br>8.중간평가<br>9.자료형<br>이후 진행은 추후 논의',
+30000)
+
+INSERT INTO subjects
+VALUES (subjects_seq.NEXTVAL,'전공선택','컴퓨터시스템보안','1',3,'김계희','목',8,9,'18동-303강의실',
+'최근에 정보화 시대의 상대적 현상으로 발생하고 있는 불법적 정보 훼손,취득,이용 등이 사회적 문제가 되고 있다. 이에 대한 사회 의식 향상을 통한 예방과 기술적인 방어, 시스템적 보안들이 꾸준히 필요하게 되었다. 이에 본 과목에서는 컴퓨터 시스템 보안 및 암호 학의 기본 개념과 이론에 대해 학습 한다',
+'이론 수업 1시간, 실습 수업 1시간 <br>중간 고사 및 기말고사 모두 실기시험으로 이루어지며 과제 3회있음.',
+'본 과목은 지각은 허용하나 과제 미제출시 감점요소가 큼. 과제의 비율이 시험비율과 비슷하므로 반드시 과제제출에 무게를 둘 수 있도록 해야한다.<br>',
+'중간고사30%<br> 기말고사30%<br> 출석10%<br> 과제30%',
+'1.사이버세계 둘러보기<br>2.윈도우즈와 PC보안<br>3.윈도우즈와 PC보안<br>4.웹 브라우저<br>5.웹 브라우저<br>6.암호이야기<br>7.암호이야기<br>8.중간고사<br>9.사이버 생활보안<br>10.공격과 방어<br>11.공격과 방어<br>12.모바일 보안<br>13.사이버수사-디지털포렌식<br>14.기말고사',
+30000)
+
+INSERT INTO subjects
+VALUES (subjects_seq.NEXTVAL,'전공선택','논리회로설계','1',3,'김흥준','금',2,4,'18동-203',
+'컴퓨터 시스템의 하드웨어적 구성은 다양한 디지털 시스템들로 구성되어 있다. 본 과정에서는 컴퓨터 시스템을 구성하는 디지털 시스템들을 표현하고 설계하는 방법과 디지털 시스템의 동작원리를 이해한다. 과정의 내용으로는 수 체계, 부울 대수, 조합회로, 기억장치, 순차회로 등의 내용을 탐구하고 시뮬레이터를 이용한 테스트를 병행한다',
+'이론 수업 3시간 <br>중간 고사 및 기말고사 모두 필기시험으로 이루어짐.',
+'지각 3회당 결석 1회처리. 수업 시작 후 20분까지 지각 처리하지 않음.<br>',
+'중간고사30%<br> 기말고사30%<br> 출석20%<br> 과제10%<br> 퀴즈10%',
+'1.과목소개<br>2.사전지식<br>3.수 체계 및 코드의 표현<br>4.수 체계 및 코드의 표현<br>5.부울대수와 기본게이트<br>6.부울대수와 기본게이트<br>7.논리식의 간략화<br>8.조합논리회로<br>9.조합논리회로<br>10.조합논리회로<br>11.기억장치 레치와 플립플롭<br>12.기억장치 레치와 플립플롭<br>13.순서논리 회로<br>14.순서논리 회로<br>15.순서논리 회로',
+30000)
+
+INSERT INTO subjects
+VALUES (subjects_seq.NEXTVAL,'교양선택','일반수학1','1',3,'정해원','월',1,3,'온라인수업',
+'- 일변수 함수의 극한과 연속성, 미분과 적분 등의 기초 이론과 계산 기법을 살펴본다.<br>- 무한급수의 수렴과 발산을 판정하는 방법, 멱급수, 테일러 정리 등의 이론을 소개한다.<br>- 직교좌표계 이외의 극좌표계, 원기둥 좌표계, 구면죄표계 등을 소개한다.<br>- 벡터, 벡터의 내적과 외적, 행렬 등과 관련된 기초적인 이론과 복소수에 대한 내용을 소개한다.',
+'온라인 강의로 진행될 예정이며, 코로나19의 상황에 따라 변경될 수도 있습니다.',
+'- 중간시험과 기말시험은 공동출제와 공동채점을 원칙으로 합니다.<br>그리고, 중간시험과 기말시험 점수의 합의 분포를 기준으로 A, B학점의 하한이 결정됩니다.<br>- 수업진도에 따라 참고할 과제 문제는 http://maths.inha.ac.kr/~lecture/calculus/ 에 공지합니다.구체적으로 과제를 부여하고 성적에 반영하는 방법은 각 분반 담당교수님이 결정합니다.<br>
+- 중간시험이나 기말시험에 무단 결시하면 최종학점은 F입니다.<br>- 결석 회수가 학칙에서 정한 기준을 초과하면 최종학점은 F입니다.<br>- 교재는 미적분학(이익권, 이현대, 최광석 지음, 경문사)입니다.(본 강의계획서 작성시점에 수정된 책이 아직 출판되지 않았습니다.)<br>- 수업은 교재의 2장부터 진행됩니다.(교재의 1장 집합과 함수의 내용은 학기 시작 전에 읽고 이해하세요.)<br>',
+'중간고사 44%<br> 기말고사44%<br> 과제8% ',
+'2.1 수열의 수렴과 발산<br>2.2 함수의 극한<br>2.3 함수의 연속성<br>3.1 미분가능성과 도함수<br>3.2 평균값 정리<br>3.3 함수의 증감<br>3.4 여러가지 미분법<br>3.5 초월함수의 미분<br>3.6 로피탈 법칙',30000)
+
+INSERT INTO subjects
+VALUES (subjects_seq.NEXTVAL,'교양선택','정수론입문','1',3,'정수진','수',6,8,'하-001',
+'여러가지 정수를 표현하는 수의 종류에서부터 피타고라스의 세수를 통한 정수의 성질과 조합들을 알고 소수를 사용한 여러가지 증명과 정리를 학습하므로써 수의 알고리즘 구조를 학습한다.',
+'이론수업<br>사회적 거리두기 단계별 온오프 블랜디드 조정 예정<br>시험은 기본적으로 오프라인(상황이 가능할 경우)<br>강의는 실시간 zoom과 동영상 강의 병행(첫시간 오리엔테이션으로 안내 예정)',
+'번역서를 기본으로 수업하며 문제풀이는 타 정수론 책과 병행하여 골라 강의 중 공개를 원칙으로 함<br>과제는 강의 중 문제풀이 제출이 기본이며 진도와 상황에 따라 추가과제가 있을 수 있음<br>시험은 수업시간을 원칙으로 하되 상황에 따라 저녁 또는 주말이 될 수도 있음',
+'중간고사30%<br> 기말고사30%<br> 출석20%<br> 과제20%',
+'1 수론이란<br>2 피타고라스의 세수<br>3 피타고라스 세수와 단위원<br>4 페르마의 마지막 정리<br>5 가약성과 최대공약수<br>6 선형방정식과 최대공약수<br>7 인수분해와산술의기본정리<br>8 합동<br>9 합동 거듭제곱 페르마소정리<br>10 합동 거듭제곱 오일러공식',
+30000)
+
+INSERT INTO subjects
+VALUES (subjects_seq.NEXTVAL,'교양필수','통계학','1',3,'최성용','금',6,8,'하-121',
+'분석적인 사고와 논리를 바탕으로 한 객관적인 자료처리는 미래의 정보분야의 필수적인 선수과목이라할 수 있다. 수학적인 공식 위주의 암기 과목이 아닌 현상 및 수반하는 자료에 대한 이해와 함께 개념의 폭을 확장하여 통계학의 기본 개념을 이해하여 전공에 응용할 수 있는 능력을 기른다.',
+'본 강의은 이론수업을 중심으로 진행하며, 엑셀 프로그램을 이용하여 이론에서 학습한 개념을 이론수업내에서 실습을 통해 확인한다',
+'강의시작전 I-Class 확인필수',
+'중간고사35%<br> 기말고사35%<br> 출석10%<br> 과제20%',
+'1 강의소개, 기술총계학과 추측통계학<br>2 자료의 정리<br>3 확률과 확률분포<br>4 이항분포와 정규분포<br>5 표본분포<br>6 추정<br>7 검정<br>8 범주형자료의 분석',
+30000)
+
+INSERT INTO subjects
+VALUES (subjects_seq.NEXTVAL,'교양필수','공업수학','1',3,'전상표','수',4,8,'5관107호',
+'공학을 연구데 수학적 모형의 설계시 미분방정식의 형태로 주어지는 경우 수학적 해석방법에 대해 배우고 전공에 응용할수있게 한다',
+'판서및 ppt 자료',
+'수업철저히 참석',
+'중간고사0%<br> 기말고사60%<br> 출석10%<br> 과제30%',
+'1 수학이란 무엇인가?<br>
+2 공학연구<br>
+3 일반수학에 대한 복습<br>
+4 미분방정식이란 무엇인가<br>
+5 일계미분방정식<br>
+6 고계미분방정식의 이해<br>
+7 연립미분방정식의 이해<br>
+8 라플라스변환의 이해',
+30000)
+
+
+
+-- 수강신청
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '2', 4.0, 4, 4, 5, 5, 3, '201500123', 10002)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '1', 3.5, 5, 4, 3, 4, 4, '201500123', 10003)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '2', 4.5, 5, 4, 4, 4, 5, '201500123', 10004)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '1', 4.5, 4, 3, 2, 4, 5, '201500124', 10006)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '1', 3.0, 5, 1, 1, 1, 5, '201500124', 10003)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '2', 4.0, 5, 2, 4, 2, 3, '201500124', 10004)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '2', 3.5, 2, 2, 2, 2, 3, '201500125', 10002)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '1', 3.9, 2, 3, 4, 2, 3, '201500125', 10003)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '2', 4.2, 5, 3, 4, 5, 3, '201500125', 10004)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '1', 3.0, 1, 3, 4, 1, 3, '201500125', 10005)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '1', 4.0, 3, 3, 4, 3, 5, '201500125', 10006)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '1', 3.4, 3, 2, 4, 3, 2, '201500125', 10007)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '1', 3.0, 4, 2, 1, 4, 2, '201500125', 10008)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '1', 3.0, 1, 4, 5, 3, 2, '201500125', 10009)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '1', 3.5, 89, 1, 4, 5, 3, 1, '201500126', 10010)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '1', 3.9, 93, 4, 4, 5, 3, 4, '201500126', 10011)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '1', 4.0, 94, 5, 4, 5, 3, 3, '201500126', 10012)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '1', 3.5, 89, 1, 4, 5, 3, 4, '201500126', 10013)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '1', 4.3, 97, 4, 4, 5, 3, 4, '201500126', 10014)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '1', 3.9, 93, 3, 4, 5, 3, 3, '201500126', 10015)
+
+INSERT INTO registers 
+VALUES(registers_seq.NEXTVAL, 2020, '1', 3.9, 93, 3, 1, 5, 2, 3, '201500125', 10015)
