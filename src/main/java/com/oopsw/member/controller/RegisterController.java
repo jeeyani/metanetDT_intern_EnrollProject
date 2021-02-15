@@ -192,15 +192,19 @@ public class RegisterController {
 		switch(month){
 		case 1:case 2:
 			register.setRegSemester("1");
+			register.setSubjSemester("1");
 			break;
 		case 7: case 8:
 			register.setRegSemester("2");
+			register.setSubjSemester("2");
 			break;
 		case 3:case 4:case 5:case 6:
 			register.setRegSemester("s");
+			register.setSubjSemester("s");
 			break;
 		case 9:case 10:case 11:case 12:
 			register.setRegSemester("f");
+			register.setSubjSemester("f");
 			break;
 		default:
 			register.setRegSemester("error");
@@ -210,6 +214,7 @@ public class RegisterController {
 		
 		int year = Calendar.getInstance().get(Calendar.YEAR-1);
 		register.setRegYear(year);
+		
 		
 		Collection<RegisterDTO> registerList = registerService.getSelectList(register);
 		model.addAttribute("registerList", registerList);
