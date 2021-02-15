@@ -56,7 +56,7 @@ body {
         	<img src="<%=application.getContextPath()%>/resources/img/logo_metanet.png" width="150" style="margin:0px 10px"/>
        	</a>
        	<div class="collapse navbar-collapse" id="navbarText">          
-          <span class="navbar-text" style="margin-right:40px">
+          <span class="navbar-text" style="margin-right:40px; color:white;">
           	<b>수강신청 시스템</b>
           </span>
       </div>
