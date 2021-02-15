@@ -144,12 +144,16 @@
 </body>
 
 <script>
-
-/* 
+ /* 
 	$(document).ready(function(){
+<<<<<<< HEAD
 		console.log("ready");
 		for(var i=1; i<6; i++) {
 			setRowspan(2);	
+=======
+		for(var i=1; i<5; i++) {
+			setRowspan(i);	
+>>>>>>> branch 'master' of https://github.com/elien940318/metanetDT_intern_EnrollProject.git
 		}
 	});
 	
@@ -159,7 +163,11 @@
 		  var mergeCount = 0;	//병합 수
 		  var mergeRowNum = 0;	//병합들어갈 row
 	
+<<<<<<< HEAD
 		  $('#time').each(function(row){  // #테이블ID값
+=======
+		  $("#time tr").each(function(row){  // #테이블ID값
+>>>>>>> branch 'master' of https://github.com/elien940318/metanetDT_intern_EnrollProject.git
 		    if(row > 0 )
 		    {
 		      var item = $(':eq(' + num +')',$(this)).html();
